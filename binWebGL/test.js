@@ -824,15 +824,15 @@ dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
 	,scaleToGL: function() {
 		this.scale = 0.00166666666666666677;
 		var this1 = new geom_structure_Mat1x4(this.scale,-this.scale,1.,1.);
-		var p = this1;
+		var v = this1;
 		var this2 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
 		var this3 = this2;
 		var this4 = new geom_structure_Mat4x3(1.,0.,0.,-1.,0.,1.,0.,1.,0.,0.,1.,0.);
 		var s = this4;
 		var this5 = new geom_structure_Mat4x3(this3.a * s.a + this3.b * s.e + this3.c * s.i,this3.a * s.b + this3.b * s.f + this3.c * s.j,this3.a * s.c + this3.b * s.g + this3.c * s.k,this3.a * s.d + this3.b * s.h + this3.c * s.l + this3.d,this3.e * s.a + this3.f * s.e + this3.g * s.i,this3.e * s.b + this3.f * s.f + this3.g * s.j,this3.e * s.c + this3.f * s.g + this3.g * s.k,this3.e * s.d + this3.f * s.h + this3.g * s.l + this3.h,this3.i * s.a + this3.j * s.e + this3.k * s.i,this3.i * s.b + this3.j * s.f + this3.k * s.j,this3.i * s.c + this3.j * s.g + this3.k * s.k,this3.i * s.d + this3.j * s.h + this3.k * s.l + this3.l);
-		var m = this5;
-		var this6 = new geom_structure_Mat4x3(m.a * p.x,m.b,m.c,m.d,m.e,m.f * p.y,m.g,m.h,m.i,m.j,m.k * p.z,m.l);
-		return this6;
+		var this6 = this5;
+		var this7 = new geom_structure_Mat4x3(this6.a * v.x,this6.b,this6.c,this6.d,this6.e,this6.f * v.y,this6.g,this6.h,this6.i,this6.j,this6.k * v.z,this6.l);
+		return this7;
 	}
 	,uploadVectors: function() {
 		var this1 = this.verts;

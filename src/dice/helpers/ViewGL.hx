@@ -96,8 +96,8 @@ class ViewGL extends WebGLSetup {
     function transformVerticesToGL() verts.transformAll( scaleToGL() );
     function scaleToGL(){
         scale = 1/(stageRadius);
-        return new Matrix1x4( { x: scale, y: -scale, z: 1., w: 1. } )
-               * Matrix4x3.unit.translateXYZ( -1., 1., 0. );
+        var v = new Matrix1x4( { x: scale, y: -scale, z: 1., w: 1. } );
+        return ( Matrix4x3.unit.translateXYZ( -1., 1., 0. ) ).scaleByVector( v );
     }
     function uploadVectors(){
         vertices =  cast verts.getArray();

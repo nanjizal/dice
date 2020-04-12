@@ -178,8 +178,8 @@ dice_Dice.prototype = {
 		this.viewGL.uploadVectors();
 	}
 	,instructions: function() {
-		haxe_Log.trace("swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 106, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("use keys to transform scene",{ fileName : "src/dice/Dice.hx", lineNumber : 107, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 106, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 107, className : "dice.Dice", methodName : "instructions"});
 		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 108, className : "dice.Dice", methodName : "instructions"});
 		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 109, className : "dice.Dice", methodName : "instructions"});
 		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 110, className : "dice.Dice", methodName : "instructions"});

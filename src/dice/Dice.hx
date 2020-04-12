@@ -103,8 +103,8 @@ class Dice {
         viewGL.upload();
     }
     function instructions(){
-        trace('swap between disc and scene: a');
-        trace('use keys to transform scene');
+        trace('use keys to transform');
+        trace('to swap between disc and scene: a');
         trace('rotate: arrow keys');
         trace('zoom: delete/return');
         trace('translate up/down: tab/shift');

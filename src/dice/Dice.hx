@@ -50,16 +50,14 @@ import htmlHelper.tools.CharacterInput;
 import htmlHelper.tools.AnimateTimer;
 import htmlHelper.tools.DivertTrace;
 import pallette.QuickARGB;
+import dice.view.Die;
 
 using htmlHelper.webgl.WebGLSetup;
 class Dice {
     var viewGL = new ViewGL();
     var size = 80;
-    var len = 0;
-    var s0 = 0;
-    var e0 = 0;
-    var s1 = 0;
-    var e1 = 0;
+    var start = 0;
+    var end = 0;
     var angle = 0.;//(Math.PI/4);
     var layoutPos: LayoutPos;
     var pen: Pen;
@@ -71,35 +69,22 @@ class Dice {
         pen = viewGL.pen;
         var gridLines = new GridLines( pen, ViewGL.stageRadius );
         gridLines.draw( 10, 0x0396FB00, 0xF096FBF3 );
-        viewGL.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.1 ) );
-        var range0 = drawDotSide( 0xfff0ffff );
-        s0 = range0.start;
-        e0 = range0.end;
-        viewGL.transformRange( Matrix4x3.unit.rotateX( angle ), s0, e0 );
-        var range1 = drawDotSide( 0xfff0ff00 );
-        s1 = range1.start;
-        e1 = range1.end;
-        viewGL.transformRange( Matrix4x3.unit.translateX( 0.01 ), s1, e1 );
-        viewGL.transformRange( Matrix4x3.unit.rotateX( Math.PI+angle ), s1, e1 );
+        viewGL.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.2 ) );
+        
+        var die = new Die( viewGL.pen );
+        var startEnd = die.create( viewGL.verts, layoutPos.centre.x, layoutPos.centre.y );
+        start = startEnd.start;
+        end = startEnd.end;
         viewGL.update = update;
         viewGL.upload();
         viewGL.start();
     }
-    function drawDotSide( color: Int ):{start:Int,end:Int}{
-        len = Shaper.circle( pen.drawType
-                           , layoutPos.centre.x, layoutPos.centre.y
-                           ,  size );
-        pen.colorTriangles( color, len );
-        return { start: viewGL.verts.length - len, end: viewGL.verts.length- 1 };
-    }
-    
     function update():Void{
         //angle = -Math.PI/100;
         var model = DualQuaternion.zero;
         model  = viewGL.itemModel.updateCalculate( model );
         var trans: Matrix4x3 = model;
-        viewGL.transformRange( trans, s0, e1 );
-        //viewGL.transformRange( trans, s1, e1 );
+        viewGL.transformRange( trans, start, end );
         viewGL.upload();
     }
     function instructions(){

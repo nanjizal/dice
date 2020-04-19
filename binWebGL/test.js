@@ -16,13 +16,8 @@ Std.string = function(s) {
 	return js_Boot.__string_rec(s,"");
 };
 var dice_Dice = function() {
-	this.angle = 0.;
-	this.e1 = 0;
-	this.s1 = 0;
-	this.e0 = 0;
-	this.s0 = 0;
-	this.len = 0;
-	this.size = 80;
+	this.end = 0;
+	this.start = 0;
 	this.viewGL = new dice_helpers_ViewGL();
 	new htmlHelper_tools_DivertTrace();
 	this.instructions();
@@ -33,43 +28,14 @@ var dice_Dice = function() {
 	var tmp = this.viewGL;
 	var this1 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
 	var this2 = this1;
-	var this3 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-0.1);
+	var this3 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-0.2);
 	var s = this3;
 	var this4 = new geom_structure_Mat4x3(this2.a * s.a + this2.b * s.e + this2.c * s.i,this2.a * s.b + this2.b * s.f + this2.c * s.j,this2.a * s.c + this2.b * s.g + this2.c * s.k,this2.a * s.d + this2.b * s.h + this2.c * s.l + this2.d,this2.e * s.a + this2.f * s.e + this2.g * s.i,this2.e * s.b + this2.f * s.f + this2.g * s.j,this2.e * s.c + this2.f * s.g + this2.g * s.k,this2.e * s.d + this2.f * s.h + this2.g * s.l + this2.h,this2.i * s.a + this2.j * s.e + this2.k * s.i,this2.i * s.b + this2.j * s.f + this2.k * s.j,this2.i * s.c + this2.j * s.g + this2.k * s.k,this2.i * s.d + this2.j * s.h + this2.k * s.l + this2.l);
 	tmp.transform(this4);
-	var range0 = this.drawDotSide(-983041);
-	this.s0 = range0.start;
-	this.e0 = range0.end;
-	var tmp1 = this.viewGL;
-	var this5 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
-	var this6 = this5;
-	var theta = this.angle;
-	var c = Math.cos(theta);
-	var s1 = Math.sin(theta);
-	var this7 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c,-s1,0.,0.,s1,c,0.);
-	var s2 = this7;
-	var this8 = new geom_structure_Mat4x3(this6.a * s2.a + this6.b * s2.e + this6.c * s2.i,this6.a * s2.b + this6.b * s2.f + this6.c * s2.j,this6.a * s2.c + this6.b * s2.g + this6.c * s2.k,this6.a * s2.d + this6.b * s2.h + this6.c * s2.l + this6.d,this6.e * s2.a + this6.f * s2.e + this6.g * s2.i,this6.e * s2.b + this6.f * s2.f + this6.g * s2.j,this6.e * s2.c + this6.f * s2.g + this6.g * s2.k,this6.e * s2.d + this6.f * s2.h + this6.g * s2.l + this6.h,this6.i * s2.a + this6.j * s2.e + this6.k * s2.i,this6.i * s2.b + this6.j * s2.f + this6.k * s2.j,this6.i * s2.c + this6.j * s2.g + this6.k * s2.k,this6.i * s2.d + this6.j * s2.h + this6.k * s2.l + this6.l);
-	tmp1.transformRange(this8,this.s0,this.e0);
-	var range1 = this.drawDotSide(-983296);
-	this.s1 = range1.start;
-	this.e1 = range1.end;
-	var tmp2 = this.viewGL;
-	var this9 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
-	var this10 = this9;
-	var this11 = new geom_structure_Mat4x3(1.,0.,0.,0.01,0.,1.,0.,0.,0.,0.,1.,0.);
-	var s3 = this11;
-	var this12 = new geom_structure_Mat4x3(this10.a * s3.a + this10.b * s3.e + this10.c * s3.i,this10.a * s3.b + this10.b * s3.f + this10.c * s3.j,this10.a * s3.c + this10.b * s3.g + this10.c * s3.k,this10.a * s3.d + this10.b * s3.h + this10.c * s3.l + this10.d,this10.e * s3.a + this10.f * s3.e + this10.g * s3.i,this10.e * s3.b + this10.f * s3.f + this10.g * s3.j,this10.e * s3.c + this10.f * s3.g + this10.g * s3.k,this10.e * s3.d + this10.f * s3.h + this10.g * s3.l + this10.h,this10.i * s3.a + this10.j * s3.e + this10.k * s3.i,this10.i * s3.b + this10.j * s3.f + this10.k * s3.j,this10.i * s3.c + this10.j * s3.g + this10.k * s3.k,this10.i * s3.d + this10.j * s3.h + this10.k * s3.l + this10.l);
-	tmp2.transformRange(this12,this.s1,this.e1);
-	var tmp3 = this.viewGL;
-	var this13 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
-	var this14 = this13;
-	var theta1 = Math.PI + this.angle;
-	var c1 = Math.cos(theta1);
-	var s4 = Math.sin(theta1);
-	var this15 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c1,-s4,0.,0.,s4,c1,0.);
-	var s5 = this15;
-	var this16 = new geom_structure_Mat4x3(this14.a * s5.a + this14.b * s5.e + this14.c * s5.i,this14.a * s5.b + this14.b * s5.f + this14.c * s5.j,this14.a * s5.c + this14.b * s5.g + this14.c * s5.k,this14.a * s5.d + this14.b * s5.h + this14.c * s5.l + this14.d,this14.e * s5.a + this14.f * s5.e + this14.g * s5.i,this14.e * s5.b + this14.f * s5.f + this14.g * s5.j,this14.e * s5.c + this14.f * s5.g + this14.g * s5.k,this14.e * s5.d + this14.f * s5.h + this14.g * s5.l + this14.h,this14.i * s5.a + this14.j * s5.e + this14.k * s5.i,this14.i * s5.b + this14.j * s5.f + this14.k * s5.j,this14.i * s5.c + this14.j * s5.g + this14.k * s5.k,this14.i * s5.d + this14.j * s5.h + this14.k * s5.l + this14.l);
-	tmp3.transformRange(this16,this.s1,this.e1);
+	var die = new dice_view_Die(this.viewGL.pen);
+	var startEnd = die.create(this.viewGL.verts,this.layoutPos.centre.x,this.layoutPos.centre.y);
+	this.start = startEnd.start;
+	this.end = startEnd.end;
 	this.viewGL.update = $bind(this,this.update);
 	this.viewGL.uploadVectors();
 	var _this = this.viewGL;
@@ -87,44 +53,7 @@ dice_Dice.main = function() {
 	new dice_Dice();
 };
 dice_Dice.prototype = {
-	drawDotSide: function(color) {
-		var drawType = this.pen.drawType;
-		var ax = this.layoutPos.centre.x;
-		var ay = this.layoutPos.centre.y;
-		var radius = this.size;
-		var pi = Math.PI;
-		var theta = pi / 2;
-		var step = pi * 2 / 36;
-		var bx;
-		var by;
-		var cx;
-		var cy;
-		var _g = 0;
-		var _g1 = 36;
-		while(_g < _g1) {
-			var i = _g++;
-			bx = ax + radius * Math.sin(theta);
-			by = ay + radius * Math.cos(theta);
-			theta += step;
-			cx = ax + radius * Math.sin(theta);
-			cy = ay + radius * Math.cos(theta);
-			drawType.triangle(ax,ay,0,bx,by,0,cx,cy,0);
-			var m = trilateral2_Shaper.transformMatrix;
-			if(m != null) {
-				drawType.transform(m);
-			}
-			drawType.next();
-		}
-		this.len = 36;
-		var _this = this.pen;
-		var color1 = color;
-		if(color1 == -1) {
-			color1 = _this.currentColor;
-		}
-		_this.colorType.colorTriangles(color1,this.len);
-		return { start : (this.viewGL.verts[1] | 0) - this.len, end : (this.viewGL.verts[1] | 0) - 1};
-	}
-	,update: function() {
+	update: function() {
 		var this1 = new geom_structure_Mat1x4(0.,0.,0.,1.);
 		var this2 = new geom_structure_Mat1x4(0.,0.,0.,0.);
 		var this3 = new geom_structure_DualQ(this1,this2);
@@ -174,18 +103,18 @@ dice_Dice.prototype = {
 		m.h = t.y;
 		m.l = t.z;
 		var trans = m;
-		this.viewGL.transformRange(trans,this.s0,this.e1);
+		this.viewGL.transformRange(trans,this.start,this.end);
 		this.viewGL.uploadVectors();
 	}
 	,instructions: function() {
-		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 106, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 107, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 108, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 109, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 110, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 111, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 112, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 113, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 91, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 92, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 93, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 94, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 95, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 96, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 97, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 98, className : "dice.Dice", methodName : "instructions"});
 	}
 };
 var dice_helpers_AxisKeys = function(axisModel_,itemModel_) {
@@ -699,6 +628,7 @@ var dice_helpers_ViewGL = function() {
 	this.itemModel = new geom_move_Axis3();
 	this.axisModel = new geom_move_Axis3();
 	htmlHelper_webgl_WebGLSetup.call(this,600,600);
+	this.canvas.tabIndex = -1;
 	var axisKeys = new dice_helpers_AxisKeys(this.axisModel,this.itemModel);
 	axisKeys.showTrace = false;
 	axisKeys.reset = $bind(this,this.resetPosition);
@@ -1039,6 +969,1212 @@ dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
 		this.render();
 	}
 });
+var dice_view_Disc = function(radius,dieColor,colorFront,colorBack,theta,dz) {
+	if(dz == null) {
+		dz = 0.01;
+	}
+	if(theta == null) {
+		theta = 0.;
+	}
+	this.radius = radius;
+	this.dieColor = dieColor;
+	this.colorFront = colorFront;
+	this.colorBack = colorBack;
+	this.theta = theta;
+	this.dz = dz;
+};
+dice_view_Disc.__name__ = true;
+var dice_view_Die = function(pen) {
+	this.disc = new dice_view_Disc(15,-1057030144,-983041,-1057947904,null,null);
+	this.pen = pen;
+	this.disc.circle = $bind(this,this.circle);
+	this.disc.roundedSquare = $bind(this,this.roundedSquare);
+};
+dice_view_Die.__name__ = true;
+dice_view_Die.prototype = {
+	create: function(verts,x,y) {
+		var dieDraw = this.disc;
+		var diceRadius = 0.1;
+		var spacing = 25;
+		var spacingY = 0;
+		spacing = 25;
+		spacingY = 35;
+		var len = 0;
+		var start = verts[1] | 0;
+		len = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end = (verts[1] | 0) - 1;
+		var this1 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this2 = this1;
+		var this3 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s = this3;
+		var this4 = new geom_structure_Mat4x3(this2.a * s.a + this2.b * s.e + this2.c * s.i,this2.a * s.b + this2.b * s.f + this2.c * s.j,this2.a * s.c + this2.b * s.g + this2.c * s.k,this2.a * s.d + this2.b * s.h + this2.c * s.l + this2.d,this2.e * s.a + this2.f * s.e + this2.g * s.i,this2.e * s.b + this2.f * s.f + this2.g * s.j,this2.e * s.c + this2.f * s.g + this2.g * s.k,this2.e * s.d + this2.f * s.h + this2.g * s.l + this2.h,this2.i * s.a + this2.j * s.e + this2.k * s.i,this2.i * s.b + this2.j * s.f + this2.k * s.j,this2.i * s.c + this2.j * s.g + this2.k * s.k,this2.i * s.d + this2.j * s.h + this2.k * s.l + this2.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this4,start,end);
+		var range150_start = start;
+		var range150_end = end;
+		var start1 = verts[1] | 0;
+		var len1 = dieDraw.circle(x - spacing,y - spacingY,dieDraw.radius,dieDraw.colorFront);
+		var range0_start = start1;
+		var range0_end = (verts[1] | 0) - 1;
+		var this5 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this6 = this5;
+		var theta = dieDraw.theta;
+		var c = Math.cos(theta);
+		var s1 = Math.sin(theta);
+		var this7 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c,-s1,0.,0.,s1,c,0.);
+		var s2 = this7;
+		var this8 = new geom_structure_Mat4x3(this6.a * s2.a + this6.b * s2.e + this6.c * s2.i,this6.a * s2.b + this6.b * s2.f + this6.c * s2.j,this6.a * s2.c + this6.b * s2.g + this6.c * s2.k,this6.a * s2.d + this6.b * s2.h + this6.c * s2.l + this6.d,this6.e * s2.a + this6.f * s2.e + this6.g * s2.i,this6.e * s2.b + this6.f * s2.f + this6.g * s2.j,this6.e * s2.c + this6.f * s2.g + this6.g * s2.k,this6.e * s2.d + this6.f * s2.h + this6.g * s2.l + this6.h,this6.i * s2.a + this6.j * s2.e + this6.k * s2.i,this6.i * s2.b + this6.j * s2.f + this6.k * s2.j,this6.i * s2.c + this6.j * s2.g + this6.k * s2.k,this6.i * s2.d + this6.j * s2.h + this6.k * s2.l + this6.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this8,range0_start,range0_end);
+		var range15_start = range0_start;
+		var range15_end = range0_end;
+		var start2 = verts[1] | 0;
+		var len2 = dieDraw.circle(x + spacing,y - spacingY,dieDraw.radius,dieDraw.colorFront);
+		var range0_start1 = start2;
+		var range0_end1 = (verts[1] | 0) - 1;
+		var this9 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this10 = this9;
+		var theta1 = dieDraw.theta;
+		var c1 = Math.cos(theta1);
+		var s3 = Math.sin(theta1);
+		var this11 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c1,-s3,0.,0.,s3,c1,0.);
+		var s4 = this11;
+		var this12 = new geom_structure_Mat4x3(this10.a * s4.a + this10.b * s4.e + this10.c * s4.i,this10.a * s4.b + this10.b * s4.f + this10.c * s4.j,this10.a * s4.c + this10.b * s4.g + this10.c * s4.k,this10.a * s4.d + this10.b * s4.h + this10.c * s4.l + this10.d,this10.e * s4.a + this10.f * s4.e + this10.g * s4.i,this10.e * s4.b + this10.f * s4.f + this10.g * s4.j,this10.e * s4.c + this10.f * s4.g + this10.g * s4.k,this10.e * s4.d + this10.f * s4.h + this10.g * s4.l + this10.h,this10.i * s4.a + this10.j * s4.e + this10.k * s4.i,this10.i * s4.b + this10.j * s4.f + this10.k * s4.j,this10.i * s4.c + this10.j * s4.g + this10.k * s4.k,this10.i * s4.d + this10.j * s4.h + this10.k * s4.l + this10.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this12,range0_start1,range0_end1);
+		var range16_start = range0_start1;
+		var range16_end = range0_end1;
+		var start3 = verts[1] | 0;
+		var len3 = dieDraw.circle(x - spacing,y + spacingY,dieDraw.radius,dieDraw.colorFront);
+		var range0_start2 = start3;
+		var range0_end2 = (verts[1] | 0) - 1;
+		var this13 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this14 = this13;
+		var theta2 = dieDraw.theta;
+		var c2 = Math.cos(theta2);
+		var s5 = Math.sin(theta2);
+		var this15 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c2,-s5,0.,0.,s5,c2,0.);
+		var s6 = this15;
+		var this16 = new geom_structure_Mat4x3(this14.a * s6.a + this14.b * s6.e + this14.c * s6.i,this14.a * s6.b + this14.b * s6.f + this14.c * s6.j,this14.a * s6.c + this14.b * s6.g + this14.c * s6.k,this14.a * s6.d + this14.b * s6.h + this14.c * s6.l + this14.d,this14.e * s6.a + this14.f * s6.e + this14.g * s6.i,this14.e * s6.b + this14.f * s6.f + this14.g * s6.j,this14.e * s6.c + this14.f * s6.g + this14.g * s6.k,this14.e * s6.d + this14.f * s6.h + this14.g * s6.l + this14.h,this14.i * s6.a + this14.j * s6.e + this14.k * s6.i,this14.i * s6.b + this14.j * s6.f + this14.k * s6.j,this14.i * s6.c + this14.j * s6.g + this14.k * s6.k,this14.i * s6.d + this14.j * s6.h + this14.k * s6.l + this14.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this16,range0_start2,range0_end2);
+		var range17_start = range0_start2;
+		var range17_end = range0_end2;
+		var start4 = verts[1] | 0;
+		var len4 = dieDraw.circle(x + spacing,y + spacingY,dieDraw.radius,dieDraw.colorFront);
+		var range0_start3 = start4;
+		var range0_end3 = (verts[1] | 0) - 1;
+		var this17 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this18 = this17;
+		var theta3 = dieDraw.theta;
+		var c3 = Math.cos(theta3);
+		var s7 = Math.sin(theta3);
+		var this19 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c3,-s7,0.,0.,s7,c3,0.);
+		var s8 = this19;
+		var this20 = new geom_structure_Mat4x3(this18.a * s8.a + this18.b * s8.e + this18.c * s8.i,this18.a * s8.b + this18.b * s8.f + this18.c * s8.j,this18.a * s8.c + this18.b * s8.g + this18.c * s8.k,this18.a * s8.d + this18.b * s8.h + this18.c * s8.l + this18.d,this18.e * s8.a + this18.f * s8.e + this18.g * s8.i,this18.e * s8.b + this18.f * s8.f + this18.g * s8.j,this18.e * s8.c + this18.f * s8.g + this18.g * s8.k,this18.e * s8.d + this18.f * s8.h + this18.g * s8.l + this18.h,this18.i * s8.a + this18.j * s8.e + this18.k * s8.i,this18.i * s8.b + this18.j * s8.f + this18.k * s8.j,this18.i * s8.c + this18.j * s8.g + this18.k * s8.k,this18.i * s8.d + this18.j * s8.h + this18.k * s8.l + this18.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this20,range0_start3,range0_end3);
+		var range18_start = range0_start3;
+		var range18_end = range0_end3;
+		var start5 = verts[1] | 0;
+		var len5 = dieDraw.circle(x - spacing,y,dieDraw.radius,dieDraw.colorFront);
+		var range0_start4 = start5;
+		var range0_end4 = (verts[1] | 0) - 1;
+		var this21 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this22 = this21;
+		var theta4 = dieDraw.theta;
+		var c4 = Math.cos(theta4);
+		var s9 = Math.sin(theta4);
+		var this23 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c4,-s9,0.,0.,s9,c4,0.);
+		var s10 = this23;
+		var this24 = new geom_structure_Mat4x3(this22.a * s10.a + this22.b * s10.e + this22.c * s10.i,this22.a * s10.b + this22.b * s10.f + this22.c * s10.j,this22.a * s10.c + this22.b * s10.g + this22.c * s10.k,this22.a * s10.d + this22.b * s10.h + this22.c * s10.l + this22.d,this22.e * s10.a + this22.f * s10.e + this22.g * s10.i,this22.e * s10.b + this22.f * s10.f + this22.g * s10.j,this22.e * s10.c + this22.f * s10.g + this22.g * s10.k,this22.e * s10.d + this22.f * s10.h + this22.g * s10.l + this22.h,this22.i * s10.a + this22.j * s10.e + this22.k * s10.i,this22.i * s10.b + this22.j * s10.f + this22.k * s10.j,this22.i * s10.c + this22.j * s10.g + this22.k * s10.k,this22.i * s10.d + this22.j * s10.h + this22.k * s10.l + this22.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this24,range0_start4,range0_end4);
+		var range19_start = range0_start4;
+		var range19_end = range0_end4;
+		var start6 = verts[1] | 0;
+		var len6 = dieDraw.circle(x + spacing,y,dieDraw.radius,dieDraw.colorFront);
+		var range0_start5 = start6;
+		var range0_end5 = (verts[1] | 0) - 1;
+		var this25 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this26 = this25;
+		var theta5 = dieDraw.theta;
+		var c5 = Math.cos(theta5);
+		var s11 = Math.sin(theta5);
+		var this27 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c5,-s11,0.,0.,s11,c5,0.);
+		var s12 = this27;
+		var this28 = new geom_structure_Mat4x3(this26.a * s12.a + this26.b * s12.e + this26.c * s12.i,this26.a * s12.b + this26.b * s12.f + this26.c * s12.j,this26.a * s12.c + this26.b * s12.g + this26.c * s12.k,this26.a * s12.d + this26.b * s12.h + this26.c * s12.l + this26.d,this26.e * s12.a + this26.f * s12.e + this26.g * s12.i,this26.e * s12.b + this26.f * s12.f + this26.g * s12.j,this26.e * s12.c + this26.f * s12.g + this26.g * s12.k,this26.e * s12.d + this26.f * s12.h + this26.g * s12.l + this26.h,this26.i * s12.a + this26.j * s12.e + this26.k * s12.i,this26.i * s12.b + this26.j * s12.f + this26.k * s12.j,this26.i * s12.c + this26.j * s12.g + this26.k * s12.k,this26.i * s12.d + this26.j * s12.h + this26.k * s12.l + this26.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this28,range0_start5,range0_end5);
+		var range20_start = range0_start5;
+		var range20_end = range0_end5;
+		var this29 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this30 = this29;
+		var theta6 = Math.PI;
+		var c6 = Math.cos(theta6);
+		var s13 = Math.sin(theta6);
+		var this31 = new geom_structure_Mat4x3(c6,0.,s13,0.,0.,1.,0.,0.,-s13,0.,c6,0.);
+		var s14 = this31;
+		var this32 = new geom_structure_Mat4x3(this30.a * s14.a + this30.b * s14.e + this30.c * s14.i,this30.a * s14.b + this30.b * s14.f + this30.c * s14.j,this30.a * s14.c + this30.b * s14.g + this30.c * s14.k,this30.a * s14.d + this30.b * s14.h + this30.c * s14.l + this30.d,this30.e * s14.a + this30.f * s14.e + this30.g * s14.i,this30.e * s14.b + this30.f * s14.f + this30.g * s14.j,this30.e * s14.c + this30.f * s14.g + this30.g * s14.k,this30.e * s14.d + this30.f * s14.h + this30.g * s14.l + this30.h,this30.i * s14.a + this30.j * s14.e + this30.k * s14.i,this30.i * s14.b + this30.j * s14.f + this30.k * s14.j,this30.i * s14.c + this30.j * s14.g + this30.k * s14.k,this30.i * s14.d + this30.j * s14.h + this30.k * s14.l + this30.l);
+		var r = this32;
+		var this33 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this34 = this33;
+		var this35 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s15 = this35;
+		var this36 = new geom_structure_Mat4x3(this34.a * s15.a + this34.b * s15.e + this34.c * s15.i,this34.a * s15.b + this34.b * s15.f + this34.c * s15.j,this34.a * s15.c + this34.b * s15.g + this34.c * s15.k,this34.a * s15.d + this34.b * s15.h + this34.c * s15.l + this34.d,this34.e * s15.a + this34.f * s15.e + this34.g * s15.i,this34.e * s15.b + this34.f * s15.f + this34.g * s15.j,this34.e * s15.c + this34.f * s15.g + this34.g * s15.k,this34.e * s15.d + this34.f * s15.h + this34.g * s15.l + this34.h,this34.i * s15.a + this34.j * s15.e + this34.k * s15.i,this34.i * s15.b + this34.j * s15.f + this34.k * s15.j,this34.i * s15.c + this34.j * s15.g + this34.k * s15.k,this34.i * s15.d + this34.j * s15.h + this34.k * s15.l + this34.l);
+		var s16 = this36;
+		var this37 = new geom_structure_Mat4x3(r.a * s16.a + r.b * s16.e + r.c * s16.i,r.a * s16.b + r.b * s16.f + r.c * s16.j,r.a * s16.c + r.b * s16.g + r.c * s16.k,r.a * s16.d + r.b * s16.h + r.c * s16.l + r.d,r.e * s16.a + r.f * s16.e + r.g * s16.i,r.e * s16.b + r.f * s16.f + r.g * s16.j,r.e * s16.c + r.f * s16.g + r.g * s16.k,r.e * s16.d + r.f * s16.h + r.g * s16.l + r.h,r.i * s16.a + r.j * s16.e + r.k * s16.i,r.i * s16.b + r.j * s16.f + r.k * s16.j,r.i * s16.c + r.j * s16.g + r.k * s16.k,r.i * s16.d + r.j * s16.h + r.k * s16.l + r.l);
+		var trans180 = this37;
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,trans180,range150_start,range20_end);
+		spacing = 20;
+		var len7 = 0;
+		var start7 = verts[1] | 0;
+		len7 = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end1 = (verts[1] | 0) - 1;
+		var this38 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this39 = this38;
+		var this40 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s17 = this40;
+		var this41 = new geom_structure_Mat4x3(this39.a * s17.a + this39.b * s17.e + this39.c * s17.i,this39.a * s17.b + this39.b * s17.f + this39.c * s17.j,this39.a * s17.c + this39.b * s17.g + this39.c * s17.k,this39.a * s17.d + this39.b * s17.h + this39.c * s17.l + this39.d,this39.e * s17.a + this39.f * s17.e + this39.g * s17.i,this39.e * s17.b + this39.f * s17.f + this39.g * s17.j,this39.e * s17.c + this39.f * s17.g + this39.g * s17.k,this39.e * s17.d + this39.f * s17.h + this39.g * s17.l + this39.h,this39.i * s17.a + this39.j * s17.e + this39.k * s17.i,this39.i * s17.b + this39.j * s17.f + this39.k * s17.j,this39.i * s17.c + this39.j * s17.g + this39.k * s17.k,this39.i * s17.d + this39.j * s17.h + this39.k * s17.l + this39.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this41,start7,end1);
+		var range10_start = start7;
+		var range10_end = end1;
+		var start8 = verts[1] | 0;
+		var len8 = dieDraw.circle(x + spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start6 = start8;
+		var range0_end6 = (verts[1] | 0) - 1;
+		var this42 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this43 = this42;
+		var theta7 = dieDraw.theta;
+		var c7 = Math.cos(theta7);
+		var s18 = Math.sin(theta7);
+		var this44 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c7,-s18,0.,0.,s18,c7,0.);
+		var s19 = this44;
+		var this45 = new geom_structure_Mat4x3(this43.a * s19.a + this43.b * s19.e + this43.c * s19.i,this43.a * s19.b + this43.b * s19.f + this43.c * s19.j,this43.a * s19.c + this43.b * s19.g + this43.c * s19.k,this43.a * s19.d + this43.b * s19.h + this43.c * s19.l + this43.d,this43.e * s19.a + this43.f * s19.e + this43.g * s19.i,this43.e * s19.b + this43.f * s19.f + this43.g * s19.j,this43.e * s19.c + this43.f * s19.g + this43.g * s19.k,this43.e * s19.d + this43.f * s19.h + this43.g * s19.l + this43.h,this43.i * s19.a + this43.j * s19.e + this43.k * s19.i,this43.i * s19.b + this43.j * s19.f + this43.k * s19.j,this43.i * s19.c + this43.j * s19.g + this43.k * s19.k,this43.i * s19.d + this43.j * s19.h + this43.k * s19.l + this43.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this45,range0_start6,range0_end6);
+		var range1_start = range0_start6;
+		var range1_end = range0_end6;
+		var start9 = verts[1] | 0;
+		var len9 = dieDraw.circle(x - spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start7 = start9;
+		var range0_end7 = (verts[1] | 0) - 1;
+		var this46 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this47 = this46;
+		var theta8 = dieDraw.theta;
+		var c8 = Math.cos(theta8);
+		var s20 = Math.sin(theta8);
+		var this48 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c8,-s20,0.,0.,s20,c8,0.);
+		var s21 = this48;
+		var this49 = new geom_structure_Mat4x3(this47.a * s21.a + this47.b * s21.e + this47.c * s21.i,this47.a * s21.b + this47.b * s21.f + this47.c * s21.j,this47.a * s21.c + this47.b * s21.g + this47.c * s21.k,this47.a * s21.d + this47.b * s21.h + this47.c * s21.l + this47.d,this47.e * s21.a + this47.f * s21.e + this47.g * s21.i,this47.e * s21.b + this47.f * s21.f + this47.g * s21.j,this47.e * s21.c + this47.f * s21.g + this47.g * s21.k,this47.e * s21.d + this47.f * s21.h + this47.g * s21.l + this47.h,this47.i * s21.a + this47.j * s21.e + this47.k * s21.i,this47.i * s21.b + this47.j * s21.f + this47.k * s21.j,this47.i * s21.c + this47.j * s21.g + this47.k * s21.k,this47.i * s21.d + this47.j * s21.h + this47.k * s21.l + this47.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this49,range0_start7,range0_end7);
+		var range2_start = range0_start7;
+		var range2_end = range0_end7;
+		var this50 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this51 = this50;
+		var theta9 = Math.PI / 2;
+		var c9 = Math.cos(theta9);
+		var s22 = Math.sin(theta9);
+		var this52 = new geom_structure_Mat4x3(c9,0.,s22,0.,0.,1.,0.,0.,-s22,0.,c9,0.);
+		var s23 = this52;
+		var this53 = new geom_structure_Mat4x3(this51.a * s23.a + this51.b * s23.e + this51.c * s23.i,this51.a * s23.b + this51.b * s23.f + this51.c * s23.j,this51.a * s23.c + this51.b * s23.g + this51.c * s23.k,this51.a * s23.d + this51.b * s23.h + this51.c * s23.l + this51.d,this51.e * s23.a + this51.f * s23.e + this51.g * s23.i,this51.e * s23.b + this51.f * s23.f + this51.g * s23.j,this51.e * s23.c + this51.f * s23.g + this51.g * s23.k,this51.e * s23.d + this51.f * s23.h + this51.g * s23.l + this51.h,this51.i * s23.a + this51.j * s23.e + this51.k * s23.i,this51.i * s23.b + this51.j * s23.f + this51.k * s23.j,this51.i * s23.c + this51.j * s23.g + this51.k * s23.k,this51.i * s23.d + this51.j * s23.h + this51.k * s23.l + this51.l);
+		var r1 = this53;
+		var this54 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this55 = this54;
+		var this56 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s24 = this56;
+		var this57 = new geom_structure_Mat4x3(this55.a * s24.a + this55.b * s24.e + this55.c * s24.i,this55.a * s24.b + this55.b * s24.f + this55.c * s24.j,this55.a * s24.c + this55.b * s24.g + this55.c * s24.k,this55.a * s24.d + this55.b * s24.h + this55.c * s24.l + this55.d,this55.e * s24.a + this55.f * s24.e + this55.g * s24.i,this55.e * s24.b + this55.f * s24.f + this55.g * s24.j,this55.e * s24.c + this55.f * s24.g + this55.g * s24.k,this55.e * s24.d + this55.f * s24.h + this55.g * s24.l + this55.h,this55.i * s24.a + this55.j * s24.e + this55.k * s24.i,this55.i * s24.b + this55.j * s24.f + this55.k * s24.j,this55.i * s24.c + this55.j * s24.g + this55.k * s24.k,this55.i * s24.d + this55.j * s24.h + this55.k * s24.l + this55.l);
+		var s25 = this57;
+		var this58 = new geom_structure_Mat4x3(r1.a * s25.a + r1.b * s25.e + r1.c * s25.i,r1.a * s25.b + r1.b * s25.f + r1.c * s25.j,r1.a * s25.c + r1.b * s25.g + r1.c * s25.k,r1.a * s25.d + r1.b * s25.h + r1.c * s25.l + r1.d,r1.e * s25.a + r1.f * s25.e + r1.g * s25.i,r1.e * s25.b + r1.f * s25.f + r1.g * s25.j,r1.e * s25.c + r1.f * s25.g + r1.g * s25.k,r1.e * s25.d + r1.f * s25.h + r1.g * s25.l + r1.h,r1.i * s25.a + r1.j * s25.e + r1.k * s25.i,r1.i * s25.b + r1.j * s25.f + r1.k * s25.j,r1.i * s25.c + r1.j * s25.g + r1.k * s25.k,r1.i * s25.d + r1.j * s25.h + r1.k * s25.l + r1.l);
+		var transRight = this58;
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,transRight,range10_start,range2_end);
+		spacing = 25;
+		var len10 = 0;
+		var start10 = verts[1] | 0;
+		len10 = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end2 = (verts[1] | 0) - 1;
+		var this59 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this60 = this59;
+		var this61 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s26 = this61;
+		var this62 = new geom_structure_Mat4x3(this60.a * s26.a + this60.b * s26.e + this60.c * s26.i,this60.a * s26.b + this60.b * s26.f + this60.c * s26.j,this60.a * s26.c + this60.b * s26.g + this60.c * s26.k,this60.a * s26.d + this60.b * s26.h + this60.c * s26.l + this60.d,this60.e * s26.a + this60.f * s26.e + this60.g * s26.i,this60.e * s26.b + this60.f * s26.f + this60.g * s26.j,this60.e * s26.c + this60.f * s26.g + this60.g * s26.k,this60.e * s26.d + this60.f * s26.h + this60.g * s26.l + this60.h,this60.i * s26.a + this60.j * s26.e + this60.k * s26.i,this60.i * s26.b + this60.j * s26.f + this60.k * s26.j,this60.i * s26.c + this60.j * s26.g + this60.k * s26.k,this60.i * s26.d + this60.j * s26.h + this60.k * s26.l + this60.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this62,start10,end2);
+		var range30_start = start10;
+		var range30_end = end2;
+		var start11 = verts[1] | 0;
+		var len11 = dieDraw.circle(x,y,dieDraw.radius,dieDraw.colorFront);
+		var range0_start8 = start11;
+		var range0_end8 = (verts[1] | 0) - 1;
+		var this63 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this64 = this63;
+		var theta10 = dieDraw.theta;
+		var c10 = Math.cos(theta10);
+		var s27 = Math.sin(theta10);
+		var this65 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c10,-s27,0.,0.,s27,c10,0.);
+		var s28 = this65;
+		var this66 = new geom_structure_Mat4x3(this64.a * s28.a + this64.b * s28.e + this64.c * s28.i,this64.a * s28.b + this64.b * s28.f + this64.c * s28.j,this64.a * s28.c + this64.b * s28.g + this64.c * s28.k,this64.a * s28.d + this64.b * s28.h + this64.c * s28.l + this64.d,this64.e * s28.a + this64.f * s28.e + this64.g * s28.i,this64.e * s28.b + this64.f * s28.f + this64.g * s28.j,this64.e * s28.c + this64.f * s28.g + this64.g * s28.k,this64.e * s28.d + this64.f * s28.h + this64.g * s28.l + this64.h,this64.i * s28.a + this64.j * s28.e + this64.k * s28.i,this64.i * s28.b + this64.j * s28.f + this64.k * s28.j,this64.i * s28.c + this64.j * s28.g + this64.k * s28.k,this64.i * s28.d + this64.j * s28.h + this64.k * s28.l + this64.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this66,range0_start8,range0_end8);
+		var range3_start = range0_start8;
+		var range3_end = range0_end8;
+		var start12 = verts[1] | 0;
+		var len12 = dieDraw.circle(x + spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start9 = start12;
+		var range0_end9 = (verts[1] | 0) - 1;
+		var this67 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this68 = this67;
+		var theta11 = dieDraw.theta;
+		var c11 = Math.cos(theta11);
+		var s29 = Math.sin(theta11);
+		var this69 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c11,-s29,0.,0.,s29,c11,0.);
+		var s30 = this69;
+		var this70 = new geom_structure_Mat4x3(this68.a * s30.a + this68.b * s30.e + this68.c * s30.i,this68.a * s30.b + this68.b * s30.f + this68.c * s30.j,this68.a * s30.c + this68.b * s30.g + this68.c * s30.k,this68.a * s30.d + this68.b * s30.h + this68.c * s30.l + this68.d,this68.e * s30.a + this68.f * s30.e + this68.g * s30.i,this68.e * s30.b + this68.f * s30.f + this68.g * s30.j,this68.e * s30.c + this68.f * s30.g + this68.g * s30.k,this68.e * s30.d + this68.f * s30.h + this68.g * s30.l + this68.h,this68.i * s30.a + this68.j * s30.e + this68.k * s30.i,this68.i * s30.b + this68.j * s30.f + this68.k * s30.j,this68.i * s30.c + this68.j * s30.g + this68.k * s30.k,this68.i * s30.d + this68.j * s30.h + this68.k * s30.l + this68.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this70,range0_start9,range0_end9);
+		var range4_start = range0_start9;
+		var range4_end = range0_end9;
+		var start13 = verts[1] | 0;
+		var len13 = dieDraw.circle(x - spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start10 = start13;
+		var range0_end10 = (verts[1] | 0) - 1;
+		var this71 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this72 = this71;
+		var theta12 = dieDraw.theta;
+		var c12 = Math.cos(theta12);
+		var s31 = Math.sin(theta12);
+		var this73 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c12,-s31,0.,0.,s31,c12,0.);
+		var s32 = this73;
+		var this74 = new geom_structure_Mat4x3(this72.a * s32.a + this72.b * s32.e + this72.c * s32.i,this72.a * s32.b + this72.b * s32.f + this72.c * s32.j,this72.a * s32.c + this72.b * s32.g + this72.c * s32.k,this72.a * s32.d + this72.b * s32.h + this72.c * s32.l + this72.d,this72.e * s32.a + this72.f * s32.e + this72.g * s32.i,this72.e * s32.b + this72.f * s32.f + this72.g * s32.j,this72.e * s32.c + this72.f * s32.g + this72.g * s32.k,this72.e * s32.d + this72.f * s32.h + this72.g * s32.l + this72.h,this72.i * s32.a + this72.j * s32.e + this72.k * s32.i,this72.i * s32.b + this72.j * s32.f + this72.k * s32.j,this72.i * s32.c + this72.j * s32.g + this72.k * s32.k,this72.i * s32.d + this72.j * s32.h + this72.k * s32.l + this72.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this74,range0_start10,range0_end10);
+		var range5_start = range0_start10;
+		var range5_end = range0_end10;
+		var this75 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this76 = this75;
+		var theta13 = Math.PI / 2;
+		var c13 = Math.cos(theta13);
+		var s33 = Math.sin(theta13);
+		var this77 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c13,-s33,0.,0.,s33,c13,0.);
+		var s34 = this77;
+		var this78 = new geom_structure_Mat4x3(this76.a * s34.a + this76.b * s34.e + this76.c * s34.i,this76.a * s34.b + this76.b * s34.f + this76.c * s34.j,this76.a * s34.c + this76.b * s34.g + this76.c * s34.k,this76.a * s34.d + this76.b * s34.h + this76.c * s34.l + this76.d,this76.e * s34.a + this76.f * s34.e + this76.g * s34.i,this76.e * s34.b + this76.f * s34.f + this76.g * s34.j,this76.e * s34.c + this76.f * s34.g + this76.g * s34.k,this76.e * s34.d + this76.f * s34.h + this76.g * s34.l + this76.h,this76.i * s34.a + this76.j * s34.e + this76.k * s34.i,this76.i * s34.b + this76.j * s34.f + this76.k * s34.j,this76.i * s34.c + this76.j * s34.g + this76.k * s34.k,this76.i * s34.d + this76.j * s34.h + this76.k * s34.l + this76.l);
+		var r2 = this78;
+		var this79 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this80 = this79;
+		var this81 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s35 = this81;
+		var this82 = new geom_structure_Mat4x3(this80.a * s35.a + this80.b * s35.e + this80.c * s35.i,this80.a * s35.b + this80.b * s35.f + this80.c * s35.j,this80.a * s35.c + this80.b * s35.g + this80.c * s35.k,this80.a * s35.d + this80.b * s35.h + this80.c * s35.l + this80.d,this80.e * s35.a + this80.f * s35.e + this80.g * s35.i,this80.e * s35.b + this80.f * s35.f + this80.g * s35.j,this80.e * s35.c + this80.f * s35.g + this80.g * s35.k,this80.e * s35.d + this80.f * s35.h + this80.g * s35.l + this80.h,this80.i * s35.a + this80.j * s35.e + this80.k * s35.i,this80.i * s35.b + this80.j * s35.f + this80.k * s35.j,this80.i * s35.c + this80.j * s35.g + this80.k * s35.k,this80.i * s35.d + this80.j * s35.h + this80.k * s35.l + this80.l);
+		var s36 = this82;
+		var this83 = new geom_structure_Mat4x3(r2.a * s36.a + r2.b * s36.e + r2.c * s36.i,r2.a * s36.b + r2.b * s36.f + r2.c * s36.j,r2.a * s36.c + r2.b * s36.g + r2.c * s36.k,r2.a * s36.d + r2.b * s36.h + r2.c * s36.l + r2.d,r2.e * s36.a + r2.f * s36.e + r2.g * s36.i,r2.e * s36.b + r2.f * s36.f + r2.g * s36.j,r2.e * s36.c + r2.f * s36.g + r2.g * s36.k,r2.e * s36.d + r2.f * s36.h + r2.g * s36.l + r2.h,r2.i * s36.a + r2.j * s36.e + r2.k * s36.i,r2.i * s36.b + r2.j * s36.f + r2.k * s36.j,r2.i * s36.c + r2.j * s36.g + r2.k * s36.k,r2.i * s36.d + r2.j * s36.h + r2.k * s36.l + r2.l);
+		var transDown = this83;
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,transDown,range30_start,range5_end);
+		spacing = 30;
+		var len14 = 0;
+		var start14 = verts[1] | 0;
+		len14 = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end3 = (verts[1] | 0) - 1;
+		var this84 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this85 = this84;
+		var this86 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s37 = this86;
+		var this87 = new geom_structure_Mat4x3(this85.a * s37.a + this85.b * s37.e + this85.c * s37.i,this85.a * s37.b + this85.b * s37.f + this85.c * s37.j,this85.a * s37.c + this85.b * s37.g + this85.c * s37.k,this85.a * s37.d + this85.b * s37.h + this85.c * s37.l + this85.d,this85.e * s37.a + this85.f * s37.e + this85.g * s37.i,this85.e * s37.b + this85.f * s37.f + this85.g * s37.j,this85.e * s37.c + this85.f * s37.g + this85.g * s37.k,this85.e * s37.d + this85.f * s37.h + this85.g * s37.l + this85.h,this85.i * s37.a + this85.j * s37.e + this85.k * s37.i,this85.i * s37.b + this85.j * s37.f + this85.k * s37.j,this85.i * s37.c + this85.j * s37.g + this85.k * s37.k,this85.i * s37.d + this85.j * s37.h + this85.k * s37.l + this85.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this87,start14,end3);
+		var range60_start = start14;
+		var range60_end = end3;
+		var start15 = verts[1] | 0;
+		var len15 = dieDraw.circle(x - spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start11 = start15;
+		var range0_end11 = (verts[1] | 0) - 1;
+		var this88 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this89 = this88;
+		var theta14 = dieDraw.theta;
+		var c14 = Math.cos(theta14);
+		var s38 = Math.sin(theta14);
+		var this90 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c14,-s38,0.,0.,s38,c14,0.);
+		var s39 = this90;
+		var this91 = new geom_structure_Mat4x3(this89.a * s39.a + this89.b * s39.e + this89.c * s39.i,this89.a * s39.b + this89.b * s39.f + this89.c * s39.j,this89.a * s39.c + this89.b * s39.g + this89.c * s39.k,this89.a * s39.d + this89.b * s39.h + this89.c * s39.l + this89.d,this89.e * s39.a + this89.f * s39.e + this89.g * s39.i,this89.e * s39.b + this89.f * s39.f + this89.g * s39.j,this89.e * s39.c + this89.f * s39.g + this89.g * s39.k,this89.e * s39.d + this89.f * s39.h + this89.g * s39.l + this89.h,this89.i * s39.a + this89.j * s39.e + this89.k * s39.i,this89.i * s39.b + this89.j * s39.f + this89.k * s39.j,this89.i * s39.c + this89.j * s39.g + this89.k * s39.k,this89.i * s39.d + this89.j * s39.h + this89.k * s39.l + this89.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this91,range0_start11,range0_end11);
+		var range6_start = range0_start11;
+		var range6_end = range0_end11;
+		var start16 = verts[1] | 0;
+		var len16 = dieDraw.circle(x + spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start12 = start16;
+		var range0_end12 = (verts[1] | 0) - 1;
+		var this92 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this93 = this92;
+		var theta15 = dieDraw.theta;
+		var c15 = Math.cos(theta15);
+		var s40 = Math.sin(theta15);
+		var this94 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c15,-s40,0.,0.,s40,c15,0.);
+		var s41 = this94;
+		var this95 = new geom_structure_Mat4x3(this93.a * s41.a + this93.b * s41.e + this93.c * s41.i,this93.a * s41.b + this93.b * s41.f + this93.c * s41.j,this93.a * s41.c + this93.b * s41.g + this93.c * s41.k,this93.a * s41.d + this93.b * s41.h + this93.c * s41.l + this93.d,this93.e * s41.a + this93.f * s41.e + this93.g * s41.i,this93.e * s41.b + this93.f * s41.f + this93.g * s41.j,this93.e * s41.c + this93.f * s41.g + this93.g * s41.k,this93.e * s41.d + this93.f * s41.h + this93.g * s41.l + this93.h,this93.i * s41.a + this93.j * s41.e + this93.k * s41.i,this93.i * s41.b + this93.j * s41.f + this93.k * s41.j,this93.i * s41.c + this93.j * s41.g + this93.k * s41.k,this93.i * s41.d + this93.j * s41.h + this93.k * s41.l + this93.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this95,range0_start12,range0_end12);
+		var range7_start = range0_start12;
+		var range7_end = range0_end12;
+		var start17 = verts[1] | 0;
+		var len17 = dieDraw.circle(x - spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start13 = start17;
+		var range0_end13 = (verts[1] | 0) - 1;
+		var this96 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this97 = this96;
+		var theta16 = dieDraw.theta;
+		var c16 = Math.cos(theta16);
+		var s42 = Math.sin(theta16);
+		var this98 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c16,-s42,0.,0.,s42,c16,0.);
+		var s43 = this98;
+		var this99 = new geom_structure_Mat4x3(this97.a * s43.a + this97.b * s43.e + this97.c * s43.i,this97.a * s43.b + this97.b * s43.f + this97.c * s43.j,this97.a * s43.c + this97.b * s43.g + this97.c * s43.k,this97.a * s43.d + this97.b * s43.h + this97.c * s43.l + this97.d,this97.e * s43.a + this97.f * s43.e + this97.g * s43.i,this97.e * s43.b + this97.f * s43.f + this97.g * s43.j,this97.e * s43.c + this97.f * s43.g + this97.g * s43.k,this97.e * s43.d + this97.f * s43.h + this97.g * s43.l + this97.h,this97.i * s43.a + this97.j * s43.e + this97.k * s43.i,this97.i * s43.b + this97.j * s43.f + this97.k * s43.j,this97.i * s43.c + this97.j * s43.g + this97.k * s43.k,this97.i * s43.d + this97.j * s43.h + this97.k * s43.l + this97.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this99,range0_start13,range0_end13);
+		var range8_start = range0_start13;
+		var range8_end = range0_end13;
+		var start18 = verts[1] | 0;
+		var len18 = dieDraw.circle(x + spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start14 = start18;
+		var range0_end14 = (verts[1] | 0) - 1;
+		var this100 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this101 = this100;
+		var theta17 = dieDraw.theta;
+		var c17 = Math.cos(theta17);
+		var s44 = Math.sin(theta17);
+		var this102 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c17,-s44,0.,0.,s44,c17,0.);
+		var s45 = this102;
+		var this103 = new geom_structure_Mat4x3(this101.a * s45.a + this101.b * s45.e + this101.c * s45.i,this101.a * s45.b + this101.b * s45.f + this101.c * s45.j,this101.a * s45.c + this101.b * s45.g + this101.c * s45.k,this101.a * s45.d + this101.b * s45.h + this101.c * s45.l + this101.d,this101.e * s45.a + this101.f * s45.e + this101.g * s45.i,this101.e * s45.b + this101.f * s45.f + this101.g * s45.j,this101.e * s45.c + this101.f * s45.g + this101.g * s45.k,this101.e * s45.d + this101.f * s45.h + this101.g * s45.l + this101.h,this101.i * s45.a + this101.j * s45.e + this101.k * s45.i,this101.i * s45.b + this101.j * s45.f + this101.k * s45.j,this101.i * s45.c + this101.j * s45.g + this101.k * s45.k,this101.i * s45.d + this101.j * s45.h + this101.k * s45.l + this101.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this103,range0_start14,range0_end14);
+		var range9_start = range0_start14;
+		var range9_end = range0_end14;
+		var this104 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this105 = this104;
+		var theta18 = -Math.PI / 2;
+		var c18 = Math.cos(theta18);
+		var s46 = Math.sin(theta18);
+		var this106 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c18,-s46,0.,0.,s46,c18,0.);
+		var s47 = this106;
+		var this107 = new geom_structure_Mat4x3(this105.a * s47.a + this105.b * s47.e + this105.c * s47.i,this105.a * s47.b + this105.b * s47.f + this105.c * s47.j,this105.a * s47.c + this105.b * s47.g + this105.c * s47.k,this105.a * s47.d + this105.b * s47.h + this105.c * s47.l + this105.d,this105.e * s47.a + this105.f * s47.e + this105.g * s47.i,this105.e * s47.b + this105.f * s47.f + this105.g * s47.j,this105.e * s47.c + this105.f * s47.g + this105.g * s47.k,this105.e * s47.d + this105.f * s47.h + this105.g * s47.l + this105.h,this105.i * s47.a + this105.j * s47.e + this105.k * s47.i,this105.i * s47.b + this105.j * s47.f + this105.k * s47.j,this105.i * s47.c + this105.j * s47.g + this105.k * s47.k,this105.i * s47.d + this105.j * s47.h + this105.k * s47.l + this105.l);
+		var r3 = this107;
+		var this108 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this109 = this108;
+		var this110 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s48 = this110;
+		var this111 = new geom_structure_Mat4x3(this109.a * s48.a + this109.b * s48.e + this109.c * s48.i,this109.a * s48.b + this109.b * s48.f + this109.c * s48.j,this109.a * s48.c + this109.b * s48.g + this109.c * s48.k,this109.a * s48.d + this109.b * s48.h + this109.c * s48.l + this109.d,this109.e * s48.a + this109.f * s48.e + this109.g * s48.i,this109.e * s48.b + this109.f * s48.f + this109.g * s48.j,this109.e * s48.c + this109.f * s48.g + this109.g * s48.k,this109.e * s48.d + this109.f * s48.h + this109.g * s48.l + this109.h,this109.i * s48.a + this109.j * s48.e + this109.k * s48.i,this109.i * s48.b + this109.j * s48.f + this109.k * s48.j,this109.i * s48.c + this109.j * s48.g + this109.k * s48.k,this109.i * s48.d + this109.j * s48.h + this109.k * s48.l + this109.l);
+		var s49 = this111;
+		var this112 = new geom_structure_Mat4x3(r3.a * s49.a + r3.b * s49.e + r3.c * s49.i,r3.a * s49.b + r3.b * s49.f + r3.c * s49.j,r3.a * s49.c + r3.b * s49.g + r3.c * s49.k,r3.a * s49.d + r3.b * s49.h + r3.c * s49.l + r3.d,r3.e * s49.a + r3.f * s49.e + r3.g * s49.i,r3.e * s49.b + r3.f * s49.f + r3.g * s49.j,r3.e * s49.c + r3.f * s49.g + r3.g * s49.k,r3.e * s49.d + r3.f * s49.h + r3.g * s49.l + r3.h,r3.i * s49.a + r3.j * s49.e + r3.k * s49.i,r3.i * s49.b + r3.j * s49.f + r3.k * s49.j,r3.i * s49.c + r3.j * s49.g + r3.k * s49.k,r3.i * s49.d + r3.j * s49.h + r3.k * s49.l + r3.l);
+		var transUp = this112;
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,transUp,range60_start,range9_end);
+		spacing = 30;
+		var len19 = 0;
+		var start19 = verts[1] | 0;
+		len19 = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end4 = (verts[1] | 0) - 1;
+		var this113 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this114 = this113;
+		var this115 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s50 = this115;
+		var this116 = new geom_structure_Mat4x3(this114.a * s50.a + this114.b * s50.e + this114.c * s50.i,this114.a * s50.b + this114.b * s50.f + this114.c * s50.j,this114.a * s50.c + this114.b * s50.g + this114.c * s50.k,this114.a * s50.d + this114.b * s50.h + this114.c * s50.l + this114.d,this114.e * s50.a + this114.f * s50.e + this114.g * s50.i,this114.e * s50.b + this114.f * s50.f + this114.g * s50.j,this114.e * s50.c + this114.f * s50.g + this114.g * s50.k,this114.e * s50.d + this114.f * s50.h + this114.g * s50.l + this114.h,this114.i * s50.a + this114.j * s50.e + this114.k * s50.i,this114.i * s50.b + this114.j * s50.f + this114.k * s50.j,this114.i * s50.c + this114.j * s50.g + this114.k * s50.k,this114.i * s50.d + this114.j * s50.h + this114.k * s50.l + this114.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this116,start19,end4);
+		var range100_start = start19;
+		var range100_end = end4;
+		var start20 = verts[1] | 0;
+		var len20 = dieDraw.circle(x - spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start15 = start20;
+		var range0_end15 = (verts[1] | 0) - 1;
+		var this117 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this118 = this117;
+		var theta19 = dieDraw.theta;
+		var c19 = Math.cos(theta19);
+		var s51 = Math.sin(theta19);
+		var this119 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c19,-s51,0.,0.,s51,c19,0.);
+		var s52 = this119;
+		var this120 = new geom_structure_Mat4x3(this118.a * s52.a + this118.b * s52.e + this118.c * s52.i,this118.a * s52.b + this118.b * s52.f + this118.c * s52.j,this118.a * s52.c + this118.b * s52.g + this118.c * s52.k,this118.a * s52.d + this118.b * s52.h + this118.c * s52.l + this118.d,this118.e * s52.a + this118.f * s52.e + this118.g * s52.i,this118.e * s52.b + this118.f * s52.f + this118.g * s52.j,this118.e * s52.c + this118.f * s52.g + this118.g * s52.k,this118.e * s52.d + this118.f * s52.h + this118.g * s52.l + this118.h,this118.i * s52.a + this118.j * s52.e + this118.k * s52.i,this118.i * s52.b + this118.j * s52.f + this118.k * s52.j,this118.i * s52.c + this118.j * s52.g + this118.k * s52.k,this118.i * s52.d + this118.j * s52.h + this118.k * s52.l + this118.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this120,range0_start15,range0_end15);
+		var range10_start1 = range0_start15;
+		var range10_end1 = range0_end15;
+		var start21 = verts[1] | 0;
+		var len21 = dieDraw.circle(x + spacing,y - spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start16 = start21;
+		var range0_end16 = (verts[1] | 0) - 1;
+		var this121 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this122 = this121;
+		var theta20 = dieDraw.theta;
+		var c20 = Math.cos(theta20);
+		var s53 = Math.sin(theta20);
+		var this123 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c20,-s53,0.,0.,s53,c20,0.);
+		var s54 = this123;
+		var this124 = new geom_structure_Mat4x3(this122.a * s54.a + this122.b * s54.e + this122.c * s54.i,this122.a * s54.b + this122.b * s54.f + this122.c * s54.j,this122.a * s54.c + this122.b * s54.g + this122.c * s54.k,this122.a * s54.d + this122.b * s54.h + this122.c * s54.l + this122.d,this122.e * s54.a + this122.f * s54.e + this122.g * s54.i,this122.e * s54.b + this122.f * s54.f + this122.g * s54.j,this122.e * s54.c + this122.f * s54.g + this122.g * s54.k,this122.e * s54.d + this122.f * s54.h + this122.g * s54.l + this122.h,this122.i * s54.a + this122.j * s54.e + this122.k * s54.i,this122.i * s54.b + this122.j * s54.f + this122.k * s54.j,this122.i * s54.c + this122.j * s54.g + this122.k * s54.k,this122.i * s54.d + this122.j * s54.h + this122.k * s54.l + this122.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this124,range0_start16,range0_end16);
+		var range11_start = range0_start16;
+		var range11_end = range0_end16;
+		var start22 = verts[1] | 0;
+		var len22 = dieDraw.circle(x - spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start17 = start22;
+		var range0_end17 = (verts[1] | 0) - 1;
+		var this125 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this126 = this125;
+		var theta21 = dieDraw.theta;
+		var c21 = Math.cos(theta21);
+		var s55 = Math.sin(theta21);
+		var this127 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c21,-s55,0.,0.,s55,c21,0.);
+		var s56 = this127;
+		var this128 = new geom_structure_Mat4x3(this126.a * s56.a + this126.b * s56.e + this126.c * s56.i,this126.a * s56.b + this126.b * s56.f + this126.c * s56.j,this126.a * s56.c + this126.b * s56.g + this126.c * s56.k,this126.a * s56.d + this126.b * s56.h + this126.c * s56.l + this126.d,this126.e * s56.a + this126.f * s56.e + this126.g * s56.i,this126.e * s56.b + this126.f * s56.f + this126.g * s56.j,this126.e * s56.c + this126.f * s56.g + this126.g * s56.k,this126.e * s56.d + this126.f * s56.h + this126.g * s56.l + this126.h,this126.i * s56.a + this126.j * s56.e + this126.k * s56.i,this126.i * s56.b + this126.j * s56.f + this126.k * s56.j,this126.i * s56.c + this126.j * s56.g + this126.k * s56.k,this126.i * s56.d + this126.j * s56.h + this126.k * s56.l + this126.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this128,range0_start17,range0_end17);
+		var range12_start = range0_start17;
+		var range12_end = range0_end17;
+		var start23 = verts[1] | 0;
+		var len23 = dieDraw.circle(x + spacing,y + spacing,dieDraw.radius,dieDraw.colorFront);
+		var range0_start18 = start23;
+		var range0_end18 = (verts[1] | 0) - 1;
+		var this129 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this130 = this129;
+		var theta22 = dieDraw.theta;
+		var c22 = Math.cos(theta22);
+		var s57 = Math.sin(theta22);
+		var this131 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c22,-s57,0.,0.,s57,c22,0.);
+		var s58 = this131;
+		var this132 = new geom_structure_Mat4x3(this130.a * s58.a + this130.b * s58.e + this130.c * s58.i,this130.a * s58.b + this130.b * s58.f + this130.c * s58.j,this130.a * s58.c + this130.b * s58.g + this130.c * s58.k,this130.a * s58.d + this130.b * s58.h + this130.c * s58.l + this130.d,this130.e * s58.a + this130.f * s58.e + this130.g * s58.i,this130.e * s58.b + this130.f * s58.f + this130.g * s58.j,this130.e * s58.c + this130.f * s58.g + this130.g * s58.k,this130.e * s58.d + this130.f * s58.h + this130.g * s58.l + this130.h,this130.i * s58.a + this130.j * s58.e + this130.k * s58.i,this130.i * s58.b + this130.j * s58.f + this130.k * s58.j,this130.i * s58.c + this130.j * s58.g + this130.k * s58.k,this130.i * s58.d + this130.j * s58.h + this130.k * s58.l + this130.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this132,range0_start18,range0_end18);
+		var range13_start = range0_start18;
+		var range13_end = range0_end18;
+		var start24 = verts[1] | 0;
+		var len24 = dieDraw.circle(x,y,dieDraw.radius,dieDraw.colorFront);
+		var range0_start19 = start24;
+		var range0_end19 = (verts[1] | 0) - 1;
+		var this133 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this134 = this133;
+		var theta23 = dieDraw.theta;
+		var c23 = Math.cos(theta23);
+		var s59 = Math.sin(theta23);
+		var this135 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c23,-s59,0.,0.,s59,c23,0.);
+		var s60 = this135;
+		var this136 = new geom_structure_Mat4x3(this134.a * s60.a + this134.b * s60.e + this134.c * s60.i,this134.a * s60.b + this134.b * s60.f + this134.c * s60.j,this134.a * s60.c + this134.b * s60.g + this134.c * s60.k,this134.a * s60.d + this134.b * s60.h + this134.c * s60.l + this134.d,this134.e * s60.a + this134.f * s60.e + this134.g * s60.i,this134.e * s60.b + this134.f * s60.f + this134.g * s60.j,this134.e * s60.c + this134.f * s60.g + this134.g * s60.k,this134.e * s60.d + this134.f * s60.h + this134.g * s60.l + this134.h,this134.i * s60.a + this134.j * s60.e + this134.k * s60.i,this134.i * s60.b + this134.j * s60.f + this134.k * s60.j,this134.i * s60.c + this134.j * s60.g + this134.k * s60.k,this134.i * s60.d + this134.j * s60.h + this134.k * s60.l + this134.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this136,range0_start19,range0_end19);
+		var range14_start = range0_start19;
+		var range14_end = range0_end19;
+		var this137 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this138 = this137;
+		var theta24 = -Math.PI / 2;
+		var c24 = Math.cos(theta24);
+		var s61 = Math.sin(theta24);
+		var this139 = new geom_structure_Mat4x3(c24,0.,s61,0.,0.,1.,0.,0.,-s61,0.,c24,0.);
+		var s62 = this139;
+		var this140 = new geom_structure_Mat4x3(this138.a * s62.a + this138.b * s62.e + this138.c * s62.i,this138.a * s62.b + this138.b * s62.f + this138.c * s62.j,this138.a * s62.c + this138.b * s62.g + this138.c * s62.k,this138.a * s62.d + this138.b * s62.h + this138.c * s62.l + this138.d,this138.e * s62.a + this138.f * s62.e + this138.g * s62.i,this138.e * s62.b + this138.f * s62.f + this138.g * s62.j,this138.e * s62.c + this138.f * s62.g + this138.g * s62.k,this138.e * s62.d + this138.f * s62.h + this138.g * s62.l + this138.h,this138.i * s62.a + this138.j * s62.e + this138.k * s62.i,this138.i * s62.b + this138.j * s62.f + this138.k * s62.j,this138.i * s62.c + this138.j * s62.g + this138.k * s62.k,this138.i * s62.d + this138.j * s62.h + this138.k * s62.l + this138.l);
+		var r4 = this140;
+		var this141 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this142 = this141;
+		var this143 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s63 = this143;
+		var this144 = new geom_structure_Mat4x3(this142.a * s63.a + this142.b * s63.e + this142.c * s63.i,this142.a * s63.b + this142.b * s63.f + this142.c * s63.j,this142.a * s63.c + this142.b * s63.g + this142.c * s63.k,this142.a * s63.d + this142.b * s63.h + this142.c * s63.l + this142.d,this142.e * s63.a + this142.f * s63.e + this142.g * s63.i,this142.e * s63.b + this142.f * s63.f + this142.g * s63.j,this142.e * s63.c + this142.f * s63.g + this142.g * s63.k,this142.e * s63.d + this142.f * s63.h + this142.g * s63.l + this142.h,this142.i * s63.a + this142.j * s63.e + this142.k * s63.i,this142.i * s63.b + this142.j * s63.f + this142.k * s63.j,this142.i * s63.c + this142.j * s63.g + this142.k * s63.k,this142.i * s63.d + this142.j * s63.h + this142.k * s63.l + this142.l);
+		var s64 = this144;
+		var this145 = new geom_structure_Mat4x3(r4.a * s64.a + r4.b * s64.e + r4.c * s64.i,r4.a * s64.b + r4.b * s64.f + r4.c * s64.j,r4.a * s64.c + r4.b * s64.g + r4.c * s64.k,r4.a * s64.d + r4.b * s64.h + r4.c * s64.l + r4.d,r4.e * s64.a + r4.f * s64.e + r4.g * s64.i,r4.e * s64.b + r4.f * s64.f + r4.g * s64.j,r4.e * s64.c + r4.f * s64.g + r4.g * s64.k,r4.e * s64.d + r4.f * s64.h + r4.g * s64.l + r4.h,r4.i * s64.a + r4.j * s64.e + r4.k * s64.i,r4.i * s64.b + r4.j * s64.f + r4.k * s64.j,r4.i * s64.c + r4.j * s64.g + r4.k * s64.k,r4.i * s64.d + r4.j * s64.h + r4.k * s64.l + r4.l);
+		var transLeft = this145;
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,transLeft,range100_start,range14_end);
+		spacing = 25;
+		var len25 = 0;
+		var start25 = verts[1] | 0;
+		len25 = dieDraw.roundedSquare(x,y,dieDraw.radius * 8,dieDraw.dieColor);
+		var end5 = (verts[1] | 0) - 1;
+		var this146 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this147 = this146;
+		var this148 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-dieDraw.dz / 2);
+		var s65 = this148;
+		var this149 = new geom_structure_Mat4x3(this147.a * s65.a + this147.b * s65.e + this147.c * s65.i,this147.a * s65.b + this147.b * s65.f + this147.c * s65.j,this147.a * s65.c + this147.b * s65.g + this147.c * s65.k,this147.a * s65.d + this147.b * s65.h + this147.c * s65.l + this147.d,this147.e * s65.a + this147.f * s65.e + this147.g * s65.i,this147.e * s65.b + this147.f * s65.f + this147.g * s65.j,this147.e * s65.c + this147.f * s65.g + this147.g * s65.k,this147.e * s65.d + this147.f * s65.h + this147.g * s65.l + this147.h,this147.i * s65.a + this147.j * s65.e + this147.k * s65.i,this147.i * s65.b + this147.j * s65.f + this147.k * s65.j,this147.i * s65.c + this147.j * s65.g + this147.k * s65.k,this147.i * s65.d + this147.j * s65.h + this147.k * s65.l + this147.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this149,start25,end5);
+		var range00_start = start25;
+		var range00_end = end5;
+		var start26 = verts[1] | 0;
+		var len26 = dieDraw.circle(x,y,dieDraw.radius,dieDraw.colorFront);
+		var range0_start20 = start26;
+		var range0_end20 = (verts[1] | 0) - 1;
+		var this150 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this151 = this150;
+		var theta25 = dieDraw.theta;
+		var c25 = Math.cos(theta25);
+		var s66 = Math.sin(theta25);
+		var this152 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,c25,-s66,0.,0.,s66,c25,0.);
+		var s67 = this152;
+		var this153 = new geom_structure_Mat4x3(this151.a * s67.a + this151.b * s67.e + this151.c * s67.i,this151.a * s67.b + this151.b * s67.f + this151.c * s67.j,this151.a * s67.c + this151.b * s67.g + this151.c * s67.k,this151.a * s67.d + this151.b * s67.h + this151.c * s67.l + this151.d,this151.e * s67.a + this151.f * s67.e + this151.g * s67.i,this151.e * s67.b + this151.f * s67.f + this151.g * s67.j,this151.e * s67.c + this151.f * s67.g + this151.g * s67.k,this151.e * s67.d + this151.f * s67.h + this151.g * s67.l + this151.h,this151.i * s67.a + this151.j * s67.e + this151.k * s67.i,this151.i * s67.b + this151.j * s67.f + this151.k * s67.j,this151.i * s67.c + this151.j * s67.g + this151.k * s67.k,this151.i * s67.d + this151.j * s67.h + this151.k * s67.l + this151.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this153,range0_start20,range0_end20);
+		var range0_start21 = range0_start20;
+		var range0_end21 = range0_end20;
+		var this154 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this155 = this154;
+		var this156 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,diceRadius);
+		var s68 = this156;
+		var this157 = new geom_structure_Mat4x3(this155.a * s68.a + this155.b * s68.e + this155.c * s68.i,this155.a * s68.b + this155.b * s68.f + this155.c * s68.j,this155.a * s68.c + this155.b * s68.g + this155.c * s68.k,this155.a * s68.d + this155.b * s68.h + this155.c * s68.l + this155.d,this155.e * s68.a + this155.f * s68.e + this155.g * s68.i,this155.e * s68.b + this155.f * s68.f + this155.g * s68.j,this155.e * s68.c + this155.f * s68.g + this155.g * s68.k,this155.e * s68.d + this155.f * s68.h + this155.g * s68.l + this155.h,this155.i * s68.a + this155.j * s68.e + this155.k * s68.i,this155.i * s68.b + this155.j * s68.f + this155.k * s68.j,this155.i * s68.c + this155.j * s68.g + this155.k * s68.k,this155.i * s68.d + this155.j * s68.h + this155.k * s68.l + this155.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this157,range00_start,range0_end21);
+		var startEnd = { start : range150_start, end : range0_end21};
+		var this158 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+		var this159 = this158;
+		var this160 = new geom_structure_Mat4x3(.5,0.,0.,0.,0.,.5,0.,0.,0.,0.,.5,0.);
+		var s69 = this160;
+		var this161 = new geom_structure_Mat4x3(this159.a * s69.a + this159.b * s69.e + this159.c * s69.i,this159.a * s69.b + this159.b * s69.f + this159.c * s69.j,this159.a * s69.c + this159.b * s69.g + this159.c * s69.k,this159.a * s69.d + this159.b * s69.h + this159.c * s69.l + this159.d,this159.e * s69.a + this159.f * s69.e + this159.g * s69.i,this159.e * s69.b + this159.f * s69.f + this159.g * s69.j,this159.e * s69.c + this159.f * s69.g + this159.g * s69.k,this159.e * s69.d + this159.f * s69.h + this159.g * s69.l + this159.h,this159.i * s69.a + this159.j * s69.e + this159.k * s69.i,this159.i * s69.b + this159.j * s69.f + this159.k * s69.j,this159.i * s69.c + this159.j * s69.g + this159.k * s69.k,this159.i * s69.d + this159.j * s69.h + this159.k * s69.l + this159.l);
+		var s70 = this161;
+		var this162 = new geom_structure_Mat4x3(this159.a * s70.a + this159.b * s70.e + this159.c * s70.i,this159.a * s70.b + this159.b * s70.f + this159.c * s70.j,this159.a * s70.c + this159.b * s70.g + this159.c * s70.k,this159.a * s70.d + this159.b * s70.h + this159.c * s70.l + this159.d,this159.e * s70.a + this159.f * s70.e + this159.g * s70.i,this159.e * s70.b + this159.f * s70.f + this159.g * s70.j,this159.e * s70.c + this159.f * s70.g + this159.g * s70.k,this159.e * s70.d + this159.f * s70.h + this159.g * s70.l + this159.h,this159.i * s70.a + this159.j * s70.e + this159.k * s70.i,this159.i * s70.b + this159.j * s70.f + this159.k * s70.j,this159.i * s70.c + this159.j * s70.g + this159.k * s70.k,this159.i * s70.d + this159.j * s70.h + this159.k * s70.l + this159.l);
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(verts,this162,startEnd.start,startEnd.end);
+		return startEnd;
+	}
+	,circle: function(x,y,radius,color) {
+		var drawType = this.pen.drawType;
+		var pi = Math.PI;
+		var theta = pi / 2;
+		var step = pi * 2 / 36;
+		var bx;
+		var by;
+		var cx;
+		var cy;
+		var _g = 0;
+		var _g1 = 36;
+		while(_g < _g1) {
+			var i = _g++;
+			bx = x + radius * Math.sin(theta);
+			by = y + radius * Math.cos(theta);
+			theta += step;
+			cx = x + radius * Math.sin(theta);
+			cy = y + radius * Math.cos(theta);
+			drawType.triangle(x,y,0,bx,by,0,cx,cy,0);
+			var m = trilateral2_Shaper.transformMatrix;
+			if(m != null) {
+				drawType.transform(m);
+			}
+			drawType.next();
+		}
+		var len = 36;
+		var _this = this.pen;
+		var color1 = color;
+		if(color1 == -1) {
+			color1 = _this.currentColor;
+		}
+		_this.colorType.colorTriangles(color1,len);
+		return len;
+	}
+	,roundedSquare: function(x,y,dia,color) {
+		var drawType = this.pen.drawType;
+		var x1 = x - dia / 2;
+		var y1 = y - dia / 2;
+		var pi = Math.PI;
+		var pi_2 = Math.PI / 2;
+		var ax = x1 + 30;
+		var ay = y1 + 30;
+		var bx = x1 + dia - 30;
+		var by = y1 + 30;
+		var cx = bx;
+		var cy = y1 + dia - 30;
+		var dx = ax;
+		var dy = cy;
+		var count = 0;
+		var ax1 = ax;
+		var ay1 = y1;
+		var bx1 = ax + (dia - 60);
+		var by1 = ay1;
+		var cx1 = bx1;
+		var cy1 = ay1 + dia;
+		var dx1 = ax;
+		var dy1 = cy1;
+		drawType.triangle(ax1,ay1,0,bx1,by1,0,dx1,dy1,0);
+		var m = trilateral2_Shaper.transformMatrix;
+		if(m != null) {
+			drawType.transform(m);
+		}
+		drawType.next();
+		drawType.triangle(bx1,by1,0,cx1,cy1,0,dx1,dy1,0);
+		var m1 = trilateral2_Shaper.transformMatrix;
+		if(m1 != null) {
+			drawType.transform(m1);
+		}
+		drawType.next();
+		count += 2;
+		var dimY = dia - 60;
+		var ax2 = x1;
+		var ay2 = ay;
+		var bx2 = x1 + 30;
+		var by2 = ay2;
+		var cx2 = bx2;
+		var cy2 = ay2 + dimY;
+		var dx2 = x1;
+		var dy2 = cy2;
+		drawType.triangle(ax2,ay2,0,bx2,by2,0,dx2,dy2,0);
+		var m2 = trilateral2_Shaper.transformMatrix;
+		if(m2 != null) {
+			drawType.transform(m2);
+		}
+		drawType.next();
+		drawType.triangle(bx2,by2,0,cx2,cy2,0,dx2,dy2,0);
+		var m3 = trilateral2_Shaper.transformMatrix;
+		if(m3 != null) {
+			drawType.transform(m3);
+		}
+		drawType.next();
+		count += 2;
+		var ax3 = bx;
+		var ay3 = by;
+		var bx3 = bx + 30;
+		var by3 = ay3;
+		var cx3 = bx3;
+		var cy3 = ay3 + dimY;
+		var dx3 = bx;
+		var dy3 = cy3;
+		drawType.triangle(ax3,ay3,0,bx3,by3,0,dx3,dy3,0);
+		var m4 = trilateral2_Shaper.transformMatrix;
+		if(m4 != null) {
+			drawType.transform(m4);
+		}
+		drawType.next();
+		drawType.triangle(bx3,by3,0,cx3,cy3,0,dx3,dy3,0);
+		var m5 = trilateral2_Shaper.transformMatrix;
+		if(m5 != null) {
+			drawType.transform(m5);
+		}
+		drawType.next();
+		count += 2;
+		var beta = -pi;
+		var gamma = -pi_2;
+		var pi1 = Math.PI;
+		var step = pi1 * 2 / 36;
+		var dif;
+		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
+		case 0:
+			var f;
+			if(beta >= 0 && beta > Math.PI) {
+				f = beta;
+			} else {
+				var a = beta % (2 * Math.PI);
+				f = a >= 0 ? a : a + 2 * Math.PI;
+			}
+			var this1 = f;
+			var za = this1;
+			var f1;
+			if(gamma >= 0 && gamma > Math.PI) {
+				f1 = gamma;
+			} else {
+				var a1 = gamma % (2 * Math.PI);
+				f1 = a1 >= 0 ? a1 : a1 + 2 * Math.PI;
+			}
+			var this2 = f1;
+			var zb = this2;
+			var fa = za;
+			var fb = zb;
+			var theta = Math.abs(fa - fb);
+			var clockwise = fa < fb;
+			var dif1 = clockwise ? theta : -theta;
+			dif = dif1 > 0 ? dif1 : 2 * Math.PI + dif1;
+			break;
+		case 1:
+			var f2;
+			if(beta >= 0 && beta > Math.PI) {
+				f2 = beta;
+			} else {
+				var a2 = beta % (2 * Math.PI);
+				f2 = a2 >= 0 ? a2 : a2 + 2 * Math.PI;
+			}
+			var this3 = f2;
+			var za1 = this3;
+			var f3;
+			if(gamma >= 0 && gamma > Math.PI) {
+				f3 = gamma;
+			} else {
+				var a3 = gamma % (2 * Math.PI);
+				f3 = a3 >= 0 ? a3 : a3 + 2 * Math.PI;
+			}
+			var this4 = f3;
+			var zb1 = this4;
+			var fa1 = za1;
+			var fb1 = zb1;
+			var theta1 = Math.abs(fa1 - fb1);
+			var clockwise1 = fa1 < fb1;
+			var dif2 = clockwise1 ? theta1 : -theta1;
+			dif = dif2 < 0 ? dif2 : -2 * Math.PI + dif2;
+			break;
+		case 2:
+			var f4;
+			if(beta >= 0 && beta > Math.PI) {
+				f4 = beta;
+			} else {
+				var a4 = beta % (2 * Math.PI);
+				f4 = a4 >= 0 ? a4 : a4 + 2 * Math.PI;
+			}
+			var this5 = f4;
+			var za2 = this5;
+			var f5;
+			if(gamma >= 0 && gamma > Math.PI) {
+				f5 = gamma;
+			} else {
+				var a5 = gamma % (2 * Math.PI);
+				f5 = a5 >= 0 ? a5 : a5 + 2 * Math.PI;
+			}
+			var this6 = f5;
+			var zb2 = this6;
+			var fa2 = za2;
+			var fb2 = zb2;
+			var theta2 = Math.abs(fa2 - fb2);
+			var smallest = theta2 <= Math.PI;
+			var clockwise2 = fa2 < fb2;
+			var dif3 = clockwise2 ? theta2 : -theta2;
+			dif = smallest ? dif3 : clockwise2 ? -(2 * Math.PI - theta2) : 2 * Math.PI - theta2;
+			break;
+		case 3:
+			var f6;
+			if(beta >= 0 && beta > Math.PI) {
+				f6 = beta;
+			} else {
+				var a6 = beta % (2 * Math.PI);
+				f6 = a6 >= 0 ? a6 : a6 + 2 * Math.PI;
+			}
+			var this7 = f6;
+			var za3 = this7;
+			var f7;
+			if(gamma >= 0 && gamma > Math.PI) {
+				f7 = gamma;
+			} else {
+				var a7 = gamma % (2 * Math.PI);
+				f7 = a7 >= 0 ? a7 : a7 + 2 * Math.PI;
+			}
+			var this8 = f7;
+			var zb3 = this8;
+			var fa3 = za3;
+			var fb3 = zb3;
+			var theta3 = Math.abs(fa3 - fb3);
+			var largest = theta3 > Math.PI;
+			var clockwise3 = fa3 < fb3;
+			var dif4 = clockwise3 ? theta3 : -theta3;
+			dif = largest ? dif4 : clockwise3 ? -(2 * Math.PI - theta3) : 2 * Math.PI - theta3;
+			break;
+		}
+		var positive = dif >= 0;
+		var totalSteps = Math.ceil(Math.abs(dif) / step);
+		var step1 = dif / totalSteps;
+		var angle = beta;
+		var cx4;
+		var cy4;
+		var bx4 = 0;
+		var by4 = 0;
+		var _g = 0;
+		var _g1 = totalSteps + 1;
+		while(_g < _g1) {
+			var i = _g++;
+			cx4 = ax + 30 * Math.sin(angle);
+			cy4 = ay + 30 * Math.cos(angle);
+			if(i != 0) {
+				drawType.triangle(ax,ay,0,bx4,by4,0,cx4,cy4,0);
+				var m6 = trilateral2_Shaper.transformMatrix;
+				if(m6 != null) {
+					drawType.transform(m6);
+				}
+				drawType.next();
+			}
+			angle += step1;
+			bx4 = cx4;
+			by4 = cy4;
+		}
+		count += totalSteps;
+		var pi2 = Math.PI;
+		var step2 = pi2 * 2 / 36;
+		var dif5;
+		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
+		case 0:
+			var f8;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f8 = pi_2;
+			} else {
+				var a8 = pi_2 % (2 * Math.PI);
+				f8 = a8 >= 0 ? a8 : a8 + 2 * Math.PI;
+			}
+			var this9 = f8;
+			var za4 = this9;
+			var f9;
+			if(pi >= 0 && pi > Math.PI) {
+				f9 = pi;
+			} else {
+				var a9 = pi % (2 * Math.PI);
+				f9 = a9 >= 0 ? a9 : a9 + 2 * Math.PI;
+			}
+			var this10 = f9;
+			var zb4 = this10;
+			var fa4 = za4;
+			var fb4 = zb4;
+			var theta4 = Math.abs(fa4 - fb4);
+			var clockwise4 = fa4 < fb4;
+			var dif6 = clockwise4 ? theta4 : -theta4;
+			dif5 = dif6 > 0 ? dif6 : 2 * Math.PI + dif6;
+			break;
+		case 1:
+			var f10;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f10 = pi_2;
+			} else {
+				var a10 = pi_2 % (2 * Math.PI);
+				f10 = a10 >= 0 ? a10 : a10 + 2 * Math.PI;
+			}
+			var this11 = f10;
+			var za5 = this11;
+			var f11;
+			if(pi >= 0 && pi > Math.PI) {
+				f11 = pi;
+			} else {
+				var a11 = pi % (2 * Math.PI);
+				f11 = a11 >= 0 ? a11 : a11 + 2 * Math.PI;
+			}
+			var this12 = f11;
+			var zb5 = this12;
+			var fa5 = za5;
+			var fb5 = zb5;
+			var theta5 = Math.abs(fa5 - fb5);
+			var clockwise5 = fa5 < fb5;
+			var dif7 = clockwise5 ? theta5 : -theta5;
+			dif5 = dif7 < 0 ? dif7 : -2 * Math.PI + dif7;
+			break;
+		case 2:
+			var f12;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f12 = pi_2;
+			} else {
+				var a12 = pi_2 % (2 * Math.PI);
+				f12 = a12 >= 0 ? a12 : a12 + 2 * Math.PI;
+			}
+			var this13 = f12;
+			var za6 = this13;
+			var f13;
+			if(pi >= 0 && pi > Math.PI) {
+				f13 = pi;
+			} else {
+				var a13 = pi % (2 * Math.PI);
+				f13 = a13 >= 0 ? a13 : a13 + 2 * Math.PI;
+			}
+			var this14 = f13;
+			var zb6 = this14;
+			var fa6 = za6;
+			var fb6 = zb6;
+			var theta6 = Math.abs(fa6 - fb6);
+			var smallest1 = theta6 <= Math.PI;
+			var clockwise6 = fa6 < fb6;
+			var dif8 = clockwise6 ? theta6 : -theta6;
+			dif5 = smallest1 ? dif8 : clockwise6 ? -(2 * Math.PI - theta6) : 2 * Math.PI - theta6;
+			break;
+		case 3:
+			var f14;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f14 = pi_2;
+			} else {
+				var a14 = pi_2 % (2 * Math.PI);
+				f14 = a14 >= 0 ? a14 : a14 + 2 * Math.PI;
+			}
+			var this15 = f14;
+			var za7 = this15;
+			var f15;
+			if(pi >= 0 && pi > Math.PI) {
+				f15 = pi;
+			} else {
+				var a15 = pi % (2 * Math.PI);
+				f15 = a15 >= 0 ? a15 : a15 + 2 * Math.PI;
+			}
+			var this16 = f15;
+			var zb7 = this16;
+			var fa7 = za7;
+			var fb7 = zb7;
+			var theta7 = Math.abs(fa7 - fb7);
+			var largest1 = theta7 > Math.PI;
+			var clockwise7 = fa7 < fb7;
+			var dif9 = clockwise7 ? theta7 : -theta7;
+			dif5 = largest1 ? dif9 : clockwise7 ? -(2 * Math.PI - theta7) : 2 * Math.PI - theta7;
+			break;
+		}
+		var positive1 = dif5 >= 0;
+		var totalSteps1 = Math.ceil(Math.abs(dif5) / step2);
+		var step3 = dif5 / totalSteps1;
+		var angle1 = pi_2;
+		var cx5;
+		var cy5;
+		var bx5 = 0;
+		var by5 = 0;
+		var _g2 = 0;
+		var _g11 = totalSteps1 + 1;
+		while(_g2 < _g11) {
+			var i1 = _g2++;
+			cx5 = bx + 30 * Math.sin(angle1);
+			cy5 = by + 30 * Math.cos(angle1);
+			if(i1 != 0) {
+				drawType.triangle(bx,by,0,bx5,by5,0,cx5,cy5,0);
+				var m7 = trilateral2_Shaper.transformMatrix;
+				if(m7 != null) {
+					drawType.transform(m7);
+				}
+				drawType.next();
+			}
+			angle1 += step3;
+			bx5 = cx5;
+			by5 = cy5;
+		}
+		count += totalSteps1;
+		var pi3 = Math.PI;
+		var step4 = pi3 * 2 / 36;
+		var dif10;
+		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
+		case 0:
+			var f16;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f16 = pi_2;
+			} else {
+				var a16 = pi_2 % (2 * Math.PI);
+				f16 = a16 >= 0 ? a16 : a16 + 2 * Math.PI;
+			}
+			var this17 = f16;
+			var za8 = this17;
+			var f17;
+			if(0 > Math.PI) {
+				f17 = 0;
+			} else {
+				var a17 = 0 % (2 * Math.PI);
+				f17 = a17 >= 0 ? a17 : a17 + 2 * Math.PI;
+			}
+			var this18 = f17;
+			var zb8 = this18;
+			var fa8 = za8;
+			var fb8 = zb8;
+			var theta8 = Math.abs(fa8 - fb8);
+			var clockwise8 = fa8 < fb8;
+			var dif11 = clockwise8 ? theta8 : -theta8;
+			dif10 = dif11 > 0 ? dif11 : 2 * Math.PI + dif11;
+			break;
+		case 1:
+			var f18;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f18 = pi_2;
+			} else {
+				var a18 = pi_2 % (2 * Math.PI);
+				f18 = a18 >= 0 ? a18 : a18 + 2 * Math.PI;
+			}
+			var this19 = f18;
+			var za9 = this19;
+			var f19;
+			if(0 > Math.PI) {
+				f19 = 0;
+			} else {
+				var a19 = 0 % (2 * Math.PI);
+				f19 = a19 >= 0 ? a19 : a19 + 2 * Math.PI;
+			}
+			var this20 = f19;
+			var zb9 = this20;
+			var fa9 = za9;
+			var fb9 = zb9;
+			var theta9 = Math.abs(fa9 - fb9);
+			var clockwise9 = fa9 < fb9;
+			var dif12 = clockwise9 ? theta9 : -theta9;
+			dif10 = dif12 < 0 ? dif12 : -2 * Math.PI + dif12;
+			break;
+		case 2:
+			var f20;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f20 = pi_2;
+			} else {
+				var a20 = pi_2 % (2 * Math.PI);
+				f20 = a20 >= 0 ? a20 : a20 + 2 * Math.PI;
+			}
+			var this21 = f20;
+			var za10 = this21;
+			var f21;
+			if(0 > Math.PI) {
+				f21 = 0;
+			} else {
+				var a21 = 0 % (2 * Math.PI);
+				f21 = a21 >= 0 ? a21 : a21 + 2 * Math.PI;
+			}
+			var this22 = f21;
+			var zb10 = this22;
+			var fa10 = za10;
+			var fb10 = zb10;
+			var theta10 = Math.abs(fa10 - fb10);
+			var smallest2 = theta10 <= Math.PI;
+			var clockwise10 = fa10 < fb10;
+			var dif13 = clockwise10 ? theta10 : -theta10;
+			dif10 = smallest2 ? dif13 : clockwise10 ? -(2 * Math.PI - theta10) : 2 * Math.PI - theta10;
+			break;
+		case 3:
+			var f22;
+			if(pi_2 >= 0 && pi_2 > Math.PI) {
+				f22 = pi_2;
+			} else {
+				var a22 = pi_2 % (2 * Math.PI);
+				f22 = a22 >= 0 ? a22 : a22 + 2 * Math.PI;
+			}
+			var this23 = f22;
+			var za11 = this23;
+			var f23;
+			if(0 > Math.PI) {
+				f23 = 0;
+			} else {
+				var a23 = 0 % (2 * Math.PI);
+				f23 = a23 >= 0 ? a23 : a23 + 2 * Math.PI;
+			}
+			var this24 = f23;
+			var zb11 = this24;
+			var fa11 = za11;
+			var fb11 = zb11;
+			var theta11 = Math.abs(fa11 - fb11);
+			var largest2 = theta11 > Math.PI;
+			var clockwise11 = fa11 < fb11;
+			var dif14 = clockwise11 ? theta11 : -theta11;
+			dif10 = largest2 ? dif14 : clockwise11 ? -(2 * Math.PI - theta11) : 2 * Math.PI - theta11;
+			break;
+		}
+		var positive2 = dif10 >= 0;
+		var totalSteps2 = Math.ceil(Math.abs(dif10) / step4);
+		var step5 = dif10 / totalSteps2;
+		var angle2 = pi_2;
+		var cx6;
+		var cy6;
+		var bx6 = 0;
+		var by6 = 0;
+		var _g3 = 0;
+		var _g12 = totalSteps2 + 1;
+		while(_g3 < _g12) {
+			var i2 = _g3++;
+			cx6 = cx + 30 * Math.sin(angle2);
+			cy6 = cy + 30 * Math.cos(angle2);
+			if(i2 != 0) {
+				drawType.triangle(cx,cy,0,bx6,by6,0,cx6,cy6,0);
+				var m8 = trilateral2_Shaper.transformMatrix;
+				if(m8 != null) {
+					drawType.transform(m8);
+				}
+				drawType.next();
+			}
+			angle2 += step5;
+			bx6 = cx6;
+			by6 = cy6;
+		}
+		count += totalSteps2;
+		var gamma1 = -pi_2;
+		var pi4 = Math.PI;
+		var step6 = pi4 * 2 / 36;
+		var dif15;
+		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
+		case 0:
+			var f24;
+			if(0 > Math.PI) {
+				f24 = 0;
+			} else {
+				var a24 = 0 % (2 * Math.PI);
+				f24 = a24 >= 0 ? a24 : a24 + 2 * Math.PI;
+			}
+			var this25 = f24;
+			var za12 = this25;
+			var f25;
+			if(gamma1 >= 0 && gamma1 > Math.PI) {
+				f25 = gamma1;
+			} else {
+				var a25 = gamma1 % (2 * Math.PI);
+				f25 = a25 >= 0 ? a25 : a25 + 2 * Math.PI;
+			}
+			var this26 = f25;
+			var zb12 = this26;
+			var fa12 = za12;
+			var fb12 = zb12;
+			var theta12 = Math.abs(fa12 - fb12);
+			var clockwise12 = fa12 < fb12;
+			var dif16 = clockwise12 ? theta12 : -theta12;
+			dif15 = dif16 > 0 ? dif16 : 2 * Math.PI + dif16;
+			break;
+		case 1:
+			var f26;
+			if(0 > Math.PI) {
+				f26 = 0;
+			} else {
+				var a26 = 0 % (2 * Math.PI);
+				f26 = a26 >= 0 ? a26 : a26 + 2 * Math.PI;
+			}
+			var this27 = f26;
+			var za13 = this27;
+			var f27;
+			if(gamma1 >= 0 && gamma1 > Math.PI) {
+				f27 = gamma1;
+			} else {
+				var a27 = gamma1 % (2 * Math.PI);
+				f27 = a27 >= 0 ? a27 : a27 + 2 * Math.PI;
+			}
+			var this28 = f27;
+			var zb13 = this28;
+			var fa13 = za13;
+			var fb13 = zb13;
+			var theta13 = Math.abs(fa13 - fb13);
+			var clockwise13 = fa13 < fb13;
+			var dif17 = clockwise13 ? theta13 : -theta13;
+			dif15 = dif17 < 0 ? dif17 : -2 * Math.PI + dif17;
+			break;
+		case 2:
+			var f28;
+			if(0 > Math.PI) {
+				f28 = 0;
+			} else {
+				var a28 = 0 % (2 * Math.PI);
+				f28 = a28 >= 0 ? a28 : a28 + 2 * Math.PI;
+			}
+			var this29 = f28;
+			var za14 = this29;
+			var f29;
+			if(gamma1 >= 0 && gamma1 > Math.PI) {
+				f29 = gamma1;
+			} else {
+				var a29 = gamma1 % (2 * Math.PI);
+				f29 = a29 >= 0 ? a29 : a29 + 2 * Math.PI;
+			}
+			var this30 = f29;
+			var zb14 = this30;
+			var fa14 = za14;
+			var fb14 = zb14;
+			var theta14 = Math.abs(fa14 - fb14);
+			var smallest3 = theta14 <= Math.PI;
+			var clockwise14 = fa14 < fb14;
+			var dif18 = clockwise14 ? theta14 : -theta14;
+			dif15 = smallest3 ? dif18 : clockwise14 ? -(2 * Math.PI - theta14) : 2 * Math.PI - theta14;
+			break;
+		case 3:
+			var f30;
+			if(0 > Math.PI) {
+				f30 = 0;
+			} else {
+				var a30 = 0 % (2 * Math.PI);
+				f30 = a30 >= 0 ? a30 : a30 + 2 * Math.PI;
+			}
+			var this31 = f30;
+			var za15 = this31;
+			var f31;
+			if(gamma1 >= 0 && gamma1 > Math.PI) {
+				f31 = gamma1;
+			} else {
+				var a31 = gamma1 % (2 * Math.PI);
+				f31 = a31 >= 0 ? a31 : a31 + 2 * Math.PI;
+			}
+			var this32 = f31;
+			var zb15 = this32;
+			var fa15 = za15;
+			var fb15 = zb15;
+			var theta15 = Math.abs(fa15 - fb15);
+			var largest3 = theta15 > Math.PI;
+			var clockwise15 = fa15 < fb15;
+			var dif19 = clockwise15 ? theta15 : -theta15;
+			dif15 = largest3 ? dif19 : clockwise15 ? -(2 * Math.PI - theta15) : 2 * Math.PI - theta15;
+			break;
+		}
+		var positive3 = dif15 >= 0;
+		var totalSteps3 = Math.ceil(Math.abs(dif15) / step6);
+		var step7 = dif15 / totalSteps3;
+		var angle3 = 0;
+		var cx7;
+		var cy7;
+		var bx7 = 0;
+		var by7 = 0;
+		var _g4 = 0;
+		var _g13 = totalSteps3 + 1;
+		while(_g4 < _g13) {
+			var i3 = _g4++;
+			cx7 = dx + 30 * Math.sin(angle3);
+			cy7 = dy + 30 * Math.cos(angle3);
+			if(i3 != 0) {
+				drawType.triangle(dx,dy,0,bx7,by7,0,cx7,cy7,0);
+				var m9 = trilateral2_Shaper.transformMatrix;
+				if(m9 != null) {
+					drawType.transform(m9);
+				}
+				drawType.next();
+			}
+			angle3 += step7;
+			bx7 = cx7;
+			by7 = cy7;
+		}
+		var len = count += totalSteps3;
+		var _this = this.pen;
+		var color1 = color;
+		if(color1 == -1) {
+			color1 = _this.currentColor;
+		}
+		_this.colorType.colorTriangles(color1,len);
+		return len;
+	}
+};
 var fracs_DifferencePreference = $hxEnums["fracs.DifferencePreference"] = { __ename__ : "fracs.DifferencePreference", __constructs__ : ["CLOCKWISE","ANTICLOCKWISE","SMALL","LARGE"]
 	,CLOCKWISE: {_hx_index:0,__enum__:"fracs.DifferencePreference",toString:$estr}
 	,ANTICLOCKWISE: {_hx_index:1,__enum__:"fracs.DifferencePreference",toString:$estr}

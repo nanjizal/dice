@@ -65,6 +65,7 @@ class ViewGL extends WebGLSetup {
     public var update: Void->Void;
     public function new(){
         super( stageRadius, stageRadius );
+        canvas.tabIndex = -1;
         var axisKeys   = new AxisKeys( axisModel, itemModel );
         axisKeys.showTrace = false;
         axisKeys.reset = resetPosition;

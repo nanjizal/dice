@@ -1,32 +1,10 @@
 package dice.view;
 import trilateral2.Pen;
 import trilateral2.Shaper;
+import trilateral2.IndexRange;
 import geom.matrix.Matrix4x3;
 import geom.flat.f32.Float32FlatTriangle;
-@:structInit
-class Disc {
-    var theta:      Float;
-    var radius:     Float;
-    var dieColor:   Int;
-    var colorFront: Int;
-    var colorBack:  Int;
-    var dz:         Float;
-    public var circle: ( x: Float, y: Float, radius: Float, color: Int ) -> Int;
-    public var roundedSquare: ( x: Float, y: Float, radius: Float, color: Int ) -> Int;
-    public function new(  radius:     Float
-                        , dieColor: Int, colorFront: Int, colorBack: Int
-                        , theta:      Float = 0.
-                        , dz: Float = 0.01 ){
-        this.radius     = radius;
-        this.dieColor   = dieColor;
-        this.colorFront = colorFront;
-        this.colorBack  = colorBack;
-        this.theta      = theta;
-        this.dz         = dz;
-    }
-}
-typedef IndexRange = { start: Int, end: Int }
-
+import dice.helpers.ViewGL;
 @:access( dice.view.Disc )
 @:forward
 abstract DiscDraw( Disc ) from Disc to Disc {
@@ -35,12 +13,13 @@ abstract DiscDraw( Disc ) from Disc to Disc {
         this = disc;
     }
     public inline
-    function create( verts: Float32FlatTriangle, x: Float, y: Float ): { start: Int, end: Int } {
+    function create( verts: Float32FlatTriangle, x: Float, y: Float ): IndexRange {
         var range0 = drawDotSide( x, y, this.colorFront, verts );
-        verts.transformRange( transFront(), range0.start, range0.end );
+        //verts.transformRange( transFront(), range0.start, range0.end );
         /*var range1 = drawDotSide( x, y, this.colorBack, verts );
         verts.transformRange( transBack(), range1.start, range1.end );*/
-        return { start: range0.start, end: range0.end };
+        var ir: IndexRange = { start: range0.start, end: range0.end };
+        return ir;
     }
     inline
     function transFront(): Matrix4x3 {
@@ -52,20 +31,20 @@ abstract DiscDraw( Disc ) from Disc to Disc {
     }
     inline 
     function drawDotSide( x: Float, y: Float, color: Int, verts: Float32FlatTriangle ): IndexRange {
-        var start = verts.length;
-        var len = this.circle( x, y, this.radius, color );
-        return { start: start, end: verts.length - 1 };
+        var start = verts.size;
+        var len = this.circle( x, y, this.dotRadius, color );
+        return { start: start, end: verts.size - 1 };
     }
     public inline 
     function drawSide( x: Float, y: Float, verts: Float32FlatTriangle ): IndexRange {
         var len = 0;
-        var start = verts.length;
-        len = this.roundedSquare( x, y, this.radius*8, this.dieColor );
-        var end = verts.length - 1;
+        var start = verts.size;
+        len = this.roundedSquare( x, y, this.dieRadius*2, this.dieColor );
+        var end = verts.size - 1;
         verts.transformRange(Matrix4x3.unit.translateZ( -this.dz/2 ) , start, end );
         /*var start2 = end + 1;
-        len = this.roundedSquare( x, y, this.radius*8, this.dieColor );
-        end = verts.length - 1;
+        len = this.roundedSquare( x, y, this.dotRadius*8, this.dieColor );
+        end = verts.size - 1;
         verts.transformRange( transBack(), start2, end );*/
         return { start: start, end: end };
     }
@@ -90,7 +69,7 @@ abstract DieDraw( DiscDraw ) from DiscDraw to DiscDraw {
     */
     public inline 
     function create( verts: Float32FlatTriangle, x: Float, y: Float ): IndexRange {
-        var diceRadius = 0.1;
+        var diceRadius = this.dieRadius * 1/ViewGL.stageRadius;
         var spacing = 25;
         var spacingY = 0;
         // six
@@ -153,7 +132,7 @@ abstract DieDraw( DiscDraw ) from DiscDraw to DiscDraw {
 @:structInit
 class Die{
     var pen: Pen;
-    public var disc: Disc = { radius: 15, dieColor: 0xc0ff0000
+    public var disc: Disc = { dotRadius: 15, dieRadius: 60, dieColor: 0xc0ff0000, hiLightColor: 0x000000ff
                             , colorFront: 0xfff0ffff, colorBack: 0xc0f0ff00 };
     public
     function new( pen: Pen ){

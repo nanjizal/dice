@@ -97,7 +97,7 @@ class ViewGL extends WebGLSetup {
     function transformVerticesToGL() verts.transformAll( scaleToGL() );
     function scaleToGL(){
         scale = 1/(stageRadius);
-        var v = new Matrix1x4( { x: scale, y: -scale, z: 1., w: 1. } );
+        var v = new Matrix1x4( { x: scale, y: -scale, z: scale, w: 1. } );
         return ( Matrix4x3.unit.translateXYZ( -1., 1., 0. ) ).scaleByVector( v );
     }
     function uploadVectors(){
@@ -127,7 +127,7 @@ class ViewGL extends WebGLSetup {
     }
     function createIndices(): UInt16Array{
         ind.pos = 0;
-        for( i in 0...verts.length ) {
+        for( i in 0...verts.size ) {
             ind[ 0 ] = i *3 + 0;
             ind[ 1 ] = i *3 + 1;
             ind[ 2 ] = i *3 + 2; 

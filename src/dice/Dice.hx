@@ -52,7 +52,6 @@ import htmlHelper.tools.DivertTrace;
 import pallette.QuickARGB;
 import dice.view.Die;
 import dice.view.Diee;
-//import dice.view.Dodecahedron;
 
 using htmlHelper.webgl.WebGLSetup;
 class Dice {
@@ -72,8 +71,6 @@ class Dice {
         var gridLines = new GridLines( pen, ViewGL.stageRadius );
         gridLines.draw( 10, 0x0396FB00, 0xF096FBF3 );
         viewGL.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.2 ) );
-        //trace( viewGL.verts );
-        //trace( viewGL.verts.size );
         var diee      = new Diee( viewGL.pen );
         var startEnd  = diee.create( /*viewGL.verts,*/ layoutPos.centre.x, layoutPos.centre.y );
         start         = startEnd.start;

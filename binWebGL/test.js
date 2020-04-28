@@ -107,14 +107,14 @@ dice_Dice.prototype = {
 		this.viewGL.uploadVectors();
 	}
 	,instructions: function() {
-		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 94, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 95, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 96, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 97, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 98, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 99, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 100, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 101, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 91, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 92, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 93, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 94, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 95, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 96, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 97, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 98, className : "dice.Dice", methodName : "instructions"});
 	}
 };
 var dice_helpers_AxisKeys = function(axisModel_,itemModel_) {

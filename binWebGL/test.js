@@ -32,8 +32,8 @@ var dice_Dice = function() {
 	var s = this3;
 	var this4 = new geom_structure_Mat4x3(this2.a * s.a + this2.b * s.e + this2.c * s.i,this2.a * s.b + this2.b * s.f + this2.c * s.j,this2.a * s.c + this2.b * s.g + this2.c * s.k,this2.a * s.d + this2.b * s.h + this2.c * s.l + this2.d,this2.e * s.a + this2.f * s.e + this2.g * s.i,this2.e * s.b + this2.f * s.f + this2.g * s.j,this2.e * s.c + this2.f * s.g + this2.g * s.k,this2.e * s.d + this2.f * s.h + this2.g * s.l + this2.h,this2.i * s.a + this2.j * s.e + this2.k * s.i,this2.i * s.b + this2.j * s.f + this2.k * s.j,this2.i * s.c + this2.j * s.g + this2.k * s.k,this2.i * s.d + this2.j * s.h + this2.k * s.l + this2.l);
 	tmp.transform(this4);
-	var diee = new dice_view_Diee(this.viewGL.pen);
-	var startEnd = diee.create(this.layoutPos.centre.x,this.layoutPos.centre.y);
+	var die = new dice_view_Die(this.viewGL.pen);
+	var startEnd = die.create(this.layoutPos.centre.x,this.layoutPos.centre.y);
 	this.start = startEnd.start;
 	this.end = startEnd.end;
 	this.viewGL.update = $bind(this,this.update);
@@ -1007,14 +1007,14 @@ dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
 		this.render();
 	}
 });
-var dice_view_Diee = function(pen) {
+var dice_view_Die = function(pen) {
 	this.dieShape = new trilateral2_RegularShape(0.,0.,60.,-1057030144);
 	this.spotShape = new trilateral2_RegularShape(0.,0.,15.,-983041);
 	this.right = false;
 	this.spots = pen;
 };
-dice_view_Diee.__name__ = true;
-dice_view_Diee.prototype = {
+dice_view_Die.__name__ = true;
+dice_view_Die.prototype = {
 	create: function(x,y) {
 		this.spotShape.x = x;
 		this.spotShape.y = y;

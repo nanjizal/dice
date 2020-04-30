@@ -32,7 +32,7 @@ class Die{
     function one( trans: Matrix4x3 ): IndexRange {
         var s0 = spots.roundedSquare( dieShape );
         spots.down( s0 );
-        var s1 = spots.one( spotShape );
+        var s1 = spots.goldOne( spotShape );
         var s2: IndexRange = { start: s0.start, end: s1.end };
         spots.transformRange( trans, s2 );
         return s2;
@@ -77,7 +77,7 @@ class Die{
     function six( trans: Matrix4x3 ): IndexRange {
         var s0 = spots.roundedSquare( dieShape );
         spots.down( s0 );
-        var s1 = spots.six( spotShape );
+        var s1 = spots.colorSix( spotShape );
         var s2: IndexRange = { start: s0.start, end: s1.end };
         spots.transformRange( trans, s2 );
         return s2;
@@ -101,7 +101,7 @@ class Die{
         var s5 = five(  ( right )? t5: t4 );
         var s1 = one(   t1 );
         var startEnd: IndexRange = { start: s6.start, end: s1.end };
-        spots.transformRange( Matrix4x3.unit.scale( .5 ), startEnd );
+        //spots.transformRange( Matrix4x3.unit.scale( .5 ), startEnd );
         return startEnd;
     }
 }

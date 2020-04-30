@@ -56,7 +56,7 @@ class ViewGL extends WebGLSetup {
     public var verts            = new Float32FlatTriangle( largeEnough );
     var textPos                 = new Float32FlatTriangleXY( largeEnough );
     var cols                    = new Float32FlatRGBA(largeEnough);
-    var ind                     = new UInt16Flat3(largeEnough);
+    var ind                     = new Int32Flat3(largeEnough);
     var scale:                  Float;
     var model                   = DualQuaternion.zero;
     public var pen:             Pen;

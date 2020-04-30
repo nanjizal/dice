@@ -18,7 +18,7 @@
 -lib poly2trihx
 -lib hxGeomAlgo
 # test see inside some example stuff maybe commented out. 
--main dice.Dice
+-main dice.Dice  
 #-D no-inline
 -D js-flatten 
 -dce full

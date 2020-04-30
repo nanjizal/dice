@@ -607,11 +607,9 @@ var dice_helpers_ViewGL = function() {
 	q = new geom_structure_Mat1x4(q.x * 0.5,q.y * 0.5,q.z * 0.5,q.w * 0.5);
 	this.offset = new geom_structure_DualQ(real,new geom_structure_Mat1x4(q.x * real.w + q.y * real.z - q.z * real.y + q.w * real.x,-q.x * real.z + q.y * real.w + q.z * real.x + q.w * real.y,q.x * real.y - q.y * real.x + q.z * real.w + q.w * real.z,-q.x * real.x - q.y * real.y - q.z * real.z + q.w * real.w));
 	this.model = new geom_structure_DualQ(new geom_structure_Mat1x4(0.,0.,0.,1.),new geom_structure_Mat1x4(0.,0.,0.,0.));
-	var this1 = new Uint16Array(dice_helpers_ViewGL.largeEnough + 4);
+	var this1 = new Int32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this1[0] = 0;
 	this1[1] = 0;
-	this1[2] = 0;
-	this1[3] = 0;
 	this.ind = this1;
 	var this11 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this11[0] = 0.;
@@ -658,7 +656,7 @@ var dice_helpers_ViewGL = function() {
 		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v2;
 		var pos_ = _e9[0] + 1.;
 		_e9[0] = pos_;
-		if(_e9[0] > _e9[1]) {
+		if(_e9[0] > _e9[1] - 1) {
 			_e9[1] = _e9[0];
 		}
 		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e9,(colorB >> 16 & 255) / 255);
@@ -670,7 +668,7 @@ var dice_helpers_ViewGL = function() {
 		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v5;
 		var pos_1 = _e9[0] + 1.;
 		_e9[0] = pos_1;
-		if(_e9[0] > _e9[1]) {
+		if(_e9[0] > _e9[1] - 1) {
 			_e9[1] = _e9[0];
 		}
 		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e9,(colorC >> 16 & 255) / 255);
@@ -682,7 +680,7 @@ var dice_helpers_ViewGL = function() {
 		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v8;
 		var pos_2 = _e9[0] + 1.;
 		_e9[0] = pos_2;
-		if(_e9[0] > _e9[1]) {
+		if(_e9[0] > _e9[1] - 1) {
 			_e9[1] = _e9[0];
 		}
 	};
@@ -701,7 +699,7 @@ var dice_helpers_ViewGL = function() {
 			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v11;
 			var pos_3 = _e10[0] + 1.;
 			_e10[0] = pos_3;
-			if(_e10[0] > _e10[1]) {
+			if(_e10[0] > _e10[1] - 1) {
 				_e10[1] = _e10[0];
 			}
 			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(color >> 16 & 255) / 255);
@@ -713,7 +711,7 @@ var dice_helpers_ViewGL = function() {
 			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v14;
 			var pos_4 = _e10[0] + 1.;
 			_e10[0] = pos_4;
-			if(_e10[0] > _e10[1]) {
+			if(_e10[0] > _e10[1] - 1) {
 				_e10[1] = _e10[0];
 			}
 			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(color >> 16 & 255) / 255);
@@ -725,7 +723,7 @@ var dice_helpers_ViewGL = function() {
 			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v17;
 			var pos_5 = _e10[0] + 1.;
 			_e10[0] = pos_5;
-			if(_e10[0] > _e10[1]) {
+			if(_e10[0] > _e10[1] - 1) {
 				_e10[1] = _e10[0];
 			}
 		}
@@ -734,7 +732,7 @@ var dice_helpers_ViewGL = function() {
 	var _e12 = verts;
 	var tmp2 = function(pos_6) {
 		_e12[0] = pos_6;
-		if(_e12[0] > _e12[1]) {
+		if(_e12[0] > _e12[1] - 1) {
 			_e12[1] = _e12[0];
 		}
 		return pos_6;
@@ -756,7 +754,7 @@ var dice_helpers_ViewGL = function() {
 	}, next : function() {
 		var pos_7 = _e3[0] + 1.;
 		_e3[0] = pos_7;
-		if(_e3[0] > _e3[1]) {
+		if(_e3[0] > _e3[1] - 1) {
 			_e3[1] = _e3[0];
 		}
 		return _e3[0];
@@ -766,7 +764,7 @@ var dice_helpers_ViewGL = function() {
 		return _e5[0];
 	}, set_pos : function(pos_8) {
 		_e6[0] = pos_8;
-		if(_e6[0] > _e6[1]) {
+		if(_e6[0] > _e6[1] - 1) {
 			_e6[1] = _e6[0];
 		}
 		return pos_8;
@@ -866,37 +864,31 @@ dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
 	,createIndices: function() {
 		var this1 = this.ind;
 		this1[0] = 0;
-		this1[1] = 0;
-		if(0 > (this1[2] << 16) + this1[3]) {
-			var v = 1;
-			this1[2] = v >>> 16;
-			this1[3] = v & 65535;
+		if(this1[0] > this1[1] - 1) {
+			this1[1] = this1[0];
 		}
 		var _g = 0;
 		var _g1 = geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this.verts);
 		while(_g < _g1) {
 			var i = _g++;
 			var this2 = this.ind;
-			var v1 = i * 3;
-			this2[((this2[0] << 16) + this2[1]) * 3 + 0 + 4] = v1;
+			var v = i * 3;
+			this2[this2[0] * 3 + 2] = v;
 			var this3 = this.ind;
-			var v2 = i * 3 + 1;
-			this3[((this3[0] << 16) + this3[1]) * 3 + 1 + 4] = v2;
+			var v1 = i * 3 + 1;
+			this3[this3[0] * 3 + 1 + 2] = v1;
 			var this4 = this.ind;
-			var v3 = i * 3 + 2;
-			this4[((this4[0] << 16) + this4[1]) * 3 + 2 + 4] = v3;
+			var v2 = i * 3 + 2;
+			this4[this4[0] * 3 + 2 + 2] = v2;
 			var this5 = this.ind;
-			var pos_ = (this5[0] << 16) + this5[1] + 1;
-			this5[0] = pos_ >>> 16;
-			this5[1] = pos_ & 65535;
-			if(pos_ > (this5[2] << 16) + this5[3]) {
-				var v4 = pos_ + 1;
-				this5[2] = v4 >>> 16;
-				this5[3] = v4 & 65535;
+			var pos_ = this5[0] + 1;
+			this5[0] = pos_;
+			if(this5[0] > this5[1] - 1) {
+				this5[1] = this5[0];
 			}
 		}
 		var this6 = this.ind;
-		var arr = this6.subarray(4,((this6[2] << 16) + this6[3]) * 3 + 4);
+		var arr = this6.subarray(2,this6[1] * 3 + 2);
 		return arr;
 	}
 	,render_: function(i) {
@@ -1771,263 +1763,905 @@ dice_view_Die.prototype = {
 		var s01 = rs1.clone();
 		s01.x -= 25;
 		s01.y -= 35;
-		var start1 = this88.drawType.get_size();
-		var drawType1 = this88.drawType;
-		var ax4 = s01.x;
-		var ay4 = s01.y;
-		var radius1 = s01.radius;
-		var sides = 36;
+		var arr = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx = -0.25;
+		var ry = 0.25;
+		var sides = 47;
 		if(sides == null) {
 			sides = 36;
 		}
-		var pi5 = Math.PI;
-		var theta21 = pi5 / 2;
-		var step8 = pi5 * 2 / sides;
-		var bx8;
-		var by8;
-		var cx8;
-		var cy8;
-		var _g5 = 0;
-		var _g14 = sides;
-		while(_g5 < _g14) {
-			var i4 = _g5++;
-			bx8 = ax4 + radius1 * Math.sin(theta21);
-			by8 = ay4 + radius1 * Math.cos(theta21);
-			theta21 += step8;
-			cx8 = ax4 + radius1 * Math.sin(theta21);
-			cy8 = ay4 + radius1 * Math.cos(theta21);
-			drawType1.triangle(ax4,ay4,0,bx8,by8,0,cx8,cy8,0);
-			var m10 = trilateral2_Shaper.transformMatrix;
-			if(m10 != null) {
-				drawType1.transform(m10);
+		if(ry == null) {
+			ry = 0;
+		}
+		if(rx == null) {
+			rx = 0;
+		}
+		var start1 = this88.drawType.get_size();
+		var drawType1 = this88.drawType;
+		var x2 = s01.x;
+		var y2 = s01.y;
+		var radius1 = s01.radius;
+		var len1;
+		if((sides & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx1 = rx;
+			var ry1 = ry;
+			var sides1 = sides;
+			var omega = 0.;
+			if(omega == null) {
+				omega = 0.;
+			}
+			if(sides1 == null) {
+				sides1 = 36;
+			}
+			var pi5 = Math.PI;
+			var theta21 = pi5 / 2 + omega;
+			var step8 = pi5 * 2 / sides1;
+			var bx8;
+			var by8;
+			var cx8;
+			var cy8;
+			if(rx1 > 1.) {
+				rx1 = 1;
+			}
+			if(rx1 < -1.) {
+				rx1 = -1;
+			}
+			if(ry1 > 1.) {
+				ry1 = 1;
+			}
+			if(ry1 < -1.) {
+				ry1 = -1;
+			}
+			var mx = x2 + rx1 * radius1;
+			var my = y2 - ry1 * radius1;
+			var _g5 = 0;
+			var _g14 = sides1;
+			while(_g5 < _g14) {
+				var i4 = _g5++;
+				bx8 = x2 + radius1 * Math.sin(theta21);
+				by8 = y2 + radius1 * Math.cos(theta21);
+				theta21 += step8;
+				cx8 = x2 + radius1 * Math.sin(theta21);
+				cy8 = y2 + radius1 * Math.cos(theta21);
+				drawType1.triangle(mx,my,0,bx8,by8,0,cx8,cy8,0);
+				var m10 = trilateral2_Shaper.transformMatrix;
+				if(m10 != null) {
+					drawType1.transform(m10);
+				}
+				drawType1.next();
+			}
+			len1 = sides1;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx2 = rx;
+			var ry2 = ry;
+			var sides2 = sides;
+			var omega1 = 0.;
+			if(omega1 == null) {
+				omega1 = 0.;
+			}
+			if(sides2 == null) {
+				sides2 = 36;
+			}
+			var pi6 = Math.PI;
+			var theta22 = pi6 / 2;
+			var step9 = pi6 * 2 / sides2;
+			theta22 -= step9 / 2 + omega1;
+			var bx9 = 0;
+			var by9 = 0;
+			var cx9 = 0;
+			var cy9 = 0;
+			if(rx2 > 1.) {
+				rx2 = 1;
+			}
+			if(rx2 < -1.) {
+				rx2 = -1;
+			}
+			if(ry2 > 1.) {
+				ry2 = 1;
+			}
+			if(ry2 < -1.) {
+				ry2 = -1;
+			}
+			var mx1 = x2 + rx2 * radius1;
+			var my1 = y2 - ry2 * radius1;
+			var dx4 = x2 + radius1 * Math.sin(theta22);
+			var dy4 = y2 + radius1 * Math.cos(theta22);
+			var _g6 = 0;
+			var _g15 = sides2 - 1;
+			while(_g6 < _g15) {
+				var i5 = _g6++;
+				bx9 = x2 + radius1 * Math.sin(theta22);
+				by9 = y2 + radius1 * Math.cos(theta22);
+				theta22 += step9;
+				cx9 = x2 + radius1 * Math.sin(theta22);
+				cy9 = y2 + radius1 * Math.cos(theta22);
+				drawType1.triangle(mx1,my1,0,bx9,by9,0,cx9,cy9,0);
+				var m11 = trilateral2_Shaper.transformMatrix;
+				if(m11 != null) {
+					drawType1.transform(m11);
+				}
+				drawType1.next();
+			}
+			drawType1.triangle(mx1,my1,0,cx9,cy9,0,dx4,dy4,0);
+			var m12 = trilateral2_Shaper.transformMatrix;
+			if(m12 != null) {
+				drawType1.transform(m12);
 			}
 			drawType1.next();
+			len1 = sides2;
 		}
-		var len1 = sides;
-		var color1 = s01.color;
-		if(color1 == -1) {
-			color1 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color1,len1);
+		var k = 1;
+		var arrEnd = arr.length - 1;
 		var end1 = start1 + len1 - 1;
+		var arr_ = arr.slice();
+		var _g7 = 0;
+		var _g16 = len1 - 1;
+		while(_g7 < _g16) {
+			var j = _g7++;
+			this88.colorType.cornerColors(s01.color,arr_[k - 1],arr_[k]);
+			++k;
+			if(k > arrEnd) {
+				k = 1;
+				arr_.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s01.color,arr_[k - 1],arr[0]);
 		var startEnd = new trilateral2_IndexRange(start1,end1);
 		var c0 = startEnd;
 		var s110 = rs1.clone();
 		s110.x += 25;
 		s110.y -= 35;
+		var arr1 = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx3 = -0.25;
+		var ry3 = 0.25;
+		var sides3 = 47;
+		if(sides3 == null) {
+			sides3 = 36;
+		}
+		if(ry3 == null) {
+			ry3 = 0;
+		}
+		if(rx3 == null) {
+			rx3 = 0;
+		}
 		var start2 = this88.drawType.get_size();
 		var drawType2 = this88.drawType;
-		var ax5 = s110.x;
-		var ay5 = s110.y;
+		var x3 = s110.x;
+		var y3 = s110.y;
 		var radius2 = s110.radius;
-		var sides1 = 36;
-		if(sides1 == null) {
-			sides1 = 36;
-		}
-		var pi6 = Math.PI;
-		var theta22 = pi6 / 2;
-		var step9 = pi6 * 2 / sides1;
-		var bx9;
-		var by9;
-		var cx9;
-		var cy9;
-		var _g6 = 0;
-		var _g15 = sides1;
-		while(_g6 < _g15) {
-			var i5 = _g6++;
-			bx9 = ax5 + radius2 * Math.sin(theta22);
-			by9 = ay5 + radius2 * Math.cos(theta22);
-			theta22 += step9;
-			cx9 = ax5 + radius2 * Math.sin(theta22);
-			cy9 = ay5 + radius2 * Math.cos(theta22);
-			drawType2.triangle(ax5,ay5,0,bx9,by9,0,cx9,cy9,0);
-			var m11 = trilateral2_Shaper.transformMatrix;
-			if(m11 != null) {
-				drawType2.transform(m11);
+		var len2;
+		if((sides3 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx4 = rx3;
+			var ry4 = ry3;
+			var sides4 = sides3;
+			var omega2 = 0.;
+			if(omega2 == null) {
+				omega2 = 0.;
+			}
+			if(sides4 == null) {
+				sides4 = 36;
+			}
+			var pi7 = Math.PI;
+			var theta23 = pi7 / 2 + omega2;
+			var step10 = pi7 * 2 / sides4;
+			var bx10;
+			var by10;
+			var cx10;
+			var cy10;
+			if(rx4 > 1.) {
+				rx4 = 1;
+			}
+			if(rx4 < -1.) {
+				rx4 = -1;
+			}
+			if(ry4 > 1.) {
+				ry4 = 1;
+			}
+			if(ry4 < -1.) {
+				ry4 = -1;
+			}
+			var mx2 = x3 + rx4 * radius2;
+			var my2 = y3 - ry4 * radius2;
+			var _g8 = 0;
+			var _g17 = sides4;
+			while(_g8 < _g17) {
+				var i6 = _g8++;
+				bx10 = x3 + radius2 * Math.sin(theta23);
+				by10 = y3 + radius2 * Math.cos(theta23);
+				theta23 += step10;
+				cx10 = x3 + radius2 * Math.sin(theta23);
+				cy10 = y3 + radius2 * Math.cos(theta23);
+				drawType2.triangle(mx2,my2,0,bx10,by10,0,cx10,cy10,0);
+				var m13 = trilateral2_Shaper.transformMatrix;
+				if(m13 != null) {
+					drawType2.transform(m13);
+				}
+				drawType2.next();
+			}
+			len2 = sides4;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides3 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx5 = rx3;
+			var ry5 = ry3;
+			var sides5 = sides3;
+			var omega3 = 0.;
+			if(omega3 == null) {
+				omega3 = 0.;
+			}
+			if(sides5 == null) {
+				sides5 = 36;
+			}
+			var pi8 = Math.PI;
+			var theta24 = pi8 / 2;
+			var step11 = pi8 * 2 / sides5;
+			theta24 -= step11 / 2 + omega3;
+			var bx11 = 0;
+			var by11 = 0;
+			var cx11 = 0;
+			var cy11 = 0;
+			if(rx5 > 1.) {
+				rx5 = 1;
+			}
+			if(rx5 < -1.) {
+				rx5 = -1;
+			}
+			if(ry5 > 1.) {
+				ry5 = 1;
+			}
+			if(ry5 < -1.) {
+				ry5 = -1;
+			}
+			var mx3 = x3 + rx5 * radius2;
+			var my3 = y3 - ry5 * radius2;
+			var dx5 = x3 + radius2 * Math.sin(theta24);
+			var dy5 = y3 + radius2 * Math.cos(theta24);
+			var _g9 = 0;
+			var _g18 = sides5 - 1;
+			while(_g9 < _g18) {
+				var i7 = _g9++;
+				bx11 = x3 + radius2 * Math.sin(theta24);
+				by11 = y3 + radius2 * Math.cos(theta24);
+				theta24 += step11;
+				cx11 = x3 + radius2 * Math.sin(theta24);
+				cy11 = y3 + radius2 * Math.cos(theta24);
+				drawType2.triangle(mx3,my3,0,bx11,by11,0,cx11,cy11,0);
+				var m14 = trilateral2_Shaper.transformMatrix;
+				if(m14 != null) {
+					drawType2.transform(m14);
+				}
+				drawType2.next();
+			}
+			drawType2.triangle(mx3,my3,0,cx11,cy11,0,dx5,dy5,0);
+			var m15 = trilateral2_Shaper.transformMatrix;
+			if(m15 != null) {
+				drawType2.transform(m15);
 			}
 			drawType2.next();
+			len2 = sides5;
 		}
-		var len2 = sides1;
-		var color2 = s110.color;
-		if(color2 == -1) {
-			color2 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color2,len2);
+		var k1 = 1;
+		var arrEnd1 = arr1.length - 1;
 		var end2 = start2 + len2 - 1;
+		var arr_1 = arr1.slice();
+		var _g10 = 0;
+		var _g19 = len2 - 1;
+		while(_g10 < _g19) {
+			var j1 = _g10++;
+			this88.colorType.cornerColors(s110.color,arr_1[k1 - 1],arr_1[k1]);
+			++k1;
+			if(k1 > arrEnd1) {
+				k1 = 1;
+				arr_1.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s110.color,arr_1[k1 - 1],arr1[0]);
 		var startEnd1 = new trilateral2_IndexRange(start2,end2);
 		var c11 = startEnd1;
 		var s22 = rs1.clone();
 		s22.x -= 25;
 		s22.y += 35;
+		var arr2 = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx6 = -0.25;
+		var ry6 = 0.25;
+		var sides6 = 47;
+		if(sides6 == null) {
+			sides6 = 36;
+		}
+		if(ry6 == null) {
+			ry6 = 0;
+		}
+		if(rx6 == null) {
+			rx6 = 0;
+		}
 		var start3 = this88.drawType.get_size();
 		var drawType3 = this88.drawType;
-		var ax6 = s22.x;
-		var ay6 = s22.y;
+		var x4 = s22.x;
+		var y4 = s22.y;
 		var radius3 = s22.radius;
-		var sides2 = 36;
-		if(sides2 == null) {
-			sides2 = 36;
-		}
-		var pi7 = Math.PI;
-		var theta23 = pi7 / 2;
-		var step10 = pi7 * 2 / sides2;
-		var bx10;
-		var by10;
-		var cx10;
-		var cy10;
-		var _g7 = 0;
-		var _g16 = sides2;
-		while(_g7 < _g16) {
-			var i6 = _g7++;
-			bx10 = ax6 + radius3 * Math.sin(theta23);
-			by10 = ay6 + radius3 * Math.cos(theta23);
-			theta23 += step10;
-			cx10 = ax6 + radius3 * Math.sin(theta23);
-			cy10 = ay6 + radius3 * Math.cos(theta23);
-			drawType3.triangle(ax6,ay6,0,bx10,by10,0,cx10,cy10,0);
-			var m12 = trilateral2_Shaper.transformMatrix;
-			if(m12 != null) {
-				drawType3.transform(m12);
+		var len3;
+		if((sides6 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx7 = rx6;
+			var ry7 = ry6;
+			var sides7 = sides6;
+			var omega4 = 0.;
+			if(omega4 == null) {
+				omega4 = 0.;
+			}
+			if(sides7 == null) {
+				sides7 = 36;
+			}
+			var pi9 = Math.PI;
+			var theta25 = pi9 / 2 + omega4;
+			var step12 = pi9 * 2 / sides7;
+			var bx12;
+			var by12;
+			var cx12;
+			var cy12;
+			if(rx7 > 1.) {
+				rx7 = 1;
+			}
+			if(rx7 < -1.) {
+				rx7 = -1;
+			}
+			if(ry7 > 1.) {
+				ry7 = 1;
+			}
+			if(ry7 < -1.) {
+				ry7 = -1;
+			}
+			var mx4 = x4 + rx7 * radius3;
+			var my4 = y4 - ry7 * radius3;
+			var _g20 = 0;
+			var _g110 = sides7;
+			while(_g20 < _g110) {
+				var i8 = _g20++;
+				bx12 = x4 + radius3 * Math.sin(theta25);
+				by12 = y4 + radius3 * Math.cos(theta25);
+				theta25 += step12;
+				cx12 = x4 + radius3 * Math.sin(theta25);
+				cy12 = y4 + radius3 * Math.cos(theta25);
+				drawType3.triangle(mx4,my4,0,bx12,by12,0,cx12,cy12,0);
+				var m16 = trilateral2_Shaper.transformMatrix;
+				if(m16 != null) {
+					drawType3.transform(m16);
+				}
+				drawType3.next();
+			}
+			len3 = sides7;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides6 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx8 = rx6;
+			var ry8 = ry6;
+			var sides8 = sides6;
+			var omega5 = 0.;
+			if(omega5 == null) {
+				omega5 = 0.;
+			}
+			if(sides8 == null) {
+				sides8 = 36;
+			}
+			var pi10 = Math.PI;
+			var theta26 = pi10 / 2;
+			var step13 = pi10 * 2 / sides8;
+			theta26 -= step13 / 2 + omega5;
+			var bx13 = 0;
+			var by13 = 0;
+			var cx13 = 0;
+			var cy13 = 0;
+			if(rx8 > 1.) {
+				rx8 = 1;
+			}
+			if(rx8 < -1.) {
+				rx8 = -1;
+			}
+			if(ry8 > 1.) {
+				ry8 = 1;
+			}
+			if(ry8 < -1.) {
+				ry8 = -1;
+			}
+			var mx5 = x4 + rx8 * radius3;
+			var my5 = y4 - ry8 * radius3;
+			var dx6 = x4 + radius3 * Math.sin(theta26);
+			var dy6 = y4 + radius3 * Math.cos(theta26);
+			var _g21 = 0;
+			var _g111 = sides8 - 1;
+			while(_g21 < _g111) {
+				var i9 = _g21++;
+				bx13 = x4 + radius3 * Math.sin(theta26);
+				by13 = y4 + radius3 * Math.cos(theta26);
+				theta26 += step13;
+				cx13 = x4 + radius3 * Math.sin(theta26);
+				cy13 = y4 + radius3 * Math.cos(theta26);
+				drawType3.triangle(mx5,my5,0,bx13,by13,0,cx13,cy13,0);
+				var m17 = trilateral2_Shaper.transformMatrix;
+				if(m17 != null) {
+					drawType3.transform(m17);
+				}
+				drawType3.next();
+			}
+			drawType3.triangle(mx5,my5,0,cx13,cy13,0,dx6,dy6,0);
+			var m18 = trilateral2_Shaper.transformMatrix;
+			if(m18 != null) {
+				drawType3.transform(m18);
 			}
 			drawType3.next();
+			len3 = sides8;
 		}
-		var len3 = sides2;
-		var color3 = s22.color;
-		if(color3 == -1) {
-			color3 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color3,len3);
+		var k2 = 1;
+		var arrEnd2 = arr2.length - 1;
 		var end3 = start3 + len3 - 1;
+		var arr_2 = arr2.slice();
+		var _g22 = 0;
+		var _g112 = len3 - 1;
+		while(_g22 < _g112) {
+			var j2 = _g22++;
+			this88.colorType.cornerColors(s22.color,arr_2[k2 - 1],arr_2[k2]);
+			++k2;
+			if(k2 > arrEnd2) {
+				k2 = 1;
+				arr_2.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s22.color,arr_2[k2 - 1],arr2[0]);
 		var startEnd2 = new trilateral2_IndexRange(start3,end3);
 		var c21 = startEnd2;
 		var s31 = rs1.clone();
 		s31.x += 25;
 		s31.y += 35;
+		var arr3 = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx9 = -0.25;
+		var ry9 = 0.25;
+		var sides9 = 47;
+		if(sides9 == null) {
+			sides9 = 36;
+		}
+		if(ry9 == null) {
+			ry9 = 0;
+		}
+		if(rx9 == null) {
+			rx9 = 0;
+		}
 		var start4 = this88.drawType.get_size();
 		var drawType4 = this88.drawType;
-		var ax7 = s31.x;
-		var ay7 = s31.y;
+		var x5 = s31.x;
+		var y5 = s31.y;
 		var radius4 = s31.radius;
-		var sides3 = 36;
-		if(sides3 == null) {
-			sides3 = 36;
-		}
-		var pi8 = Math.PI;
-		var theta24 = pi8 / 2;
-		var step11 = pi8 * 2 / sides3;
-		var bx11;
-		var by11;
-		var cx11;
-		var cy11;
-		var _g8 = 0;
-		var _g17 = sides3;
-		while(_g8 < _g17) {
-			var i7 = _g8++;
-			bx11 = ax7 + radius4 * Math.sin(theta24);
-			by11 = ay7 + radius4 * Math.cos(theta24);
-			theta24 += step11;
-			cx11 = ax7 + radius4 * Math.sin(theta24);
-			cy11 = ay7 + radius4 * Math.cos(theta24);
-			drawType4.triangle(ax7,ay7,0,bx11,by11,0,cx11,cy11,0);
-			var m13 = trilateral2_Shaper.transformMatrix;
-			if(m13 != null) {
-				drawType4.transform(m13);
+		var len4;
+		if((sides9 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx10 = rx9;
+			var ry10 = ry9;
+			var sides10 = sides9;
+			var omega6 = 0.;
+			if(omega6 == null) {
+				omega6 = 0.;
+			}
+			if(sides10 == null) {
+				sides10 = 36;
+			}
+			var pi11 = Math.PI;
+			var theta27 = pi11 / 2 + omega6;
+			var step14 = pi11 * 2 / sides10;
+			var bx14;
+			var by14;
+			var cx14;
+			var cy14;
+			if(rx10 > 1.) {
+				rx10 = 1;
+			}
+			if(rx10 < -1.) {
+				rx10 = -1;
+			}
+			if(ry10 > 1.) {
+				ry10 = 1;
+			}
+			if(ry10 < -1.) {
+				ry10 = -1;
+			}
+			var mx6 = x5 + rx10 * radius4;
+			var my6 = y5 - ry10 * radius4;
+			var _g23 = 0;
+			var _g113 = sides10;
+			while(_g23 < _g113) {
+				var i10 = _g23++;
+				bx14 = x5 + radius4 * Math.sin(theta27);
+				by14 = y5 + radius4 * Math.cos(theta27);
+				theta27 += step14;
+				cx14 = x5 + radius4 * Math.sin(theta27);
+				cy14 = y5 + radius4 * Math.cos(theta27);
+				drawType4.triangle(mx6,my6,0,bx14,by14,0,cx14,cy14,0);
+				var m19 = trilateral2_Shaper.transformMatrix;
+				if(m19 != null) {
+					drawType4.transform(m19);
+				}
+				drawType4.next();
+			}
+			len4 = sides10;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides9 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx11 = rx9;
+			var ry11 = ry9;
+			var sides11 = sides9;
+			var omega7 = 0.;
+			if(omega7 == null) {
+				omega7 = 0.;
+			}
+			if(sides11 == null) {
+				sides11 = 36;
+			}
+			var pi12 = Math.PI;
+			var theta28 = pi12 / 2;
+			var step15 = pi12 * 2 / sides11;
+			theta28 -= step15 / 2 + omega7;
+			var bx15 = 0;
+			var by15 = 0;
+			var cx15 = 0;
+			var cy15 = 0;
+			if(rx11 > 1.) {
+				rx11 = 1;
+			}
+			if(rx11 < -1.) {
+				rx11 = -1;
+			}
+			if(ry11 > 1.) {
+				ry11 = 1;
+			}
+			if(ry11 < -1.) {
+				ry11 = -1;
+			}
+			var mx7 = x5 + rx11 * radius4;
+			var my7 = y5 - ry11 * radius4;
+			var dx7 = x5 + radius4 * Math.sin(theta28);
+			var dy7 = y5 + radius4 * Math.cos(theta28);
+			var _g24 = 0;
+			var _g114 = sides11 - 1;
+			while(_g24 < _g114) {
+				var i11 = _g24++;
+				bx15 = x5 + radius4 * Math.sin(theta28);
+				by15 = y5 + radius4 * Math.cos(theta28);
+				theta28 += step15;
+				cx15 = x5 + radius4 * Math.sin(theta28);
+				cy15 = y5 + radius4 * Math.cos(theta28);
+				drawType4.triangle(mx7,my7,0,bx15,by15,0,cx15,cy15,0);
+				var m20 = trilateral2_Shaper.transformMatrix;
+				if(m20 != null) {
+					drawType4.transform(m20);
+				}
+				drawType4.next();
+			}
+			drawType4.triangle(mx7,my7,0,cx15,cy15,0,dx7,dy7,0);
+			var m21 = trilateral2_Shaper.transformMatrix;
+			if(m21 != null) {
+				drawType4.transform(m21);
 			}
 			drawType4.next();
+			len4 = sides11;
 		}
-		var len4 = sides3;
-		var color4 = s31.color;
-		if(color4 == -1) {
-			color4 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color4,len4);
+		var k3 = 1;
+		var arrEnd3 = arr3.length - 1;
 		var end4 = start4 + len4 - 1;
+		var arr_3 = arr3.slice();
+		var _g25 = 0;
+		var _g115 = len4 - 1;
+		while(_g25 < _g115) {
+			var j3 = _g25++;
+			this88.colorType.cornerColors(s31.color,arr_3[k3 - 1],arr_3[k3]);
+			++k3;
+			if(k3 > arrEnd3) {
+				k3 = 1;
+				arr_3.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s31.color,arr_3[k3 - 1],arr3[0]);
 		var startEnd3 = new trilateral2_IndexRange(start4,end4);
 		var c31 = startEnd3;
 		var s41 = rs1.clone();
 		s41.x -= 25;
+		var arr4 = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx12 = -0.25;
+		var ry12 = 0.25;
+		var sides12 = 47;
+		if(sides12 == null) {
+			sides12 = 36;
+		}
+		if(ry12 == null) {
+			ry12 = 0;
+		}
+		if(rx12 == null) {
+			rx12 = 0;
+		}
 		var start5 = this88.drawType.get_size();
 		var drawType5 = this88.drawType;
-		var ax8 = s41.x;
-		var ay8 = s41.y;
+		var x6 = s41.x;
+		var y6 = s41.y;
 		var radius5 = s41.radius;
-		var sides4 = 36;
-		if(sides4 == null) {
-			sides4 = 36;
-		}
-		var pi9 = Math.PI;
-		var theta25 = pi9 / 2;
-		var step12 = pi9 * 2 / sides4;
-		var bx12;
-		var by12;
-		var cx12;
-		var cy12;
-		var _g9 = 0;
-		var _g18 = sides4;
-		while(_g9 < _g18) {
-			var i8 = _g9++;
-			bx12 = ax8 + radius5 * Math.sin(theta25);
-			by12 = ay8 + radius5 * Math.cos(theta25);
-			theta25 += step12;
-			cx12 = ax8 + radius5 * Math.sin(theta25);
-			cy12 = ay8 + radius5 * Math.cos(theta25);
-			drawType5.triangle(ax8,ay8,0,bx12,by12,0,cx12,cy12,0);
-			var m14 = trilateral2_Shaper.transformMatrix;
-			if(m14 != null) {
-				drawType5.transform(m14);
+		var len5;
+		if((sides12 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx13 = rx12;
+			var ry13 = ry12;
+			var sides13 = sides12;
+			var omega8 = 0.;
+			if(omega8 == null) {
+				omega8 = 0.;
+			}
+			if(sides13 == null) {
+				sides13 = 36;
+			}
+			var pi13 = Math.PI;
+			var theta29 = pi13 / 2 + omega8;
+			var step16 = pi13 * 2 / sides13;
+			var bx16;
+			var by16;
+			var cx16;
+			var cy16;
+			if(rx13 > 1.) {
+				rx13 = 1;
+			}
+			if(rx13 < -1.) {
+				rx13 = -1;
+			}
+			if(ry13 > 1.) {
+				ry13 = 1;
+			}
+			if(ry13 < -1.) {
+				ry13 = -1;
+			}
+			var mx8 = x6 + rx13 * radius5;
+			var my8 = y6 - ry13 * radius5;
+			var _g26 = 0;
+			var _g116 = sides13;
+			while(_g26 < _g116) {
+				var i12 = _g26++;
+				bx16 = x6 + radius5 * Math.sin(theta29);
+				by16 = y6 + radius5 * Math.cos(theta29);
+				theta29 += step16;
+				cx16 = x6 + radius5 * Math.sin(theta29);
+				cy16 = y6 + radius5 * Math.cos(theta29);
+				drawType5.triangle(mx8,my8,0,bx16,by16,0,cx16,cy16,0);
+				var m22 = trilateral2_Shaper.transformMatrix;
+				if(m22 != null) {
+					drawType5.transform(m22);
+				}
+				drawType5.next();
+			}
+			len5 = sides13;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides12 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx14 = rx12;
+			var ry14 = ry12;
+			var sides14 = sides12;
+			var omega9 = 0.;
+			if(omega9 == null) {
+				omega9 = 0.;
+			}
+			if(sides14 == null) {
+				sides14 = 36;
+			}
+			var pi14 = Math.PI;
+			var theta30 = pi14 / 2;
+			var step17 = pi14 * 2 / sides14;
+			theta30 -= step17 / 2 + omega9;
+			var bx17 = 0;
+			var by17 = 0;
+			var cx17 = 0;
+			var cy17 = 0;
+			if(rx14 > 1.) {
+				rx14 = 1;
+			}
+			if(rx14 < -1.) {
+				rx14 = -1;
+			}
+			if(ry14 > 1.) {
+				ry14 = 1;
+			}
+			if(ry14 < -1.) {
+				ry14 = -1;
+			}
+			var mx9 = x6 + rx14 * radius5;
+			var my9 = y6 - ry14 * radius5;
+			var dx8 = x6 + radius5 * Math.sin(theta30);
+			var dy8 = y6 + radius5 * Math.cos(theta30);
+			var _g27 = 0;
+			var _g117 = sides14 - 1;
+			while(_g27 < _g117) {
+				var i13 = _g27++;
+				bx17 = x6 + radius5 * Math.sin(theta30);
+				by17 = y6 + radius5 * Math.cos(theta30);
+				theta30 += step17;
+				cx17 = x6 + radius5 * Math.sin(theta30);
+				cy17 = y6 + radius5 * Math.cos(theta30);
+				drawType5.triangle(mx9,my9,0,bx17,by17,0,cx17,cy17,0);
+				var m23 = trilateral2_Shaper.transformMatrix;
+				if(m23 != null) {
+					drawType5.transform(m23);
+				}
+				drawType5.next();
+			}
+			drawType5.triangle(mx9,my9,0,cx17,cy17,0,dx8,dy8,0);
+			var m24 = trilateral2_Shaper.transformMatrix;
+			if(m24 != null) {
+				drawType5.transform(m24);
 			}
 			drawType5.next();
+			len5 = sides14;
 		}
-		var len5 = sides4;
-		var color5 = s41.color;
-		if(color5 == -1) {
-			color5 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color5,len5);
+		var k4 = 1;
+		var arrEnd4 = arr4.length - 1;
 		var end5 = start5 + len5 - 1;
+		var arr_4 = arr4.slice();
+		var _g28 = 0;
+		var _g118 = len5 - 1;
+		while(_g28 < _g118) {
+			var j4 = _g28++;
+			this88.colorType.cornerColors(s41.color,arr_4[k4 - 1],arr_4[k4]);
+			++k4;
+			if(k4 > arrEnd4) {
+				k4 = 1;
+				arr_4.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s41.color,arr_4[k4 - 1],arr4[0]);
 		var startEnd4 = new trilateral2_IndexRange(start5,end5);
 		var c41 = startEnd4;
 		var s51 = rs1.clone();
 		s51.x += 25;
+		var arr5 = [-1098686,-893376,-884166,-617161,-742865,-605897,-338891,-134353,-211,-2100183,-5778134,-8796379,-11288539,-11352449,-11686193,-12217654,-12617788,-12953665,-13354819,-11851843,-9230154,-4904763,-3986796,-2280591];
+		var rx15 = -0.25;
+		var ry15 = 0.25;
+		var sides15 = 47;
+		if(sides15 == null) {
+			sides15 = 36;
+		}
+		if(ry15 == null) {
+			ry15 = 0;
+		}
+		if(rx15 == null) {
+			rx15 = 0;
+		}
 		var start6 = this88.drawType.get_size();
 		var drawType6 = this88.drawType;
-		var ax9 = s51.x;
-		var ay9 = s51.y;
+		var x7 = s51.x;
+		var y7 = s51.y;
 		var radius6 = s51.radius;
-		var sides5 = 36;
-		if(sides5 == null) {
-			sides5 = 36;
-		}
-		var pi10 = Math.PI;
-		var theta26 = pi10 / 2;
-		var step13 = pi10 * 2 / sides5;
-		var bx13;
-		var by13;
-		var cx13;
-		var cy13;
-		var _g10 = 0;
-		var _g19 = sides5;
-		while(_g10 < _g19) {
-			var i9 = _g10++;
-			bx13 = ax9 + radius6 * Math.sin(theta26);
-			by13 = ay9 + radius6 * Math.cos(theta26);
-			theta26 += step13;
-			cx13 = ax9 + radius6 * Math.sin(theta26);
-			cy13 = ay9 + radius6 * Math.cos(theta26);
-			drawType6.triangle(ax9,ay9,0,bx13,by13,0,cx13,cy13,0);
-			var m15 = trilateral2_Shaper.transformMatrix;
-			if(m15 != null) {
-				drawType6.transform(m15);
+		var len6;
+		if((sides15 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx16 = rx15;
+			var ry16 = ry15;
+			var sides16 = sides15;
+			var omega10 = 0.;
+			if(omega10 == null) {
+				omega10 = 0.;
+			}
+			if(sides16 == null) {
+				sides16 = 36;
+			}
+			var pi15 = Math.PI;
+			var theta31 = pi15 / 2 + omega10;
+			var step18 = pi15 * 2 / sides16;
+			var bx18;
+			var by18;
+			var cx18;
+			var cy18;
+			if(rx16 > 1.) {
+				rx16 = 1;
+			}
+			if(rx16 < -1.) {
+				rx16 = -1;
+			}
+			if(ry16 > 1.) {
+				ry16 = 1;
+			}
+			if(ry16 < -1.) {
+				ry16 = -1;
+			}
+			var mx10 = x7 + rx16 * radius6;
+			var my10 = y7 - ry16 * radius6;
+			var _g29 = 0;
+			var _g119 = sides16;
+			while(_g29 < _g119) {
+				var i14 = _g29++;
+				bx18 = x7 + radius6 * Math.sin(theta31);
+				by18 = y7 + radius6 * Math.cos(theta31);
+				theta31 += step18;
+				cx18 = x7 + radius6 * Math.sin(theta31);
+				cy18 = y7 + radius6 * Math.cos(theta31);
+				drawType6.triangle(mx10,my10,0,bx18,by18,0,cx18,cy18,0);
+				var m25 = trilateral2_Shaper.transformMatrix;
+				if(m25 != null) {
+					drawType6.transform(m25);
+				}
+				drawType6.next();
+			}
+			len6 = sides16;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides15 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx17 = rx15;
+			var ry17 = ry15;
+			var sides17 = sides15;
+			var omega11 = 0.;
+			if(omega11 == null) {
+				omega11 = 0.;
+			}
+			if(sides17 == null) {
+				sides17 = 36;
+			}
+			var pi16 = Math.PI;
+			var theta32 = pi16 / 2;
+			var step19 = pi16 * 2 / sides17;
+			theta32 -= step19 / 2 + omega11;
+			var bx19 = 0;
+			var by19 = 0;
+			var cx19 = 0;
+			var cy19 = 0;
+			if(rx17 > 1.) {
+				rx17 = 1;
+			}
+			if(rx17 < -1.) {
+				rx17 = -1;
+			}
+			if(ry17 > 1.) {
+				ry17 = 1;
+			}
+			if(ry17 < -1.) {
+				ry17 = -1;
+			}
+			var mx11 = x7 + rx17 * radius6;
+			var my11 = y7 - ry17 * radius6;
+			var dx9 = x7 + radius6 * Math.sin(theta32);
+			var dy9 = y7 + radius6 * Math.cos(theta32);
+			var _g30 = 0;
+			var _g120 = sides17 - 1;
+			while(_g30 < _g120) {
+				var i15 = _g30++;
+				bx19 = x7 + radius6 * Math.sin(theta32);
+				by19 = y7 + radius6 * Math.cos(theta32);
+				theta32 += step19;
+				cx19 = x7 + radius6 * Math.sin(theta32);
+				cy19 = y7 + radius6 * Math.cos(theta32);
+				drawType6.triangle(mx11,my11,0,bx19,by19,0,cx19,cy19,0);
+				var m26 = trilateral2_Shaper.transformMatrix;
+				if(m26 != null) {
+					drawType6.transform(m26);
+				}
+				drawType6.next();
+			}
+			drawType6.triangle(mx11,my11,0,cx19,cy19,0,dx9,dy9,0);
+			var m27 = trilateral2_Shaper.transformMatrix;
+			if(m27 != null) {
+				drawType6.transform(m27);
 			}
 			drawType6.next();
+			len6 = sides17;
 		}
-		var len6 = sides5;
-		var color6 = s51.color;
-		if(color6 == -1) {
-			color6 = this88.currentColor;
-		}
-		this88.colorType.colorTriangles(color6,len6);
+		var k5 = 1;
+		var arrEnd5 = arr5.length - 1;
 		var end6 = start6 + len6 - 1;
+		var arr_5 = arr5.slice();
+		var _g31 = 0;
+		var _g121 = len6 - 1;
+		while(_g31 < _g121) {
+			var j5 = _g31++;
+			this88.colorType.cornerColors(s51.color,arr_5[k5 - 1],arr_5[k5]);
+			++k5;
+			if(k5 > arrEnd5) {
+				k5 = 1;
+				arr_5.reverse();
+			}
+		}
+		this88.colorType.cornerColors(s51.color,arr_5[k5 - 1],arr5[0]);
 		var startEnd5 = new trilateral2_IndexRange(start6,end6);
 		var c5 = startEnd5;
 		var s111 = new trilateral2_IndexRange(c0.start,c5.end);
@@ -2039,90 +2673,90 @@ dice_view_Die.prototype = {
 		var rs2 = this.dieShape;
 		var start7 = this89.drawType.get_size();
 		var drawType7 = this89.drawType;
-		var x2 = rs2.x - rs2.radius;
-		var y2 = rs2.y - rs2.radius;
+		var x8 = rs2.x - rs2.radius;
+		var y8 = rs2.y - rs2.radius;
 		var width1 = rs2.radius * 2;
 		var height1 = rs2.radius * 2;
 		var radius7 = this89.rounded;
-		var pi11 = Math.PI;
+		var pi17 = Math.PI;
 		var pi_21 = Math.PI / 2;
-		var ax10 = x2 + radius7;
-		var ay10 = y2 + radius7;
-		var bx14 = x2 + width1 - radius7;
-		var by14 = y2 + radius7;
-		var cx14 = bx14;
-		var cy14 = y2 + height1 - radius7;
-		var dx4 = ax10;
-		var dy4 = cy14;
+		var ax4 = x8 + radius7;
+		var ay4 = y8 + radius7;
+		var bx20 = x8 + width1 - radius7;
+		var by20 = y8 + radius7;
+		var cx20 = bx20;
+		var cy20 = y8 + height1 - radius7;
+		var dx10 = ax4;
+		var dy10 = cy20;
 		var count1 = 0;
-		var ax11 = ax10;
-		var ay11 = y2;
-		var bx15 = ax10 + (width1 - radius7 * 2);
-		var by15 = ay11;
-		var cx15 = bx15;
-		var cy15 = ay11 + height1;
-		var dx5 = ax10;
-		var dy5 = cy15;
-		drawType7.triangle(ax11,ay11,0,bx15,by15,0,dx5,dy5,0);
-		var m16 = trilateral2_Shaper.transformMatrix;
-		if(m16 != null) {
-			drawType7.transform(m16);
+		var ax5 = ax4;
+		var ay5 = y8;
+		var bx21 = ax4 + (width1 - radius7 * 2);
+		var by21 = ay5;
+		var cx21 = bx21;
+		var cy21 = ay5 + height1;
+		var dx11 = ax4;
+		var dy11 = cy21;
+		drawType7.triangle(ax5,ay5,0,bx21,by21,0,dx11,dy11,0);
+		var m28 = trilateral2_Shaper.transformMatrix;
+		if(m28 != null) {
+			drawType7.transform(m28);
 		}
 		drawType7.next();
-		drawType7.triangle(bx15,by15,0,cx15,cy15,0,dx5,dy5,0);
-		var m17 = trilateral2_Shaper.transformMatrix;
-		if(m17 != null) {
-			drawType7.transform(m17);
+		drawType7.triangle(bx21,by21,0,cx21,cy21,0,dx11,dy11,0);
+		var m29 = trilateral2_Shaper.transformMatrix;
+		if(m29 != null) {
+			drawType7.transform(m29);
 		}
 		drawType7.next();
 		count1 += 2;
 		var dimY1 = height1 - 2 * radius7;
-		var ax12 = x2;
-		var ay12 = ay10;
-		var bx16 = x2 + radius7;
-		var by16 = ay12;
-		var cx16 = bx16;
-		var cy16 = ay12 + dimY1;
-		var dx6 = x2;
-		var dy6 = cy16;
-		drawType7.triangle(ax12,ay12,0,bx16,by16,0,dx6,dy6,0);
-		var m18 = trilateral2_Shaper.transformMatrix;
-		if(m18 != null) {
-			drawType7.transform(m18);
+		var ax6 = x8;
+		var ay6 = ay4;
+		var bx22 = x8 + radius7;
+		var by22 = ay6;
+		var cx22 = bx22;
+		var cy22 = ay6 + dimY1;
+		var dx12 = x8;
+		var dy12 = cy22;
+		drawType7.triangle(ax6,ay6,0,bx22,by22,0,dx12,dy12,0);
+		var m30 = trilateral2_Shaper.transformMatrix;
+		if(m30 != null) {
+			drawType7.transform(m30);
 		}
 		drawType7.next();
-		drawType7.triangle(bx16,by16,0,cx16,cy16,0,dx6,dy6,0);
-		var m19 = trilateral2_Shaper.transformMatrix;
-		if(m19 != null) {
-			drawType7.transform(m19);
-		}
-		drawType7.next();
-		count1 += 2;
-		var ax13 = bx14;
-		var ay13 = by14;
-		var bx17 = bx14 + radius7;
-		var by17 = ay13;
-		var cx17 = bx17;
-		var cy17 = ay13 + dimY1;
-		var dx7 = bx14;
-		var dy7 = cy17;
-		drawType7.triangle(ax13,ay13,0,bx17,by17,0,dx7,dy7,0);
-		var m20 = trilateral2_Shaper.transformMatrix;
-		if(m20 != null) {
-			drawType7.transform(m20);
-		}
-		drawType7.next();
-		drawType7.triangle(bx17,by17,0,cx17,cy17,0,dx7,dy7,0);
-		var m21 = trilateral2_Shaper.transformMatrix;
-		if(m21 != null) {
-			drawType7.transform(m21);
+		drawType7.triangle(bx22,by22,0,cx22,cy22,0,dx12,dy12,0);
+		var m31 = trilateral2_Shaper.transformMatrix;
+		if(m31 != null) {
+			drawType7.transform(m31);
 		}
 		drawType7.next();
 		count1 += 2;
-		var beta1 = -pi11;
+		var ax7 = bx20;
+		var ay7 = by20;
+		var bx23 = bx20 + radius7;
+		var by23 = ay7;
+		var cx23 = bx23;
+		var cy23 = ay7 + dimY1;
+		var dx13 = bx20;
+		var dy13 = cy23;
+		drawType7.triangle(ax7,ay7,0,bx23,by23,0,dx13,dy13,0);
+		var m32 = trilateral2_Shaper.transformMatrix;
+		if(m32 != null) {
+			drawType7.transform(m32);
+		}
+		drawType7.next();
+		drawType7.triangle(bx23,by23,0,cx23,cy23,0,dx13,dy13,0);
+		var m33 = trilateral2_Shaper.transformMatrix;
+		if(m33 != null) {
+			drawType7.transform(m33);
+		}
+		drawType7.next();
+		count1 += 2;
+		var beta1 = -pi17;
 		var gamma2 = -pi_21;
-		var pi12 = Math.PI;
-		var step14 = pi12 * 2 / 36;
+		var pi18 = Math.PI;
+		var step20 = pi18 * 2 / 36;
 		var dif20;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -2146,9 +2780,9 @@ dice_view_Die.prototype = {
 			var zb16 = this91;
 			var fa16 = za16;
 			var fb16 = zb16;
-			var theta27 = Math.abs(fa16 - fb16);
+			var theta33 = Math.abs(fa16 - fb16);
 			var clockwise16 = fa16 < fb16;
-			var dif21 = clockwise16 ? theta27 : -theta27;
+			var dif21 = clockwise16 ? theta33 : -theta33;
 			dif20 = dif21 > 0 ? dif21 : 2 * Math.PI + dif21;
 			break;
 		case 1:
@@ -2172,9 +2806,9 @@ dice_view_Die.prototype = {
 			var zb17 = this93;
 			var fa17 = za17;
 			var fb17 = zb17;
-			var theta28 = Math.abs(fa17 - fb17);
+			var theta34 = Math.abs(fa17 - fb17);
 			var clockwise17 = fa17 < fb17;
-			var dif22 = clockwise17 ? theta28 : -theta28;
+			var dif22 = clockwise17 ? theta34 : -theta34;
 			dif20 = dif22 < 0 ? dif22 : -2 * Math.PI + dif22;
 			break;
 		case 2:
@@ -2198,11 +2832,11 @@ dice_view_Die.prototype = {
 			var zb18 = this95;
 			var fa18 = za18;
 			var fb18 = zb18;
-			var theta29 = Math.abs(fa18 - fb18);
-			var smallest4 = theta29 <= Math.PI;
+			var theta35 = Math.abs(fa18 - fb18);
+			var smallest4 = theta35 <= Math.PI;
 			var clockwise18 = fa18 < fb18;
-			var dif23 = clockwise18 ? theta29 : -theta29;
-			dif20 = smallest4 ? dif23 : clockwise18 ? -(2 * Math.PI - theta29) : 2 * Math.PI - theta29;
+			var dif23 = clockwise18 ? theta35 : -theta35;
+			dif20 = smallest4 ? dif23 : clockwise18 ? -(2 * Math.PI - theta35) : 2 * Math.PI - theta35;
 			break;
 		case 3:
 			var f38;
@@ -2225,42 +2859,42 @@ dice_view_Die.prototype = {
 			var zb19 = this97;
 			var fa19 = za19;
 			var fb19 = zb19;
-			var theta30 = Math.abs(fa19 - fb19);
-			var largest4 = theta30 > Math.PI;
+			var theta36 = Math.abs(fa19 - fb19);
+			var largest4 = theta36 > Math.PI;
 			var clockwise19 = fa19 < fb19;
-			var dif24 = clockwise19 ? theta30 : -theta30;
-			dif20 = largest4 ? dif24 : clockwise19 ? -(2 * Math.PI - theta30) : 2 * Math.PI - theta30;
+			var dif24 = clockwise19 ? theta36 : -theta36;
+			dif20 = largest4 ? dif24 : clockwise19 ? -(2 * Math.PI - theta36) : 2 * Math.PI - theta36;
 			break;
 		}
 		var positive4 = dif20 >= 0;
-		var totalSteps4 = Math.ceil(Math.abs(dif20) / step14);
-		var step15 = dif20 / totalSteps4;
+		var totalSteps4 = Math.ceil(Math.abs(dif20) / step20);
+		var step21 = dif20 / totalSteps4;
 		var angle4 = beta1;
-		var cx18;
-		var cy18;
-		var bx18 = 0;
-		var by18 = 0;
-		var _g20 = 0;
-		var _g110 = totalSteps4 + 1;
-		while(_g20 < _g110) {
-			var i10 = _g20++;
-			cx18 = ax10 + radius7 * Math.sin(angle4);
-			cy18 = ay10 + radius7 * Math.cos(angle4);
-			if(i10 != 0) {
-				drawType7.triangle(ax10,ay10,0,bx18,by18,0,cx18,cy18,0);
-				var m22 = trilateral2_Shaper.transformMatrix;
-				if(m22 != null) {
-					drawType7.transform(m22);
+		var cx24;
+		var cy24;
+		var bx24 = 0;
+		var by24 = 0;
+		var _g32 = 0;
+		var _g122 = totalSteps4 + 1;
+		while(_g32 < _g122) {
+			var i16 = _g32++;
+			cx24 = ax4 + radius7 * Math.sin(angle4);
+			cy24 = ay4 + radius7 * Math.cos(angle4);
+			if(i16 != 0) {
+				drawType7.triangle(ax4,ay4,0,bx24,by24,0,cx24,cy24,0);
+				var m34 = trilateral2_Shaper.transformMatrix;
+				if(m34 != null) {
+					drawType7.transform(m34);
 				}
 				drawType7.next();
 			}
-			angle4 += step15;
-			bx18 = cx18;
-			by18 = cy18;
+			angle4 += step21;
+			bx24 = cx24;
+			by24 = cy24;
 		}
 		count1 += totalSteps4;
-		var pi13 = Math.PI;
-		var step16 = pi13 * 2 / 36;
+		var pi19 = Math.PI;
+		var step22 = pi19 * 2 / 36;
 		var dif25;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -2274,19 +2908,19 @@ dice_view_Die.prototype = {
 			var this98 = f40;
 			var za20 = this98;
 			var f41;
-			if(pi11 >= 0 && pi11 > Math.PI) {
-				f41 = pi11;
+			if(pi17 >= 0 && pi17 > Math.PI) {
+				f41 = pi17;
 			} else {
-				var a41 = pi11 % (2 * Math.PI);
+				var a41 = pi17 % (2 * Math.PI);
 				f41 = a41 >= 0 ? a41 : a41 + 2 * Math.PI;
 			}
 			var this99 = f41;
 			var zb20 = this99;
 			var fa20 = za20;
 			var fb20 = zb20;
-			var theta31 = Math.abs(fa20 - fb20);
+			var theta37 = Math.abs(fa20 - fb20);
 			var clockwise20 = fa20 < fb20;
-			var dif26 = clockwise20 ? theta31 : -theta31;
+			var dif26 = clockwise20 ? theta37 : -theta37;
 			dif25 = dif26 > 0 ? dif26 : 2 * Math.PI + dif26;
 			break;
 		case 1:
@@ -2300,19 +2934,19 @@ dice_view_Die.prototype = {
 			var this100 = f42;
 			var za21 = this100;
 			var f43;
-			if(pi11 >= 0 && pi11 > Math.PI) {
-				f43 = pi11;
+			if(pi17 >= 0 && pi17 > Math.PI) {
+				f43 = pi17;
 			} else {
-				var a43 = pi11 % (2 * Math.PI);
+				var a43 = pi17 % (2 * Math.PI);
 				f43 = a43 >= 0 ? a43 : a43 + 2 * Math.PI;
 			}
 			var this101 = f43;
 			var zb21 = this101;
 			var fa21 = za21;
 			var fb21 = zb21;
-			var theta32 = Math.abs(fa21 - fb21);
+			var theta38 = Math.abs(fa21 - fb21);
 			var clockwise21 = fa21 < fb21;
-			var dif27 = clockwise21 ? theta32 : -theta32;
+			var dif27 = clockwise21 ? theta38 : -theta38;
 			dif25 = dif27 < 0 ? dif27 : -2 * Math.PI + dif27;
 			break;
 		case 2:
@@ -2326,21 +2960,21 @@ dice_view_Die.prototype = {
 			var this102 = f44;
 			var za22 = this102;
 			var f45;
-			if(pi11 >= 0 && pi11 > Math.PI) {
-				f45 = pi11;
+			if(pi17 >= 0 && pi17 > Math.PI) {
+				f45 = pi17;
 			} else {
-				var a45 = pi11 % (2 * Math.PI);
+				var a45 = pi17 % (2 * Math.PI);
 				f45 = a45 >= 0 ? a45 : a45 + 2 * Math.PI;
 			}
 			var this103 = f45;
 			var zb22 = this103;
 			var fa22 = za22;
 			var fb22 = zb22;
-			var theta33 = Math.abs(fa22 - fb22);
-			var smallest5 = theta33 <= Math.PI;
+			var theta39 = Math.abs(fa22 - fb22);
+			var smallest5 = theta39 <= Math.PI;
 			var clockwise22 = fa22 < fb22;
-			var dif28 = clockwise22 ? theta33 : -theta33;
-			dif25 = smallest5 ? dif28 : clockwise22 ? -(2 * Math.PI - theta33) : 2 * Math.PI - theta33;
+			var dif28 = clockwise22 ? theta39 : -theta39;
+			dif25 = smallest5 ? dif28 : clockwise22 ? -(2 * Math.PI - theta39) : 2 * Math.PI - theta39;
 			break;
 		case 3:
 			var f46;
@@ -2353,52 +2987,52 @@ dice_view_Die.prototype = {
 			var this104 = f46;
 			var za23 = this104;
 			var f47;
-			if(pi11 >= 0 && pi11 > Math.PI) {
-				f47 = pi11;
+			if(pi17 >= 0 && pi17 > Math.PI) {
+				f47 = pi17;
 			} else {
-				var a47 = pi11 % (2 * Math.PI);
+				var a47 = pi17 % (2 * Math.PI);
 				f47 = a47 >= 0 ? a47 : a47 + 2 * Math.PI;
 			}
 			var this105 = f47;
 			var zb23 = this105;
 			var fa23 = za23;
 			var fb23 = zb23;
-			var theta34 = Math.abs(fa23 - fb23);
-			var largest5 = theta34 > Math.PI;
+			var theta40 = Math.abs(fa23 - fb23);
+			var largest5 = theta40 > Math.PI;
 			var clockwise23 = fa23 < fb23;
-			var dif29 = clockwise23 ? theta34 : -theta34;
-			dif25 = largest5 ? dif29 : clockwise23 ? -(2 * Math.PI - theta34) : 2 * Math.PI - theta34;
+			var dif29 = clockwise23 ? theta40 : -theta40;
+			dif25 = largest5 ? dif29 : clockwise23 ? -(2 * Math.PI - theta40) : 2 * Math.PI - theta40;
 			break;
 		}
 		var positive5 = dif25 >= 0;
-		var totalSteps5 = Math.ceil(Math.abs(dif25) / step16);
-		var step17 = dif25 / totalSteps5;
+		var totalSteps5 = Math.ceil(Math.abs(dif25) / step22);
+		var step23 = dif25 / totalSteps5;
 		var angle5 = pi_21;
-		var cx19;
-		var cy19;
-		var bx19 = 0;
-		var by19 = 0;
-		var _g21 = 0;
-		var _g111 = totalSteps5 + 1;
-		while(_g21 < _g111) {
-			var i11 = _g21++;
-			cx19 = bx14 + radius7 * Math.sin(angle5);
-			cy19 = by14 + radius7 * Math.cos(angle5);
-			if(i11 != 0) {
-				drawType7.triangle(bx14,by14,0,bx19,by19,0,cx19,cy19,0);
-				var m23 = trilateral2_Shaper.transformMatrix;
-				if(m23 != null) {
-					drawType7.transform(m23);
+		var cx25;
+		var cy25;
+		var bx25 = 0;
+		var by25 = 0;
+		var _g33 = 0;
+		var _g123 = totalSteps5 + 1;
+		while(_g33 < _g123) {
+			var i17 = _g33++;
+			cx25 = bx20 + radius7 * Math.sin(angle5);
+			cy25 = by20 + radius7 * Math.cos(angle5);
+			if(i17 != 0) {
+				drawType7.triangle(bx20,by20,0,bx25,by25,0,cx25,cy25,0);
+				var m35 = trilateral2_Shaper.transformMatrix;
+				if(m35 != null) {
+					drawType7.transform(m35);
 				}
 				drawType7.next();
 			}
-			angle5 += step17;
-			bx19 = cx19;
-			by19 = cy19;
+			angle5 += step23;
+			bx25 = cx25;
+			by25 = cy25;
 		}
 		count1 += totalSteps5;
-		var pi14 = Math.PI;
-		var step18 = pi14 * 2 / 36;
+		var pi20 = Math.PI;
+		var step24 = pi20 * 2 / 36;
 		var dif30;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -2422,9 +3056,9 @@ dice_view_Die.prototype = {
 			var zb24 = this107;
 			var fa24 = za24;
 			var fb24 = zb24;
-			var theta35 = Math.abs(fa24 - fb24);
+			var theta41 = Math.abs(fa24 - fb24);
 			var clockwise24 = fa24 < fb24;
-			var dif31 = clockwise24 ? theta35 : -theta35;
+			var dif31 = clockwise24 ? theta41 : -theta41;
 			dif30 = dif31 > 0 ? dif31 : 2 * Math.PI + dif31;
 			break;
 		case 1:
@@ -2448,9 +3082,9 @@ dice_view_Die.prototype = {
 			var zb25 = this109;
 			var fa25 = za25;
 			var fb25 = zb25;
-			var theta36 = Math.abs(fa25 - fb25);
+			var theta42 = Math.abs(fa25 - fb25);
 			var clockwise25 = fa25 < fb25;
-			var dif32 = clockwise25 ? theta36 : -theta36;
+			var dif32 = clockwise25 ? theta42 : -theta42;
 			dif30 = dif32 < 0 ? dif32 : -2 * Math.PI + dif32;
 			break;
 		case 2:
@@ -2474,11 +3108,11 @@ dice_view_Die.prototype = {
 			var zb26 = this111;
 			var fa26 = za26;
 			var fb26 = zb26;
-			var theta37 = Math.abs(fa26 - fb26);
-			var smallest6 = theta37 <= Math.PI;
+			var theta43 = Math.abs(fa26 - fb26);
+			var smallest6 = theta43 <= Math.PI;
 			var clockwise26 = fa26 < fb26;
-			var dif33 = clockwise26 ? theta37 : -theta37;
-			dif30 = smallest6 ? dif33 : clockwise26 ? -(2 * Math.PI - theta37) : 2 * Math.PI - theta37;
+			var dif33 = clockwise26 ? theta43 : -theta43;
+			dif30 = smallest6 ? dif33 : clockwise26 ? -(2 * Math.PI - theta43) : 2 * Math.PI - theta43;
 			break;
 		case 3:
 			var f54;
@@ -2501,43 +3135,43 @@ dice_view_Die.prototype = {
 			var zb27 = this113;
 			var fa27 = za27;
 			var fb27 = zb27;
-			var theta38 = Math.abs(fa27 - fb27);
-			var largest6 = theta38 > Math.PI;
+			var theta44 = Math.abs(fa27 - fb27);
+			var largest6 = theta44 > Math.PI;
 			var clockwise27 = fa27 < fb27;
-			var dif34 = clockwise27 ? theta38 : -theta38;
-			dif30 = largest6 ? dif34 : clockwise27 ? -(2 * Math.PI - theta38) : 2 * Math.PI - theta38;
+			var dif34 = clockwise27 ? theta44 : -theta44;
+			dif30 = largest6 ? dif34 : clockwise27 ? -(2 * Math.PI - theta44) : 2 * Math.PI - theta44;
 			break;
 		}
 		var positive6 = dif30 >= 0;
-		var totalSteps6 = Math.ceil(Math.abs(dif30) / step18);
-		var step19 = dif30 / totalSteps6;
+		var totalSteps6 = Math.ceil(Math.abs(dif30) / step24);
+		var step25 = dif30 / totalSteps6;
 		var angle6 = pi_21;
-		var cx20;
-		var cy20;
-		var bx20 = 0;
-		var by20 = 0;
-		var _g22 = 0;
-		var _g112 = totalSteps6 + 1;
-		while(_g22 < _g112) {
-			var i12 = _g22++;
-			cx20 = cx14 + radius7 * Math.sin(angle6);
-			cy20 = cy14 + radius7 * Math.cos(angle6);
-			if(i12 != 0) {
-				drawType7.triangle(cx14,cy14,0,bx20,by20,0,cx20,cy20,0);
-				var m24 = trilateral2_Shaper.transformMatrix;
-				if(m24 != null) {
-					drawType7.transform(m24);
+		var cx26;
+		var cy26;
+		var bx26 = 0;
+		var by26 = 0;
+		var _g34 = 0;
+		var _g124 = totalSteps6 + 1;
+		while(_g34 < _g124) {
+			var i18 = _g34++;
+			cx26 = cx20 + radius7 * Math.sin(angle6);
+			cy26 = cy20 + radius7 * Math.cos(angle6);
+			if(i18 != 0) {
+				drawType7.triangle(cx20,cy20,0,bx26,by26,0,cx26,cy26,0);
+				var m36 = trilateral2_Shaper.transformMatrix;
+				if(m36 != null) {
+					drawType7.transform(m36);
 				}
 				drawType7.next();
 			}
-			angle6 += step19;
-			bx20 = cx20;
-			by20 = cy20;
+			angle6 += step25;
+			bx26 = cx26;
+			by26 = cy26;
 		}
 		count1 += totalSteps6;
 		var gamma3 = -pi_21;
-		var pi15 = Math.PI;
-		var step20 = pi15 * 2 / 36;
+		var pi21 = Math.PI;
+		var step26 = pi21 * 2 / 36;
 		var dif35;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -2561,9 +3195,9 @@ dice_view_Die.prototype = {
 			var zb28 = this115;
 			var fa28 = za28;
 			var fb28 = zb28;
-			var theta39 = Math.abs(fa28 - fb28);
+			var theta45 = Math.abs(fa28 - fb28);
 			var clockwise28 = fa28 < fb28;
-			var dif36 = clockwise28 ? theta39 : -theta39;
+			var dif36 = clockwise28 ? theta45 : -theta45;
 			dif35 = dif36 > 0 ? dif36 : 2 * Math.PI + dif36;
 			break;
 		case 1:
@@ -2587,9 +3221,9 @@ dice_view_Die.prototype = {
 			var zb29 = this117;
 			var fa29 = za29;
 			var fb29 = zb29;
-			var theta40 = Math.abs(fa29 - fb29);
+			var theta46 = Math.abs(fa29 - fb29);
 			var clockwise29 = fa29 < fb29;
-			var dif37 = clockwise29 ? theta40 : -theta40;
+			var dif37 = clockwise29 ? theta46 : -theta46;
 			dif35 = dif37 < 0 ? dif37 : -2 * Math.PI + dif37;
 			break;
 		case 2:
@@ -2613,11 +3247,11 @@ dice_view_Die.prototype = {
 			var zb30 = this119;
 			var fa30 = za30;
 			var fb30 = zb30;
-			var theta41 = Math.abs(fa30 - fb30);
-			var smallest7 = theta41 <= Math.PI;
+			var theta47 = Math.abs(fa30 - fb30);
+			var smallest7 = theta47 <= Math.PI;
 			var clockwise30 = fa30 < fb30;
-			var dif38 = clockwise30 ? theta41 : -theta41;
-			dif35 = smallest7 ? dif38 : clockwise30 ? -(2 * Math.PI - theta41) : 2 * Math.PI - theta41;
+			var dif38 = clockwise30 ? theta47 : -theta47;
+			dif35 = smallest7 ? dif38 : clockwise30 ? -(2 * Math.PI - theta47) : 2 * Math.PI - theta47;
 			break;
 		case 3:
 			var f62;
@@ -2640,45 +3274,45 @@ dice_view_Die.prototype = {
 			var zb31 = this121;
 			var fa31 = za31;
 			var fb31 = zb31;
-			var theta42 = Math.abs(fa31 - fb31);
-			var largest7 = theta42 > Math.PI;
+			var theta48 = Math.abs(fa31 - fb31);
+			var largest7 = theta48 > Math.PI;
 			var clockwise31 = fa31 < fb31;
-			var dif39 = clockwise31 ? theta42 : -theta42;
-			dif35 = largest7 ? dif39 : clockwise31 ? -(2 * Math.PI - theta42) : 2 * Math.PI - theta42;
+			var dif39 = clockwise31 ? theta48 : -theta48;
+			dif35 = largest7 ? dif39 : clockwise31 ? -(2 * Math.PI - theta48) : 2 * Math.PI - theta48;
 			break;
 		}
 		var positive7 = dif35 >= 0;
-		var totalSteps7 = Math.ceil(Math.abs(dif35) / step20);
-		var step21 = dif35 / totalSteps7;
+		var totalSteps7 = Math.ceil(Math.abs(dif35) / step26);
+		var step27 = dif35 / totalSteps7;
 		var angle7 = 0;
-		var cx21;
-		var cy21;
-		var bx21 = 0;
-		var by21 = 0;
-		var _g23 = 0;
-		var _g113 = totalSteps7 + 1;
-		while(_g23 < _g113) {
-			var i13 = _g23++;
-			cx21 = dx4 + radius7 * Math.sin(angle7);
-			cy21 = dy4 + radius7 * Math.cos(angle7);
-			if(i13 != 0) {
-				drawType7.triangle(dx4,dy4,0,bx21,by21,0,cx21,cy21,0);
-				var m25 = trilateral2_Shaper.transformMatrix;
-				if(m25 != null) {
-					drawType7.transform(m25);
+		var cx27;
+		var cy27;
+		var bx27 = 0;
+		var by27 = 0;
+		var _g35 = 0;
+		var _g125 = totalSteps7 + 1;
+		while(_g35 < _g125) {
+			var i19 = _g35++;
+			cx27 = dx10 + radius7 * Math.sin(angle7);
+			cy27 = dy10 + radius7 * Math.cos(angle7);
+			if(i19 != 0) {
+				drawType7.triangle(dx10,dy10,0,bx27,by27,0,cx27,cy27,0);
+				var m37 = trilateral2_Shaper.transformMatrix;
+				if(m37 != null) {
+					drawType7.transform(m37);
 				}
 				drawType7.next();
 			}
-			angle7 += step21;
-			bx21 = cx21;
-			by21 = cy21;
+			angle7 += step27;
+			bx27 = cx27;
+			by27 = cy27;
 		}
 		var len7 = count1 += totalSteps7;
-		var color7 = rs2.color;
-		if(color7 == -1) {
-			color7 = this89.currentColor;
+		var color1 = rs2.color;
+		if(color1 == -1) {
+			color1 = this89.currentColor;
 		}
-		this89.colorType.colorTriangles(color7,len7);
+		this89.colorType.colorTriangles(color1,len7);
 		var end7 = start7 + len7 - 1;
 		var s02 = new trilateral2_IndexRange(start7,end7);
 		var this122 = this.spots;
@@ -2696,42 +3330,42 @@ dice_view_Die.prototype = {
 		s03.y -= 20;
 		var start8 = this127.drawType.get_size();
 		var drawType8 = this127.drawType;
-		var ax14 = s03.x;
-		var ay14 = s03.y;
+		var ax8 = s03.x;
+		var ay8 = s03.y;
 		var radius8 = s03.radius;
-		var sides6 = 36;
-		if(sides6 == null) {
-			sides6 = 36;
+		var sides18 = 36;
+		if(sides18 == null) {
+			sides18 = 36;
 		}
-		var pi16 = Math.PI;
-		var theta43 = pi16 / 2;
-		var step22 = pi16 * 2 / sides6;
-		var bx22;
-		var by22;
-		var cx22;
-		var cy22;
-		var _g24 = 0;
-		var _g114 = sides6;
-		while(_g24 < _g114) {
-			var i14 = _g24++;
-			bx22 = ax14 + radius8 * Math.sin(theta43);
-			by22 = ay14 + radius8 * Math.cos(theta43);
-			theta43 += step22;
-			cx22 = ax14 + radius8 * Math.sin(theta43);
-			cy22 = ay14 + radius8 * Math.cos(theta43);
-			drawType8.triangle(ax14,ay14,0,bx22,by22,0,cx22,cy22,0);
-			var m26 = trilateral2_Shaper.transformMatrix;
-			if(m26 != null) {
-				drawType8.transform(m26);
+		var pi22 = Math.PI;
+		var theta49 = pi22 / 2;
+		var step28 = pi22 * 2 / sides18;
+		var bx28;
+		var by28;
+		var cx28;
+		var cy28;
+		var _g36 = 0;
+		var _g126 = sides18;
+		while(_g36 < _g126) {
+			var i20 = _g36++;
+			bx28 = ax8 + radius8 * Math.sin(theta49);
+			by28 = ay8 + radius8 * Math.cos(theta49);
+			theta49 += step28;
+			cx28 = ax8 + radius8 * Math.sin(theta49);
+			cy28 = ay8 + radius8 * Math.cos(theta49);
+			drawType8.triangle(ax8,ay8,0,bx28,by28,0,cx28,cy28,0);
+			var m38 = trilateral2_Shaper.transformMatrix;
+			if(m38 != null) {
+				drawType8.transform(m38);
 			}
 			drawType8.next();
 		}
-		var len8 = sides6;
-		var color8 = s03.color;
-		if(color8 == -1) {
-			color8 = this127.currentColor;
+		var len8 = sides18;
+		var color2 = s03.color;
+		if(color2 == -1) {
+			color2 = this127.currentColor;
 		}
-		this127.colorType.colorTriangles(color8,len8);
+		this127.colorType.colorTriangles(color2,len8);
 		var end8 = start8 + len8 - 1;
 		var startEnd6 = new trilateral2_IndexRange(start8,end8);
 		var c01 = startEnd6;
@@ -2740,42 +3374,42 @@ dice_view_Die.prototype = {
 		s112.y += 20;
 		var start9 = this127.drawType.get_size();
 		var drawType9 = this127.drawType;
-		var ax15 = s112.x;
-		var ay15 = s112.y;
+		var ax9 = s112.x;
+		var ay9 = s112.y;
 		var radius9 = s112.radius;
-		var sides7 = 36;
-		if(sides7 == null) {
-			sides7 = 36;
+		var sides19 = 36;
+		if(sides19 == null) {
+			sides19 = 36;
 		}
-		var pi17 = Math.PI;
-		var theta44 = pi17 / 2;
-		var step23 = pi17 * 2 / sides7;
-		var bx23;
-		var by23;
-		var cx23;
-		var cy23;
-		var _g25 = 0;
-		var _g115 = sides7;
-		while(_g25 < _g115) {
-			var i15 = _g25++;
-			bx23 = ax15 + radius9 * Math.sin(theta44);
-			by23 = ay15 + radius9 * Math.cos(theta44);
-			theta44 += step23;
-			cx23 = ax15 + radius9 * Math.sin(theta44);
-			cy23 = ay15 + radius9 * Math.cos(theta44);
-			drawType9.triangle(ax15,ay15,0,bx23,by23,0,cx23,cy23,0);
-			var m27 = trilateral2_Shaper.transformMatrix;
-			if(m27 != null) {
-				drawType9.transform(m27);
+		var pi23 = Math.PI;
+		var theta50 = pi23 / 2;
+		var step29 = pi23 * 2 / sides19;
+		var bx29;
+		var by29;
+		var cx29;
+		var cy29;
+		var _g37 = 0;
+		var _g127 = sides19;
+		while(_g37 < _g127) {
+			var i21 = _g37++;
+			bx29 = ax9 + radius9 * Math.sin(theta50);
+			by29 = ay9 + radius9 * Math.cos(theta50);
+			theta50 += step29;
+			cx29 = ax9 + radius9 * Math.sin(theta50);
+			cy29 = ay9 + radius9 * Math.cos(theta50);
+			drawType9.triangle(ax9,ay9,0,bx29,by29,0,cx29,cy29,0);
+			var m39 = trilateral2_Shaper.transformMatrix;
+			if(m39 != null) {
+				drawType9.transform(m39);
 			}
 			drawType9.next();
 		}
-		var len9 = sides7;
-		var color9 = s112.color;
-		if(color9 == -1) {
-			color9 = this127.currentColor;
+		var len9 = sides19;
+		var color3 = s112.color;
+		if(color3 == -1) {
+			color3 = this127.currentColor;
 		}
-		this127.colorType.colorTriangles(color9,len9);
+		this127.colorType.colorTriangles(color3,len9);
 		var end9 = start9 + len9 - 1;
 		var startEnd7 = new trilateral2_IndexRange(start9,end9);
 		var c12 = startEnd7;
@@ -2788,90 +3422,90 @@ dice_view_Die.prototype = {
 		var rs4 = this.dieShape;
 		var start10 = this128.drawType.get_size();
 		var drawType10 = this128.drawType;
-		var x3 = rs4.x - rs4.radius;
-		var y3 = rs4.y - rs4.radius;
+		var x9 = rs4.x - rs4.radius;
+		var y9 = rs4.y - rs4.radius;
 		var width2 = rs4.radius * 2;
 		var height2 = rs4.radius * 2;
 		var radius10 = this128.rounded;
-		var pi18 = Math.PI;
+		var pi24 = Math.PI;
 		var pi_22 = Math.PI / 2;
-		var ax16 = x3 + radius10;
-		var ay16 = y3 + radius10;
-		var bx24 = x3 + width2 - radius10;
-		var by24 = y3 + radius10;
-		var cx24 = bx24;
-		var cy24 = y3 + height2 - radius10;
-		var dx8 = ax16;
-		var dy8 = cy24;
+		var ax10 = x9 + radius10;
+		var ay10 = y9 + radius10;
+		var bx30 = x9 + width2 - radius10;
+		var by30 = y9 + radius10;
+		var cx30 = bx30;
+		var cy30 = y9 + height2 - radius10;
+		var dx14 = ax10;
+		var dy14 = cy30;
 		var count2 = 0;
-		var ax17 = ax16;
-		var ay17 = y3;
-		var bx25 = ax16 + (width2 - radius10 * 2);
-		var by25 = ay17;
-		var cx25 = bx25;
-		var cy25 = ay17 + height2;
-		var dx9 = ax16;
-		var dy9 = cy25;
-		drawType10.triangle(ax17,ay17,0,bx25,by25,0,dx9,dy9,0);
-		var m28 = trilateral2_Shaper.transformMatrix;
-		if(m28 != null) {
-			drawType10.transform(m28);
+		var ax11 = ax10;
+		var ay11 = y9;
+		var bx31 = ax10 + (width2 - radius10 * 2);
+		var by31 = ay11;
+		var cx31 = bx31;
+		var cy31 = ay11 + height2;
+		var dx15 = ax10;
+		var dy15 = cy31;
+		drawType10.triangle(ax11,ay11,0,bx31,by31,0,dx15,dy15,0);
+		var m40 = trilateral2_Shaper.transformMatrix;
+		if(m40 != null) {
+			drawType10.transform(m40);
 		}
 		drawType10.next();
-		drawType10.triangle(bx25,by25,0,cx25,cy25,0,dx9,dy9,0);
-		var m29 = trilateral2_Shaper.transformMatrix;
-		if(m29 != null) {
-			drawType10.transform(m29);
+		drawType10.triangle(bx31,by31,0,cx31,cy31,0,dx15,dy15,0);
+		var m41 = trilateral2_Shaper.transformMatrix;
+		if(m41 != null) {
+			drawType10.transform(m41);
 		}
 		drawType10.next();
 		count2 += 2;
 		var dimY2 = height2 - 2 * radius10;
-		var ax18 = x3;
-		var ay18 = ay16;
-		var bx26 = x3 + radius10;
-		var by26 = ay18;
-		var cx26 = bx26;
-		var cy26 = ay18 + dimY2;
-		var dx10 = x3;
-		var dy10 = cy26;
-		drawType10.triangle(ax18,ay18,0,bx26,by26,0,dx10,dy10,0);
-		var m30 = trilateral2_Shaper.transformMatrix;
-		if(m30 != null) {
-			drawType10.transform(m30);
+		var ax12 = x9;
+		var ay12 = ay10;
+		var bx32 = x9 + radius10;
+		var by32 = ay12;
+		var cx32 = bx32;
+		var cy32 = ay12 + dimY2;
+		var dx16 = x9;
+		var dy16 = cy32;
+		drawType10.triangle(ax12,ay12,0,bx32,by32,0,dx16,dy16,0);
+		var m42 = trilateral2_Shaper.transformMatrix;
+		if(m42 != null) {
+			drawType10.transform(m42);
 		}
 		drawType10.next();
-		drawType10.triangle(bx26,by26,0,cx26,cy26,0,dx10,dy10,0);
-		var m31 = trilateral2_Shaper.transformMatrix;
-		if(m31 != null) {
-			drawType10.transform(m31);
-		}
-		drawType10.next();
-		count2 += 2;
-		var ax19 = bx24;
-		var ay19 = by24;
-		var bx27 = bx24 + radius10;
-		var by27 = ay19;
-		var cx27 = bx27;
-		var cy27 = ay19 + dimY2;
-		var dx11 = bx24;
-		var dy11 = cy27;
-		drawType10.triangle(ax19,ay19,0,bx27,by27,0,dx11,dy11,0);
-		var m32 = trilateral2_Shaper.transformMatrix;
-		if(m32 != null) {
-			drawType10.transform(m32);
-		}
-		drawType10.next();
-		drawType10.triangle(bx27,by27,0,cx27,cy27,0,dx11,dy11,0);
-		var m33 = trilateral2_Shaper.transformMatrix;
-		if(m33 != null) {
-			drawType10.transform(m33);
+		drawType10.triangle(bx32,by32,0,cx32,cy32,0,dx16,dy16,0);
+		var m43 = trilateral2_Shaper.transformMatrix;
+		if(m43 != null) {
+			drawType10.transform(m43);
 		}
 		drawType10.next();
 		count2 += 2;
-		var beta2 = -pi18;
+		var ax13 = bx30;
+		var ay13 = by30;
+		var bx33 = bx30 + radius10;
+		var by33 = ay13;
+		var cx33 = bx33;
+		var cy33 = ay13 + dimY2;
+		var dx17 = bx30;
+		var dy17 = cy33;
+		drawType10.triangle(ax13,ay13,0,bx33,by33,0,dx17,dy17,0);
+		var m44 = trilateral2_Shaper.transformMatrix;
+		if(m44 != null) {
+			drawType10.transform(m44);
+		}
+		drawType10.next();
+		drawType10.triangle(bx33,by33,0,cx33,cy33,0,dx17,dy17,0);
+		var m45 = trilateral2_Shaper.transformMatrix;
+		if(m45 != null) {
+			drawType10.transform(m45);
+		}
+		drawType10.next();
+		count2 += 2;
+		var beta2 = -pi24;
 		var gamma4 = -pi_22;
-		var pi19 = Math.PI;
-		var step24 = pi19 * 2 / 36;
+		var pi25 = Math.PI;
+		var step30 = pi25 * 2 / 36;
 		var dif40;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -2895,9 +3529,9 @@ dice_view_Die.prototype = {
 			var zb32 = this130;
 			var fa32 = za32;
 			var fb32 = zb32;
-			var theta45 = Math.abs(fa32 - fb32);
+			var theta51 = Math.abs(fa32 - fb32);
 			var clockwise32 = fa32 < fb32;
-			var dif41 = clockwise32 ? theta45 : -theta45;
+			var dif41 = clockwise32 ? theta51 : -theta51;
 			dif40 = dif41 > 0 ? dif41 : 2 * Math.PI + dif41;
 			break;
 		case 1:
@@ -2921,9 +3555,9 @@ dice_view_Die.prototype = {
 			var zb33 = this132;
 			var fa33 = za33;
 			var fb33 = zb33;
-			var theta46 = Math.abs(fa33 - fb33);
+			var theta52 = Math.abs(fa33 - fb33);
 			var clockwise33 = fa33 < fb33;
-			var dif42 = clockwise33 ? theta46 : -theta46;
+			var dif42 = clockwise33 ? theta52 : -theta52;
 			dif40 = dif42 < 0 ? dif42 : -2 * Math.PI + dif42;
 			break;
 		case 2:
@@ -2947,11 +3581,11 @@ dice_view_Die.prototype = {
 			var zb34 = this134;
 			var fa34 = za34;
 			var fb34 = zb34;
-			var theta47 = Math.abs(fa34 - fb34);
-			var smallest8 = theta47 <= Math.PI;
+			var theta53 = Math.abs(fa34 - fb34);
+			var smallest8 = theta53 <= Math.PI;
 			var clockwise34 = fa34 < fb34;
-			var dif43 = clockwise34 ? theta47 : -theta47;
-			dif40 = smallest8 ? dif43 : clockwise34 ? -(2 * Math.PI - theta47) : 2 * Math.PI - theta47;
+			var dif43 = clockwise34 ? theta53 : -theta53;
+			dif40 = smallest8 ? dif43 : clockwise34 ? -(2 * Math.PI - theta53) : 2 * Math.PI - theta53;
 			break;
 		case 3:
 			var f70;
@@ -2974,42 +3608,42 @@ dice_view_Die.prototype = {
 			var zb35 = this136;
 			var fa35 = za35;
 			var fb35 = zb35;
-			var theta48 = Math.abs(fa35 - fb35);
-			var largest8 = theta48 > Math.PI;
+			var theta54 = Math.abs(fa35 - fb35);
+			var largest8 = theta54 > Math.PI;
 			var clockwise35 = fa35 < fb35;
-			var dif44 = clockwise35 ? theta48 : -theta48;
-			dif40 = largest8 ? dif44 : clockwise35 ? -(2 * Math.PI - theta48) : 2 * Math.PI - theta48;
+			var dif44 = clockwise35 ? theta54 : -theta54;
+			dif40 = largest8 ? dif44 : clockwise35 ? -(2 * Math.PI - theta54) : 2 * Math.PI - theta54;
 			break;
 		}
 		var positive8 = dif40 >= 0;
-		var totalSteps8 = Math.ceil(Math.abs(dif40) / step24);
-		var step25 = dif40 / totalSteps8;
+		var totalSteps8 = Math.ceil(Math.abs(dif40) / step30);
+		var step31 = dif40 / totalSteps8;
 		var angle8 = beta2;
-		var cx28;
-		var cy28;
-		var bx28 = 0;
-		var by28 = 0;
-		var _g26 = 0;
-		var _g116 = totalSteps8 + 1;
-		while(_g26 < _g116) {
-			var i16 = _g26++;
-			cx28 = ax16 + radius10 * Math.sin(angle8);
-			cy28 = ay16 + radius10 * Math.cos(angle8);
-			if(i16 != 0) {
-				drawType10.triangle(ax16,ay16,0,bx28,by28,0,cx28,cy28,0);
-				var m34 = trilateral2_Shaper.transformMatrix;
-				if(m34 != null) {
-					drawType10.transform(m34);
+		var cx34;
+		var cy34;
+		var bx34 = 0;
+		var by34 = 0;
+		var _g38 = 0;
+		var _g128 = totalSteps8 + 1;
+		while(_g38 < _g128) {
+			var i22 = _g38++;
+			cx34 = ax10 + radius10 * Math.sin(angle8);
+			cy34 = ay10 + radius10 * Math.cos(angle8);
+			if(i22 != 0) {
+				drawType10.triangle(ax10,ay10,0,bx34,by34,0,cx34,cy34,0);
+				var m46 = trilateral2_Shaper.transformMatrix;
+				if(m46 != null) {
+					drawType10.transform(m46);
 				}
 				drawType10.next();
 			}
-			angle8 += step25;
-			bx28 = cx28;
-			by28 = cy28;
+			angle8 += step31;
+			bx34 = cx34;
+			by34 = cy34;
 		}
 		count2 += totalSteps8;
-		var pi20 = Math.PI;
-		var step26 = pi20 * 2 / 36;
+		var pi26 = Math.PI;
+		var step32 = pi26 * 2 / 36;
 		var dif45;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -3023,19 +3657,19 @@ dice_view_Die.prototype = {
 			var this137 = f72;
 			var za36 = this137;
 			var f73;
-			if(pi18 >= 0 && pi18 > Math.PI) {
-				f73 = pi18;
+			if(pi24 >= 0 && pi24 > Math.PI) {
+				f73 = pi24;
 			} else {
-				var a73 = pi18 % (2 * Math.PI);
+				var a73 = pi24 % (2 * Math.PI);
 				f73 = a73 >= 0 ? a73 : a73 + 2 * Math.PI;
 			}
 			var this138 = f73;
 			var zb36 = this138;
 			var fa36 = za36;
 			var fb36 = zb36;
-			var theta49 = Math.abs(fa36 - fb36);
+			var theta55 = Math.abs(fa36 - fb36);
 			var clockwise36 = fa36 < fb36;
-			var dif46 = clockwise36 ? theta49 : -theta49;
+			var dif46 = clockwise36 ? theta55 : -theta55;
 			dif45 = dif46 > 0 ? dif46 : 2 * Math.PI + dif46;
 			break;
 		case 1:
@@ -3049,19 +3683,19 @@ dice_view_Die.prototype = {
 			var this139 = f74;
 			var za37 = this139;
 			var f75;
-			if(pi18 >= 0 && pi18 > Math.PI) {
-				f75 = pi18;
+			if(pi24 >= 0 && pi24 > Math.PI) {
+				f75 = pi24;
 			} else {
-				var a75 = pi18 % (2 * Math.PI);
+				var a75 = pi24 % (2 * Math.PI);
 				f75 = a75 >= 0 ? a75 : a75 + 2 * Math.PI;
 			}
 			var this140 = f75;
 			var zb37 = this140;
 			var fa37 = za37;
 			var fb37 = zb37;
-			var theta50 = Math.abs(fa37 - fb37);
+			var theta56 = Math.abs(fa37 - fb37);
 			var clockwise37 = fa37 < fb37;
-			var dif47 = clockwise37 ? theta50 : -theta50;
+			var dif47 = clockwise37 ? theta56 : -theta56;
 			dif45 = dif47 < 0 ? dif47 : -2 * Math.PI + dif47;
 			break;
 		case 2:
@@ -3075,21 +3709,21 @@ dice_view_Die.prototype = {
 			var this141 = f76;
 			var za38 = this141;
 			var f77;
-			if(pi18 >= 0 && pi18 > Math.PI) {
-				f77 = pi18;
+			if(pi24 >= 0 && pi24 > Math.PI) {
+				f77 = pi24;
 			} else {
-				var a77 = pi18 % (2 * Math.PI);
+				var a77 = pi24 % (2 * Math.PI);
 				f77 = a77 >= 0 ? a77 : a77 + 2 * Math.PI;
 			}
 			var this142 = f77;
 			var zb38 = this142;
 			var fa38 = za38;
 			var fb38 = zb38;
-			var theta51 = Math.abs(fa38 - fb38);
-			var smallest9 = theta51 <= Math.PI;
+			var theta57 = Math.abs(fa38 - fb38);
+			var smallest9 = theta57 <= Math.PI;
 			var clockwise38 = fa38 < fb38;
-			var dif48 = clockwise38 ? theta51 : -theta51;
-			dif45 = smallest9 ? dif48 : clockwise38 ? -(2 * Math.PI - theta51) : 2 * Math.PI - theta51;
+			var dif48 = clockwise38 ? theta57 : -theta57;
+			dif45 = smallest9 ? dif48 : clockwise38 ? -(2 * Math.PI - theta57) : 2 * Math.PI - theta57;
 			break;
 		case 3:
 			var f78;
@@ -3102,52 +3736,52 @@ dice_view_Die.prototype = {
 			var this143 = f78;
 			var za39 = this143;
 			var f79;
-			if(pi18 >= 0 && pi18 > Math.PI) {
-				f79 = pi18;
+			if(pi24 >= 0 && pi24 > Math.PI) {
+				f79 = pi24;
 			} else {
-				var a79 = pi18 % (2 * Math.PI);
+				var a79 = pi24 % (2 * Math.PI);
 				f79 = a79 >= 0 ? a79 : a79 + 2 * Math.PI;
 			}
 			var this144 = f79;
 			var zb39 = this144;
 			var fa39 = za39;
 			var fb39 = zb39;
-			var theta52 = Math.abs(fa39 - fb39);
-			var largest9 = theta52 > Math.PI;
+			var theta58 = Math.abs(fa39 - fb39);
+			var largest9 = theta58 > Math.PI;
 			var clockwise39 = fa39 < fb39;
-			var dif49 = clockwise39 ? theta52 : -theta52;
-			dif45 = largest9 ? dif49 : clockwise39 ? -(2 * Math.PI - theta52) : 2 * Math.PI - theta52;
+			var dif49 = clockwise39 ? theta58 : -theta58;
+			dif45 = largest9 ? dif49 : clockwise39 ? -(2 * Math.PI - theta58) : 2 * Math.PI - theta58;
 			break;
 		}
 		var positive9 = dif45 >= 0;
-		var totalSteps9 = Math.ceil(Math.abs(dif45) / step26);
-		var step27 = dif45 / totalSteps9;
+		var totalSteps9 = Math.ceil(Math.abs(dif45) / step32);
+		var step33 = dif45 / totalSteps9;
 		var angle9 = pi_22;
-		var cx29;
-		var cy29;
-		var bx29 = 0;
-		var by29 = 0;
-		var _g27 = 0;
-		var _g117 = totalSteps9 + 1;
-		while(_g27 < _g117) {
-			var i17 = _g27++;
-			cx29 = bx24 + radius10 * Math.sin(angle9);
-			cy29 = by24 + radius10 * Math.cos(angle9);
-			if(i17 != 0) {
-				drawType10.triangle(bx24,by24,0,bx29,by29,0,cx29,cy29,0);
-				var m35 = trilateral2_Shaper.transformMatrix;
-				if(m35 != null) {
-					drawType10.transform(m35);
+		var cx35;
+		var cy35;
+		var bx35 = 0;
+		var by35 = 0;
+		var _g39 = 0;
+		var _g129 = totalSteps9 + 1;
+		while(_g39 < _g129) {
+			var i23 = _g39++;
+			cx35 = bx30 + radius10 * Math.sin(angle9);
+			cy35 = by30 + radius10 * Math.cos(angle9);
+			if(i23 != 0) {
+				drawType10.triangle(bx30,by30,0,bx35,by35,0,cx35,cy35,0);
+				var m47 = trilateral2_Shaper.transformMatrix;
+				if(m47 != null) {
+					drawType10.transform(m47);
 				}
 				drawType10.next();
 			}
-			angle9 += step27;
-			bx29 = cx29;
-			by29 = cy29;
+			angle9 += step33;
+			bx35 = cx35;
+			by35 = cy35;
 		}
 		count2 += totalSteps9;
-		var pi21 = Math.PI;
-		var step28 = pi21 * 2 / 36;
+		var pi27 = Math.PI;
+		var step34 = pi27 * 2 / 36;
 		var dif50;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -3171,9 +3805,9 @@ dice_view_Die.prototype = {
 			var zb40 = this146;
 			var fa40 = za40;
 			var fb40 = zb40;
-			var theta53 = Math.abs(fa40 - fb40);
+			var theta59 = Math.abs(fa40 - fb40);
 			var clockwise40 = fa40 < fb40;
-			var dif51 = clockwise40 ? theta53 : -theta53;
+			var dif51 = clockwise40 ? theta59 : -theta59;
 			dif50 = dif51 > 0 ? dif51 : 2 * Math.PI + dif51;
 			break;
 		case 1:
@@ -3197,9 +3831,9 @@ dice_view_Die.prototype = {
 			var zb41 = this148;
 			var fa41 = za41;
 			var fb41 = zb41;
-			var theta54 = Math.abs(fa41 - fb41);
+			var theta60 = Math.abs(fa41 - fb41);
 			var clockwise41 = fa41 < fb41;
-			var dif52 = clockwise41 ? theta54 : -theta54;
+			var dif52 = clockwise41 ? theta60 : -theta60;
 			dif50 = dif52 < 0 ? dif52 : -2 * Math.PI + dif52;
 			break;
 		case 2:
@@ -3223,11 +3857,11 @@ dice_view_Die.prototype = {
 			var zb42 = this150;
 			var fa42 = za42;
 			var fb42 = zb42;
-			var theta55 = Math.abs(fa42 - fb42);
-			var smallest10 = theta55 <= Math.PI;
+			var theta61 = Math.abs(fa42 - fb42);
+			var smallest10 = theta61 <= Math.PI;
 			var clockwise42 = fa42 < fb42;
-			var dif53 = clockwise42 ? theta55 : -theta55;
-			dif50 = smallest10 ? dif53 : clockwise42 ? -(2 * Math.PI - theta55) : 2 * Math.PI - theta55;
+			var dif53 = clockwise42 ? theta61 : -theta61;
+			dif50 = smallest10 ? dif53 : clockwise42 ? -(2 * Math.PI - theta61) : 2 * Math.PI - theta61;
 			break;
 		case 3:
 			var f86;
@@ -3250,43 +3884,43 @@ dice_view_Die.prototype = {
 			var zb43 = this152;
 			var fa43 = za43;
 			var fb43 = zb43;
-			var theta56 = Math.abs(fa43 - fb43);
-			var largest10 = theta56 > Math.PI;
+			var theta62 = Math.abs(fa43 - fb43);
+			var largest10 = theta62 > Math.PI;
 			var clockwise43 = fa43 < fb43;
-			var dif54 = clockwise43 ? theta56 : -theta56;
-			dif50 = largest10 ? dif54 : clockwise43 ? -(2 * Math.PI - theta56) : 2 * Math.PI - theta56;
+			var dif54 = clockwise43 ? theta62 : -theta62;
+			dif50 = largest10 ? dif54 : clockwise43 ? -(2 * Math.PI - theta62) : 2 * Math.PI - theta62;
 			break;
 		}
 		var positive10 = dif50 >= 0;
-		var totalSteps10 = Math.ceil(Math.abs(dif50) / step28);
-		var step29 = dif50 / totalSteps10;
+		var totalSteps10 = Math.ceil(Math.abs(dif50) / step34);
+		var step35 = dif50 / totalSteps10;
 		var angle10 = pi_22;
-		var cx30;
-		var cy30;
-		var bx30 = 0;
-		var by30 = 0;
-		var _g28 = 0;
-		var _g118 = totalSteps10 + 1;
-		while(_g28 < _g118) {
-			var i18 = _g28++;
-			cx30 = cx24 + radius10 * Math.sin(angle10);
-			cy30 = cy24 + radius10 * Math.cos(angle10);
-			if(i18 != 0) {
-				drawType10.triangle(cx24,cy24,0,bx30,by30,0,cx30,cy30,0);
-				var m36 = trilateral2_Shaper.transformMatrix;
-				if(m36 != null) {
-					drawType10.transform(m36);
+		var cx36;
+		var cy36;
+		var bx36 = 0;
+		var by36 = 0;
+		var _g40 = 0;
+		var _g130 = totalSteps10 + 1;
+		while(_g40 < _g130) {
+			var i24 = _g40++;
+			cx36 = cx30 + radius10 * Math.sin(angle10);
+			cy36 = cy30 + radius10 * Math.cos(angle10);
+			if(i24 != 0) {
+				drawType10.triangle(cx30,cy30,0,bx36,by36,0,cx36,cy36,0);
+				var m48 = trilateral2_Shaper.transformMatrix;
+				if(m48 != null) {
+					drawType10.transform(m48);
 				}
 				drawType10.next();
 			}
-			angle10 += step29;
-			bx30 = cx30;
-			by30 = cy30;
+			angle10 += step35;
+			bx36 = cx36;
+			by36 = cy36;
 		}
 		count2 += totalSteps10;
 		var gamma5 = -pi_22;
-		var pi22 = Math.PI;
-		var step30 = pi22 * 2 / 36;
+		var pi28 = Math.PI;
+		var step36 = pi28 * 2 / 36;
 		var dif55;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -3310,9 +3944,9 @@ dice_view_Die.prototype = {
 			var zb44 = this154;
 			var fa44 = za44;
 			var fb44 = zb44;
-			var theta57 = Math.abs(fa44 - fb44);
+			var theta63 = Math.abs(fa44 - fb44);
 			var clockwise44 = fa44 < fb44;
-			var dif56 = clockwise44 ? theta57 : -theta57;
+			var dif56 = clockwise44 ? theta63 : -theta63;
 			dif55 = dif56 > 0 ? dif56 : 2 * Math.PI + dif56;
 			break;
 		case 1:
@@ -3336,9 +3970,9 @@ dice_view_Die.prototype = {
 			var zb45 = this156;
 			var fa45 = za45;
 			var fb45 = zb45;
-			var theta58 = Math.abs(fa45 - fb45);
+			var theta64 = Math.abs(fa45 - fb45);
 			var clockwise45 = fa45 < fb45;
-			var dif57 = clockwise45 ? theta58 : -theta58;
+			var dif57 = clockwise45 ? theta64 : -theta64;
 			dif55 = dif57 < 0 ? dif57 : -2 * Math.PI + dif57;
 			break;
 		case 2:
@@ -3362,11 +3996,11 @@ dice_view_Die.prototype = {
 			var zb46 = this158;
 			var fa46 = za46;
 			var fb46 = zb46;
-			var theta59 = Math.abs(fa46 - fb46);
-			var smallest11 = theta59 <= Math.PI;
+			var theta65 = Math.abs(fa46 - fb46);
+			var smallest11 = theta65 <= Math.PI;
 			var clockwise46 = fa46 < fb46;
-			var dif58 = clockwise46 ? theta59 : -theta59;
-			dif55 = smallest11 ? dif58 : clockwise46 ? -(2 * Math.PI - theta59) : 2 * Math.PI - theta59;
+			var dif58 = clockwise46 ? theta65 : -theta65;
+			dif55 = smallest11 ? dif58 : clockwise46 ? -(2 * Math.PI - theta65) : 2 * Math.PI - theta65;
 			break;
 		case 3:
 			var f94;
@@ -3389,45 +4023,45 @@ dice_view_Die.prototype = {
 			var zb47 = this160;
 			var fa47 = za47;
 			var fb47 = zb47;
-			var theta60 = Math.abs(fa47 - fb47);
-			var largest11 = theta60 > Math.PI;
+			var theta66 = Math.abs(fa47 - fb47);
+			var largest11 = theta66 > Math.PI;
 			var clockwise47 = fa47 < fb47;
-			var dif59 = clockwise47 ? theta60 : -theta60;
-			dif55 = largest11 ? dif59 : clockwise47 ? -(2 * Math.PI - theta60) : 2 * Math.PI - theta60;
+			var dif59 = clockwise47 ? theta66 : -theta66;
+			dif55 = largest11 ? dif59 : clockwise47 ? -(2 * Math.PI - theta66) : 2 * Math.PI - theta66;
 			break;
 		}
 		var positive11 = dif55 >= 0;
-		var totalSteps11 = Math.ceil(Math.abs(dif55) / step30);
-		var step31 = dif55 / totalSteps11;
+		var totalSteps11 = Math.ceil(Math.abs(dif55) / step36);
+		var step37 = dif55 / totalSteps11;
 		var angle11 = 0;
-		var cx31;
-		var cy31;
-		var bx31 = 0;
-		var by31 = 0;
-		var _g29 = 0;
-		var _g119 = totalSteps11 + 1;
-		while(_g29 < _g119) {
-			var i19 = _g29++;
-			cx31 = dx8 + radius10 * Math.sin(angle11);
-			cy31 = dy8 + radius10 * Math.cos(angle11);
-			if(i19 != 0) {
-				drawType10.triangle(dx8,dy8,0,bx31,by31,0,cx31,cy31,0);
-				var m37 = trilateral2_Shaper.transformMatrix;
-				if(m37 != null) {
-					drawType10.transform(m37);
+		var cx37;
+		var cy37;
+		var bx37 = 0;
+		var by37 = 0;
+		var _g41 = 0;
+		var _g131 = totalSteps11 + 1;
+		while(_g41 < _g131) {
+			var i25 = _g41++;
+			cx37 = dx14 + radius10 * Math.sin(angle11);
+			cy37 = dy14 + radius10 * Math.cos(angle11);
+			if(i25 != 0) {
+				drawType10.triangle(dx14,dy14,0,bx37,by37,0,cx37,cy37,0);
+				var m49 = trilateral2_Shaper.transformMatrix;
+				if(m49 != null) {
+					drawType10.transform(m49);
 				}
 				drawType10.next();
 			}
-			angle11 += step31;
-			bx31 = cx31;
-			by31 = cy31;
+			angle11 += step37;
+			bx37 = cx37;
+			by37 = cy37;
 		}
 		var len10 = count2 += totalSteps11;
-		var color10 = rs4.color;
-		if(color10 == -1) {
-			color10 = this128.currentColor;
+		var color4 = rs4.color;
+		if(color4 == -1) {
+			color4 = this128.currentColor;
 		}
-		this128.colorType.colorTriangles(color10,len10);
+		this128.colorType.colorTriangles(color4,len10);
 		var end10 = start10 + len10 - 1;
 		var s04 = new trilateral2_IndexRange(start10,end10);
 		var this161 = this.spots;
@@ -3445,42 +4079,42 @@ dice_view_Die.prototype = {
 		s05.y -= 25;
 		var start11 = this166.drawType.get_size();
 		var drawType11 = this166.drawType;
-		var ax20 = s05.x;
-		var ay20 = s05.y;
+		var ax14 = s05.x;
+		var ay14 = s05.y;
 		var radius11 = s05.radius;
-		var sides8 = 36;
-		if(sides8 == null) {
-			sides8 = 36;
+		var sides20 = 36;
+		if(sides20 == null) {
+			sides20 = 36;
 		}
-		var pi23 = Math.PI;
-		var theta61 = pi23 / 2;
-		var step32 = pi23 * 2 / sides8;
-		var bx32;
-		var by32;
-		var cx32;
-		var cy32;
-		var _g30 = 0;
-		var _g120 = sides8;
-		while(_g30 < _g120) {
-			var i20 = _g30++;
-			bx32 = ax20 + radius11 * Math.sin(theta61);
-			by32 = ay20 + radius11 * Math.cos(theta61);
-			theta61 += step32;
-			cx32 = ax20 + radius11 * Math.sin(theta61);
-			cy32 = ay20 + radius11 * Math.cos(theta61);
-			drawType11.triangle(ax20,ay20,0,bx32,by32,0,cx32,cy32,0);
-			var m38 = trilateral2_Shaper.transformMatrix;
-			if(m38 != null) {
-				drawType11.transform(m38);
+		var pi29 = Math.PI;
+		var theta67 = pi29 / 2;
+		var step38 = pi29 * 2 / sides20;
+		var bx38;
+		var by38;
+		var cx38;
+		var cy38;
+		var _g42 = 0;
+		var _g132 = sides20;
+		while(_g42 < _g132) {
+			var i26 = _g42++;
+			bx38 = ax14 + radius11 * Math.sin(theta67);
+			by38 = ay14 + radius11 * Math.cos(theta67);
+			theta67 += step38;
+			cx38 = ax14 + radius11 * Math.sin(theta67);
+			cy38 = ay14 + radius11 * Math.cos(theta67);
+			drawType11.triangle(ax14,ay14,0,bx38,by38,0,cx38,cy38,0);
+			var m50 = trilateral2_Shaper.transformMatrix;
+			if(m50 != null) {
+				drawType11.transform(m50);
 			}
 			drawType11.next();
 		}
-		var len11 = sides8;
-		var color11 = s05.color;
-		if(color11 == -1) {
-			color11 = this166.currentColor;
+		var len11 = sides20;
+		var color5 = s05.color;
+		if(color5 == -1) {
+			color5 = this166.currentColor;
 		}
-		this166.colorType.colorTriangles(color11,len11);
+		this166.colorType.colorTriangles(color5,len11);
 		var end11 = start11 + len11 - 1;
 		var startEnd8 = new trilateral2_IndexRange(start11,end11);
 		var c02 = startEnd8;
@@ -3489,84 +4123,84 @@ dice_view_Die.prototype = {
 		s114.y += 25;
 		var start12 = this166.drawType.get_size();
 		var drawType12 = this166.drawType;
-		var ax21 = s114.x;
-		var ay21 = s114.y;
+		var ax15 = s114.x;
+		var ay15 = s114.y;
 		var radius12 = s114.radius;
-		var sides9 = 36;
-		if(sides9 == null) {
-			sides9 = 36;
+		var sides21 = 36;
+		if(sides21 == null) {
+			sides21 = 36;
 		}
-		var pi24 = Math.PI;
-		var theta62 = pi24 / 2;
-		var step33 = pi24 * 2 / sides9;
-		var bx33;
-		var by33;
-		var cx33;
-		var cy33;
-		var _g31 = 0;
-		var _g121 = sides9;
-		while(_g31 < _g121) {
-			var i21 = _g31++;
-			bx33 = ax21 + radius12 * Math.sin(theta62);
-			by33 = ay21 + radius12 * Math.cos(theta62);
-			theta62 += step33;
-			cx33 = ax21 + radius12 * Math.sin(theta62);
-			cy33 = ay21 + radius12 * Math.cos(theta62);
-			drawType12.triangle(ax21,ay21,0,bx33,by33,0,cx33,cy33,0);
-			var m39 = trilateral2_Shaper.transformMatrix;
-			if(m39 != null) {
-				drawType12.transform(m39);
+		var pi30 = Math.PI;
+		var theta68 = pi30 / 2;
+		var step39 = pi30 * 2 / sides21;
+		var bx39;
+		var by39;
+		var cx39;
+		var cy39;
+		var _g43 = 0;
+		var _g133 = sides21;
+		while(_g43 < _g133) {
+			var i27 = _g43++;
+			bx39 = ax15 + radius12 * Math.sin(theta68);
+			by39 = ay15 + radius12 * Math.cos(theta68);
+			theta68 += step39;
+			cx39 = ax15 + radius12 * Math.sin(theta68);
+			cy39 = ay15 + radius12 * Math.cos(theta68);
+			drawType12.triangle(ax15,ay15,0,bx39,by39,0,cx39,cy39,0);
+			var m51 = trilateral2_Shaper.transformMatrix;
+			if(m51 != null) {
+				drawType12.transform(m51);
 			}
 			drawType12.next();
 		}
-		var len12 = sides9;
-		var color12 = s114.color;
-		if(color12 == -1) {
-			color12 = this166.currentColor;
+		var len12 = sides21;
+		var color6 = s114.color;
+		if(color6 == -1) {
+			color6 = this166.currentColor;
 		}
-		this166.colorType.colorTriangles(color12,len12);
+		this166.colorType.colorTriangles(color6,len12);
 		var end12 = start12 + len12 - 1;
 		var startEnd9 = new trilateral2_IndexRange(start12,end12);
 		var c13 = startEnd9;
 		var s28 = rs5.clone();
 		var start13 = this166.drawType.get_size();
 		var drawType13 = this166.drawType;
-		var ax22 = s28.x;
-		var ay22 = s28.y;
+		var ax16 = s28.x;
+		var ay16 = s28.y;
 		var radius13 = s28.radius;
-		var sides10 = 36;
-		if(sides10 == null) {
-			sides10 = 36;
+		var sides22 = 36;
+		if(sides22 == null) {
+			sides22 = 36;
 		}
-		var pi25 = Math.PI;
-		var theta63 = pi25 / 2;
-		var step34 = pi25 * 2 / sides10;
-		var bx34;
-		var by34;
-		var cx34;
-		var cy34;
-		var _g32 = 0;
-		var _g122 = sides10;
-		while(_g32 < _g122) {
-			var i22 = _g32++;
-			bx34 = ax22 + radius13 * Math.sin(theta63);
-			by34 = ay22 + radius13 * Math.cos(theta63);
-			theta63 += step34;
-			cx34 = ax22 + radius13 * Math.sin(theta63);
-			cy34 = ay22 + radius13 * Math.cos(theta63);
-			drawType13.triangle(ax22,ay22,0,bx34,by34,0,cx34,cy34,0);
-			var m40 = trilateral2_Shaper.transformMatrix;
-			if(m40 != null) {
-				drawType13.transform(m40);
+		var pi31 = Math.PI;
+		var theta69 = pi31 / 2;
+		var step40 = pi31 * 2 / sides22;
+		var bx40;
+		var by40;
+		var cx40;
+		var cy40;
+		var _g44 = 0;
+		var _g134 = sides22;
+		while(_g44 < _g134) {
+			var i28 = _g44++;
+			bx40 = ax16 + radius13 * Math.sin(theta69);
+			by40 = ay16 + radius13 * Math.cos(theta69);
+			theta69 += step40;
+			cx40 = ax16 + radius13 * Math.sin(theta69);
+			cy40 = ay16 + radius13 * Math.cos(theta69);
+			drawType13.triangle(ax16,ay16,0,bx40,by40,0,cx40,cy40,0);
+			var m52 = trilateral2_Shaper.transformMatrix;
+			if(m52 != null) {
+				drawType13.transform(m52);
 			}
 			drawType13.next();
 		}
-		var len13 = sides10;
-		var color13 = s28.color;
-		if(color13 == -1) {
-			color13 = this166.currentColor;
+		var len13 = sides22;
+		var color7 = s28.color;
+		if(color7 == -1) {
+			color7 = this166.currentColor;
 		}
-		this166.colorType.colorTriangles(color13,len13);
+		this166.colorType.colorTriangles(color7,len13);
 		var end13 = start13 + len13 - 1;
 		var startEnd10 = new trilateral2_IndexRange(start13,end13);
 		var c22 = startEnd10;
@@ -3579,90 +4213,90 @@ dice_view_Die.prototype = {
 		var rs6 = this.dieShape;
 		var start14 = this167.drawType.get_size();
 		var drawType14 = this167.drawType;
-		var x4 = rs6.x - rs6.radius;
-		var y4 = rs6.y - rs6.radius;
+		var x10 = rs6.x - rs6.radius;
+		var y10 = rs6.y - rs6.radius;
 		var width3 = rs6.radius * 2;
 		var height3 = rs6.radius * 2;
 		var radius14 = this167.rounded;
-		var pi26 = Math.PI;
+		var pi32 = Math.PI;
 		var pi_23 = Math.PI / 2;
-		var ax23 = x4 + radius14;
-		var ay23 = y4 + radius14;
-		var bx35 = x4 + width3 - radius14;
-		var by35 = y4 + radius14;
-		var cx35 = bx35;
-		var cy35 = y4 + height3 - radius14;
-		var dx12 = ax23;
-		var dy12 = cy35;
+		var ax17 = x10 + radius14;
+		var ay17 = y10 + radius14;
+		var bx41 = x10 + width3 - radius14;
+		var by41 = y10 + radius14;
+		var cx41 = bx41;
+		var cy41 = y10 + height3 - radius14;
+		var dx18 = ax17;
+		var dy18 = cy41;
 		var count3 = 0;
-		var ax24 = ax23;
-		var ay24 = y4;
-		var bx36 = ax23 + (width3 - radius14 * 2);
-		var by36 = ay24;
-		var cx36 = bx36;
-		var cy36 = ay24 + height3;
-		var dx13 = ax23;
-		var dy13 = cy36;
-		drawType14.triangle(ax24,ay24,0,bx36,by36,0,dx13,dy13,0);
-		var m41 = trilateral2_Shaper.transformMatrix;
-		if(m41 != null) {
-			drawType14.transform(m41);
+		var ax18 = ax17;
+		var ay18 = y10;
+		var bx42 = ax17 + (width3 - radius14 * 2);
+		var by42 = ay18;
+		var cx42 = bx42;
+		var cy42 = ay18 + height3;
+		var dx19 = ax17;
+		var dy19 = cy42;
+		drawType14.triangle(ax18,ay18,0,bx42,by42,0,dx19,dy19,0);
+		var m53 = trilateral2_Shaper.transformMatrix;
+		if(m53 != null) {
+			drawType14.transform(m53);
 		}
 		drawType14.next();
-		drawType14.triangle(bx36,by36,0,cx36,cy36,0,dx13,dy13,0);
-		var m42 = trilateral2_Shaper.transformMatrix;
-		if(m42 != null) {
-			drawType14.transform(m42);
+		drawType14.triangle(bx42,by42,0,cx42,cy42,0,dx19,dy19,0);
+		var m54 = trilateral2_Shaper.transformMatrix;
+		if(m54 != null) {
+			drawType14.transform(m54);
 		}
 		drawType14.next();
 		count3 += 2;
 		var dimY3 = height3 - 2 * radius14;
-		var ax25 = x4;
-		var ay25 = ay23;
-		var bx37 = x4 + radius14;
-		var by37 = ay25;
-		var cx37 = bx37;
-		var cy37 = ay25 + dimY3;
-		var dx14 = x4;
-		var dy14 = cy37;
-		drawType14.triangle(ax25,ay25,0,bx37,by37,0,dx14,dy14,0);
-		var m43 = trilateral2_Shaper.transformMatrix;
-		if(m43 != null) {
-			drawType14.transform(m43);
+		var ax19 = x10;
+		var ay19 = ay17;
+		var bx43 = x10 + radius14;
+		var by43 = ay19;
+		var cx43 = bx43;
+		var cy43 = ay19 + dimY3;
+		var dx20 = x10;
+		var dy20 = cy43;
+		drawType14.triangle(ax19,ay19,0,bx43,by43,0,dx20,dy20,0);
+		var m55 = trilateral2_Shaper.transformMatrix;
+		if(m55 != null) {
+			drawType14.transform(m55);
 		}
 		drawType14.next();
-		drawType14.triangle(bx37,by37,0,cx37,cy37,0,dx14,dy14,0);
-		var m44 = trilateral2_Shaper.transformMatrix;
-		if(m44 != null) {
-			drawType14.transform(m44);
-		}
-		drawType14.next();
-		count3 += 2;
-		var ax26 = bx35;
-		var ay26 = by35;
-		var bx38 = bx35 + radius14;
-		var by38 = ay26;
-		var cx38 = bx38;
-		var cy38 = ay26 + dimY3;
-		var dx15 = bx35;
-		var dy15 = cy38;
-		drawType14.triangle(ax26,ay26,0,bx38,by38,0,dx15,dy15,0);
-		var m45 = trilateral2_Shaper.transformMatrix;
-		if(m45 != null) {
-			drawType14.transform(m45);
-		}
-		drawType14.next();
-		drawType14.triangle(bx38,by38,0,cx38,cy38,0,dx15,dy15,0);
-		var m46 = trilateral2_Shaper.transformMatrix;
-		if(m46 != null) {
-			drawType14.transform(m46);
+		drawType14.triangle(bx43,by43,0,cx43,cy43,0,dx20,dy20,0);
+		var m56 = trilateral2_Shaper.transformMatrix;
+		if(m56 != null) {
+			drawType14.transform(m56);
 		}
 		drawType14.next();
 		count3 += 2;
-		var beta3 = -pi26;
+		var ax20 = bx41;
+		var ay20 = by41;
+		var bx44 = bx41 + radius14;
+		var by44 = ay20;
+		var cx44 = bx44;
+		var cy44 = ay20 + dimY3;
+		var dx21 = bx41;
+		var dy21 = cy44;
+		drawType14.triangle(ax20,ay20,0,bx44,by44,0,dx21,dy21,0);
+		var m57 = trilateral2_Shaper.transformMatrix;
+		if(m57 != null) {
+			drawType14.transform(m57);
+		}
+		drawType14.next();
+		drawType14.triangle(bx44,by44,0,cx44,cy44,0,dx21,dy21,0);
+		var m58 = trilateral2_Shaper.transformMatrix;
+		if(m58 != null) {
+			drawType14.transform(m58);
+		}
+		drawType14.next();
+		count3 += 2;
+		var beta3 = -pi32;
 		var gamma6 = -pi_23;
-		var pi27 = Math.PI;
-		var step35 = pi27 * 2 / 36;
+		var pi33 = Math.PI;
+		var step41 = pi33 * 2 / 36;
 		var dif60;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -3686,9 +4320,9 @@ dice_view_Die.prototype = {
 			var zb48 = this169;
 			var fa48 = za48;
 			var fb48 = zb48;
-			var theta64 = Math.abs(fa48 - fb48);
+			var theta70 = Math.abs(fa48 - fb48);
 			var clockwise48 = fa48 < fb48;
-			var dif61 = clockwise48 ? theta64 : -theta64;
+			var dif61 = clockwise48 ? theta70 : -theta70;
 			dif60 = dif61 > 0 ? dif61 : 2 * Math.PI + dif61;
 			break;
 		case 1:
@@ -3712,9 +4346,9 @@ dice_view_Die.prototype = {
 			var zb49 = this171;
 			var fa49 = za49;
 			var fb49 = zb49;
-			var theta65 = Math.abs(fa49 - fb49);
+			var theta71 = Math.abs(fa49 - fb49);
 			var clockwise49 = fa49 < fb49;
-			var dif62 = clockwise49 ? theta65 : -theta65;
+			var dif62 = clockwise49 ? theta71 : -theta71;
 			dif60 = dif62 < 0 ? dif62 : -2 * Math.PI + dif62;
 			break;
 		case 2:
@@ -3738,11 +4372,11 @@ dice_view_Die.prototype = {
 			var zb50 = this173;
 			var fa50 = za50;
 			var fb50 = zb50;
-			var theta66 = Math.abs(fa50 - fb50);
-			var smallest12 = theta66 <= Math.PI;
+			var theta72 = Math.abs(fa50 - fb50);
+			var smallest12 = theta72 <= Math.PI;
 			var clockwise50 = fa50 < fb50;
-			var dif63 = clockwise50 ? theta66 : -theta66;
-			dif60 = smallest12 ? dif63 : clockwise50 ? -(2 * Math.PI - theta66) : 2 * Math.PI - theta66;
+			var dif63 = clockwise50 ? theta72 : -theta72;
+			dif60 = smallest12 ? dif63 : clockwise50 ? -(2 * Math.PI - theta72) : 2 * Math.PI - theta72;
 			break;
 		case 3:
 			var f102;
@@ -3765,42 +4399,42 @@ dice_view_Die.prototype = {
 			var zb51 = this175;
 			var fa51 = za51;
 			var fb51 = zb51;
-			var theta67 = Math.abs(fa51 - fb51);
-			var largest12 = theta67 > Math.PI;
+			var theta73 = Math.abs(fa51 - fb51);
+			var largest12 = theta73 > Math.PI;
 			var clockwise51 = fa51 < fb51;
-			var dif64 = clockwise51 ? theta67 : -theta67;
-			dif60 = largest12 ? dif64 : clockwise51 ? -(2 * Math.PI - theta67) : 2 * Math.PI - theta67;
+			var dif64 = clockwise51 ? theta73 : -theta73;
+			dif60 = largest12 ? dif64 : clockwise51 ? -(2 * Math.PI - theta73) : 2 * Math.PI - theta73;
 			break;
 		}
 		var positive12 = dif60 >= 0;
-		var totalSteps12 = Math.ceil(Math.abs(dif60) / step35);
-		var step36 = dif60 / totalSteps12;
+		var totalSteps12 = Math.ceil(Math.abs(dif60) / step41);
+		var step42 = dif60 / totalSteps12;
 		var angle12 = beta3;
-		var cx39;
-		var cy39;
-		var bx39 = 0;
-		var by39 = 0;
-		var _g33 = 0;
-		var _g123 = totalSteps12 + 1;
-		while(_g33 < _g123) {
-			var i23 = _g33++;
-			cx39 = ax23 + radius14 * Math.sin(angle12);
-			cy39 = ay23 + radius14 * Math.cos(angle12);
-			if(i23 != 0) {
-				drawType14.triangle(ax23,ay23,0,bx39,by39,0,cx39,cy39,0);
-				var m47 = trilateral2_Shaper.transformMatrix;
-				if(m47 != null) {
-					drawType14.transform(m47);
+		var cx45;
+		var cy45;
+		var bx45 = 0;
+		var by45 = 0;
+		var _g45 = 0;
+		var _g135 = totalSteps12 + 1;
+		while(_g45 < _g135) {
+			var i29 = _g45++;
+			cx45 = ax17 + radius14 * Math.sin(angle12);
+			cy45 = ay17 + radius14 * Math.cos(angle12);
+			if(i29 != 0) {
+				drawType14.triangle(ax17,ay17,0,bx45,by45,0,cx45,cy45,0);
+				var m59 = trilateral2_Shaper.transformMatrix;
+				if(m59 != null) {
+					drawType14.transform(m59);
 				}
 				drawType14.next();
 			}
-			angle12 += step36;
-			bx39 = cx39;
-			by39 = cy39;
+			angle12 += step42;
+			bx45 = cx45;
+			by45 = cy45;
 		}
 		count3 += totalSteps12;
-		var pi28 = Math.PI;
-		var step37 = pi28 * 2 / 36;
+		var pi34 = Math.PI;
+		var step43 = pi34 * 2 / 36;
 		var dif65;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -3814,19 +4448,19 @@ dice_view_Die.prototype = {
 			var this176 = f104;
 			var za52 = this176;
 			var f105;
-			if(pi26 >= 0 && pi26 > Math.PI) {
-				f105 = pi26;
+			if(pi32 >= 0 && pi32 > Math.PI) {
+				f105 = pi32;
 			} else {
-				var a105 = pi26 % (2 * Math.PI);
+				var a105 = pi32 % (2 * Math.PI);
 				f105 = a105 >= 0 ? a105 : a105 + 2 * Math.PI;
 			}
 			var this177 = f105;
 			var zb52 = this177;
 			var fa52 = za52;
 			var fb52 = zb52;
-			var theta68 = Math.abs(fa52 - fb52);
+			var theta74 = Math.abs(fa52 - fb52);
 			var clockwise52 = fa52 < fb52;
-			var dif66 = clockwise52 ? theta68 : -theta68;
+			var dif66 = clockwise52 ? theta74 : -theta74;
 			dif65 = dif66 > 0 ? dif66 : 2 * Math.PI + dif66;
 			break;
 		case 1:
@@ -3840,19 +4474,19 @@ dice_view_Die.prototype = {
 			var this178 = f106;
 			var za53 = this178;
 			var f107;
-			if(pi26 >= 0 && pi26 > Math.PI) {
-				f107 = pi26;
+			if(pi32 >= 0 && pi32 > Math.PI) {
+				f107 = pi32;
 			} else {
-				var a107 = pi26 % (2 * Math.PI);
+				var a107 = pi32 % (2 * Math.PI);
 				f107 = a107 >= 0 ? a107 : a107 + 2 * Math.PI;
 			}
 			var this179 = f107;
 			var zb53 = this179;
 			var fa53 = za53;
 			var fb53 = zb53;
-			var theta69 = Math.abs(fa53 - fb53);
+			var theta75 = Math.abs(fa53 - fb53);
 			var clockwise53 = fa53 < fb53;
-			var dif67 = clockwise53 ? theta69 : -theta69;
+			var dif67 = clockwise53 ? theta75 : -theta75;
 			dif65 = dif67 < 0 ? dif67 : -2 * Math.PI + dif67;
 			break;
 		case 2:
@@ -3866,21 +4500,21 @@ dice_view_Die.prototype = {
 			var this180 = f108;
 			var za54 = this180;
 			var f109;
-			if(pi26 >= 0 && pi26 > Math.PI) {
-				f109 = pi26;
+			if(pi32 >= 0 && pi32 > Math.PI) {
+				f109 = pi32;
 			} else {
-				var a109 = pi26 % (2 * Math.PI);
+				var a109 = pi32 % (2 * Math.PI);
 				f109 = a109 >= 0 ? a109 : a109 + 2 * Math.PI;
 			}
 			var this181 = f109;
 			var zb54 = this181;
 			var fa54 = za54;
 			var fb54 = zb54;
-			var theta70 = Math.abs(fa54 - fb54);
-			var smallest13 = theta70 <= Math.PI;
+			var theta76 = Math.abs(fa54 - fb54);
+			var smallest13 = theta76 <= Math.PI;
 			var clockwise54 = fa54 < fb54;
-			var dif68 = clockwise54 ? theta70 : -theta70;
-			dif65 = smallest13 ? dif68 : clockwise54 ? -(2 * Math.PI - theta70) : 2 * Math.PI - theta70;
+			var dif68 = clockwise54 ? theta76 : -theta76;
+			dif65 = smallest13 ? dif68 : clockwise54 ? -(2 * Math.PI - theta76) : 2 * Math.PI - theta76;
 			break;
 		case 3:
 			var f110;
@@ -3893,52 +4527,52 @@ dice_view_Die.prototype = {
 			var this182 = f110;
 			var za55 = this182;
 			var f111;
-			if(pi26 >= 0 && pi26 > Math.PI) {
-				f111 = pi26;
+			if(pi32 >= 0 && pi32 > Math.PI) {
+				f111 = pi32;
 			} else {
-				var a111 = pi26 % (2 * Math.PI);
+				var a111 = pi32 % (2 * Math.PI);
 				f111 = a111 >= 0 ? a111 : a111 + 2 * Math.PI;
 			}
 			var this183 = f111;
 			var zb55 = this183;
 			var fa55 = za55;
 			var fb55 = zb55;
-			var theta71 = Math.abs(fa55 - fb55);
-			var largest13 = theta71 > Math.PI;
+			var theta77 = Math.abs(fa55 - fb55);
+			var largest13 = theta77 > Math.PI;
 			var clockwise55 = fa55 < fb55;
-			var dif69 = clockwise55 ? theta71 : -theta71;
-			dif65 = largest13 ? dif69 : clockwise55 ? -(2 * Math.PI - theta71) : 2 * Math.PI - theta71;
+			var dif69 = clockwise55 ? theta77 : -theta77;
+			dif65 = largest13 ? dif69 : clockwise55 ? -(2 * Math.PI - theta77) : 2 * Math.PI - theta77;
 			break;
 		}
 		var positive13 = dif65 >= 0;
-		var totalSteps13 = Math.ceil(Math.abs(dif65) / step37);
-		var step38 = dif65 / totalSteps13;
+		var totalSteps13 = Math.ceil(Math.abs(dif65) / step43);
+		var step44 = dif65 / totalSteps13;
 		var angle13 = pi_23;
-		var cx40;
-		var cy40;
-		var bx40 = 0;
-		var by40 = 0;
-		var _g34 = 0;
-		var _g124 = totalSteps13 + 1;
-		while(_g34 < _g124) {
-			var i24 = _g34++;
-			cx40 = bx35 + radius14 * Math.sin(angle13);
-			cy40 = by35 + radius14 * Math.cos(angle13);
-			if(i24 != 0) {
-				drawType14.triangle(bx35,by35,0,bx40,by40,0,cx40,cy40,0);
-				var m48 = trilateral2_Shaper.transformMatrix;
-				if(m48 != null) {
-					drawType14.transform(m48);
+		var cx46;
+		var cy46;
+		var bx46 = 0;
+		var by46 = 0;
+		var _g46 = 0;
+		var _g136 = totalSteps13 + 1;
+		while(_g46 < _g136) {
+			var i30 = _g46++;
+			cx46 = bx41 + radius14 * Math.sin(angle13);
+			cy46 = by41 + radius14 * Math.cos(angle13);
+			if(i30 != 0) {
+				drawType14.triangle(bx41,by41,0,bx46,by46,0,cx46,cy46,0);
+				var m60 = trilateral2_Shaper.transformMatrix;
+				if(m60 != null) {
+					drawType14.transform(m60);
 				}
 				drawType14.next();
 			}
-			angle13 += step38;
-			bx40 = cx40;
-			by40 = cy40;
+			angle13 += step44;
+			bx46 = cx46;
+			by46 = cy46;
 		}
 		count3 += totalSteps13;
-		var pi29 = Math.PI;
-		var step39 = pi29 * 2 / 36;
+		var pi35 = Math.PI;
+		var step45 = pi35 * 2 / 36;
 		var dif70;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -3962,9 +4596,9 @@ dice_view_Die.prototype = {
 			var zb56 = this185;
 			var fa56 = za56;
 			var fb56 = zb56;
-			var theta72 = Math.abs(fa56 - fb56);
+			var theta78 = Math.abs(fa56 - fb56);
 			var clockwise56 = fa56 < fb56;
-			var dif71 = clockwise56 ? theta72 : -theta72;
+			var dif71 = clockwise56 ? theta78 : -theta78;
 			dif70 = dif71 > 0 ? dif71 : 2 * Math.PI + dif71;
 			break;
 		case 1:
@@ -3988,9 +4622,9 @@ dice_view_Die.prototype = {
 			var zb57 = this187;
 			var fa57 = za57;
 			var fb57 = zb57;
-			var theta73 = Math.abs(fa57 - fb57);
+			var theta79 = Math.abs(fa57 - fb57);
 			var clockwise57 = fa57 < fb57;
-			var dif72 = clockwise57 ? theta73 : -theta73;
+			var dif72 = clockwise57 ? theta79 : -theta79;
 			dif70 = dif72 < 0 ? dif72 : -2 * Math.PI + dif72;
 			break;
 		case 2:
@@ -4014,11 +4648,11 @@ dice_view_Die.prototype = {
 			var zb58 = this189;
 			var fa58 = za58;
 			var fb58 = zb58;
-			var theta74 = Math.abs(fa58 - fb58);
-			var smallest14 = theta74 <= Math.PI;
+			var theta80 = Math.abs(fa58 - fb58);
+			var smallest14 = theta80 <= Math.PI;
 			var clockwise58 = fa58 < fb58;
-			var dif73 = clockwise58 ? theta74 : -theta74;
-			dif70 = smallest14 ? dif73 : clockwise58 ? -(2 * Math.PI - theta74) : 2 * Math.PI - theta74;
+			var dif73 = clockwise58 ? theta80 : -theta80;
+			dif70 = smallest14 ? dif73 : clockwise58 ? -(2 * Math.PI - theta80) : 2 * Math.PI - theta80;
 			break;
 		case 3:
 			var f118;
@@ -4041,43 +4675,43 @@ dice_view_Die.prototype = {
 			var zb59 = this191;
 			var fa59 = za59;
 			var fb59 = zb59;
-			var theta75 = Math.abs(fa59 - fb59);
-			var largest14 = theta75 > Math.PI;
+			var theta81 = Math.abs(fa59 - fb59);
+			var largest14 = theta81 > Math.PI;
 			var clockwise59 = fa59 < fb59;
-			var dif74 = clockwise59 ? theta75 : -theta75;
-			dif70 = largest14 ? dif74 : clockwise59 ? -(2 * Math.PI - theta75) : 2 * Math.PI - theta75;
+			var dif74 = clockwise59 ? theta81 : -theta81;
+			dif70 = largest14 ? dif74 : clockwise59 ? -(2 * Math.PI - theta81) : 2 * Math.PI - theta81;
 			break;
 		}
 		var positive14 = dif70 >= 0;
-		var totalSteps14 = Math.ceil(Math.abs(dif70) / step39);
-		var step40 = dif70 / totalSteps14;
+		var totalSteps14 = Math.ceil(Math.abs(dif70) / step45);
+		var step46 = dif70 / totalSteps14;
 		var angle14 = pi_23;
-		var cx41;
-		var cy41;
-		var bx41 = 0;
-		var by41 = 0;
-		var _g35 = 0;
-		var _g125 = totalSteps14 + 1;
-		while(_g35 < _g125) {
-			var i25 = _g35++;
-			cx41 = cx35 + radius14 * Math.sin(angle14);
-			cy41 = cy35 + radius14 * Math.cos(angle14);
-			if(i25 != 0) {
-				drawType14.triangle(cx35,cy35,0,bx41,by41,0,cx41,cy41,0);
-				var m49 = trilateral2_Shaper.transformMatrix;
-				if(m49 != null) {
-					drawType14.transform(m49);
+		var cx47;
+		var cy47;
+		var bx47 = 0;
+		var by47 = 0;
+		var _g47 = 0;
+		var _g137 = totalSteps14 + 1;
+		while(_g47 < _g137) {
+			var i31 = _g47++;
+			cx47 = cx41 + radius14 * Math.sin(angle14);
+			cy47 = cy41 + radius14 * Math.cos(angle14);
+			if(i31 != 0) {
+				drawType14.triangle(cx41,cy41,0,bx47,by47,0,cx47,cy47,0);
+				var m61 = trilateral2_Shaper.transformMatrix;
+				if(m61 != null) {
+					drawType14.transform(m61);
 				}
 				drawType14.next();
 			}
-			angle14 += step40;
-			bx41 = cx41;
-			by41 = cy41;
+			angle14 += step46;
+			bx47 = cx47;
+			by47 = cy47;
 		}
 		count3 += totalSteps14;
 		var gamma7 = -pi_23;
-		var pi30 = Math.PI;
-		var step41 = pi30 * 2 / 36;
+		var pi36 = Math.PI;
+		var step47 = pi36 * 2 / 36;
 		var dif75;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -4101,9 +4735,9 @@ dice_view_Die.prototype = {
 			var zb60 = this193;
 			var fa60 = za60;
 			var fb60 = zb60;
-			var theta76 = Math.abs(fa60 - fb60);
+			var theta82 = Math.abs(fa60 - fb60);
 			var clockwise60 = fa60 < fb60;
-			var dif76 = clockwise60 ? theta76 : -theta76;
+			var dif76 = clockwise60 ? theta82 : -theta82;
 			dif75 = dif76 > 0 ? dif76 : 2 * Math.PI + dif76;
 			break;
 		case 1:
@@ -4127,9 +4761,9 @@ dice_view_Die.prototype = {
 			var zb61 = this195;
 			var fa61 = za61;
 			var fb61 = zb61;
-			var theta77 = Math.abs(fa61 - fb61);
+			var theta83 = Math.abs(fa61 - fb61);
 			var clockwise61 = fa61 < fb61;
-			var dif77 = clockwise61 ? theta77 : -theta77;
+			var dif77 = clockwise61 ? theta83 : -theta83;
 			dif75 = dif77 < 0 ? dif77 : -2 * Math.PI + dif77;
 			break;
 		case 2:
@@ -4153,11 +4787,11 @@ dice_view_Die.prototype = {
 			var zb62 = this197;
 			var fa62 = za62;
 			var fb62 = zb62;
-			var theta78 = Math.abs(fa62 - fb62);
-			var smallest15 = theta78 <= Math.PI;
+			var theta84 = Math.abs(fa62 - fb62);
+			var smallest15 = theta84 <= Math.PI;
 			var clockwise62 = fa62 < fb62;
-			var dif78 = clockwise62 ? theta78 : -theta78;
-			dif75 = smallest15 ? dif78 : clockwise62 ? -(2 * Math.PI - theta78) : 2 * Math.PI - theta78;
+			var dif78 = clockwise62 ? theta84 : -theta84;
+			dif75 = smallest15 ? dif78 : clockwise62 ? -(2 * Math.PI - theta84) : 2 * Math.PI - theta84;
 			break;
 		case 3:
 			var f126;
@@ -4180,45 +4814,45 @@ dice_view_Die.prototype = {
 			var zb63 = this199;
 			var fa63 = za63;
 			var fb63 = zb63;
-			var theta79 = Math.abs(fa63 - fb63);
-			var largest15 = theta79 > Math.PI;
+			var theta85 = Math.abs(fa63 - fb63);
+			var largest15 = theta85 > Math.PI;
 			var clockwise63 = fa63 < fb63;
-			var dif79 = clockwise63 ? theta79 : -theta79;
-			dif75 = largest15 ? dif79 : clockwise63 ? -(2 * Math.PI - theta79) : 2 * Math.PI - theta79;
+			var dif79 = clockwise63 ? theta85 : -theta85;
+			dif75 = largest15 ? dif79 : clockwise63 ? -(2 * Math.PI - theta85) : 2 * Math.PI - theta85;
 			break;
 		}
 		var positive15 = dif75 >= 0;
-		var totalSteps15 = Math.ceil(Math.abs(dif75) / step41);
-		var step42 = dif75 / totalSteps15;
+		var totalSteps15 = Math.ceil(Math.abs(dif75) / step47);
+		var step48 = dif75 / totalSteps15;
 		var angle15 = 0;
-		var cx42;
-		var cy42;
-		var bx42 = 0;
-		var by42 = 0;
-		var _g36 = 0;
-		var _g126 = totalSteps15 + 1;
-		while(_g36 < _g126) {
-			var i26 = _g36++;
-			cx42 = dx12 + radius14 * Math.sin(angle15);
-			cy42 = dy12 + radius14 * Math.cos(angle15);
-			if(i26 != 0) {
-				drawType14.triangle(dx12,dy12,0,bx42,by42,0,cx42,cy42,0);
-				var m50 = trilateral2_Shaper.transformMatrix;
-				if(m50 != null) {
-					drawType14.transform(m50);
+		var cx48;
+		var cy48;
+		var bx48 = 0;
+		var by48 = 0;
+		var _g48 = 0;
+		var _g138 = totalSteps15 + 1;
+		while(_g48 < _g138) {
+			var i32 = _g48++;
+			cx48 = dx18 + radius14 * Math.sin(angle15);
+			cy48 = dy18 + radius14 * Math.cos(angle15);
+			if(i32 != 0) {
+				drawType14.triangle(dx18,dy18,0,bx48,by48,0,cx48,cy48,0);
+				var m62 = trilateral2_Shaper.transformMatrix;
+				if(m62 != null) {
+					drawType14.transform(m62);
 				}
 				drawType14.next();
 			}
-			angle15 += step42;
-			bx42 = cx42;
-			by42 = cy42;
+			angle15 += step48;
+			bx48 = cx48;
+			by48 = cy48;
 		}
 		var len14 = count3 += totalSteps15;
-		var color14 = rs6.color;
-		if(color14 == -1) {
-			color14 = this167.currentColor;
+		var color8 = rs6.color;
+		if(color8 == -1) {
+			color8 = this167.currentColor;
 		}
-		this167.colorType.colorTriangles(color14,len14);
+		this167.colorType.colorTriangles(color8,len14);
 		var end14 = start14 + len14 - 1;
 		var s06 = new trilateral2_IndexRange(start14,end14);
 		var this200 = this.spots;
@@ -4236,42 +4870,42 @@ dice_view_Die.prototype = {
 		s07.y -= 30;
 		var start15 = this205.drawType.get_size();
 		var drawType15 = this205.drawType;
-		var ax27 = s07.x;
-		var ay27 = s07.y;
+		var ax21 = s07.x;
+		var ay21 = s07.y;
 		var radius15 = s07.radius;
-		var sides11 = 36;
-		if(sides11 == null) {
-			sides11 = 36;
+		var sides23 = 36;
+		if(sides23 == null) {
+			sides23 = 36;
 		}
-		var pi31 = Math.PI;
-		var theta80 = pi31 / 2;
-		var step43 = pi31 * 2 / sides11;
-		var bx43;
-		var by43;
-		var cx43;
-		var cy43;
-		var _g37 = 0;
-		var _g127 = sides11;
-		while(_g37 < _g127) {
-			var i27 = _g37++;
-			bx43 = ax27 + radius15 * Math.sin(theta80);
-			by43 = ay27 + radius15 * Math.cos(theta80);
-			theta80 += step43;
-			cx43 = ax27 + radius15 * Math.sin(theta80);
-			cy43 = ay27 + radius15 * Math.cos(theta80);
-			drawType15.triangle(ax27,ay27,0,bx43,by43,0,cx43,cy43,0);
-			var m51 = trilateral2_Shaper.transformMatrix;
-			if(m51 != null) {
-				drawType15.transform(m51);
+		var pi37 = Math.PI;
+		var theta86 = pi37 / 2;
+		var step49 = pi37 * 2 / sides23;
+		var bx49;
+		var by49;
+		var cx49;
+		var cy49;
+		var _g49 = 0;
+		var _g139 = sides23;
+		while(_g49 < _g139) {
+			var i33 = _g49++;
+			bx49 = ax21 + radius15 * Math.sin(theta86);
+			by49 = ay21 + radius15 * Math.cos(theta86);
+			theta86 += step49;
+			cx49 = ax21 + radius15 * Math.sin(theta86);
+			cy49 = ay21 + radius15 * Math.cos(theta86);
+			drawType15.triangle(ax21,ay21,0,bx49,by49,0,cx49,cy49,0);
+			var m63 = trilateral2_Shaper.transformMatrix;
+			if(m63 != null) {
+				drawType15.transform(m63);
 			}
 			drawType15.next();
 		}
-		var len15 = sides11;
-		var color15 = s07.color;
-		if(color15 == -1) {
-			color15 = this205.currentColor;
+		var len15 = sides23;
+		var color9 = s07.color;
+		if(color9 == -1) {
+			color9 = this205.currentColor;
 		}
-		this205.colorType.colorTriangles(color15,len15);
+		this205.colorType.colorTriangles(color9,len15);
 		var end15 = start15 + len15 - 1;
 		var startEnd11 = new trilateral2_IndexRange(start15,end15);
 		var c03 = startEnd11;
@@ -4280,42 +4914,42 @@ dice_view_Die.prototype = {
 		s116.y -= 30;
 		var start16 = this205.drawType.get_size();
 		var drawType16 = this205.drawType;
-		var ax28 = s116.x;
-		var ay28 = s116.y;
+		var ax22 = s116.x;
+		var ay22 = s116.y;
 		var radius16 = s116.radius;
-		var sides12 = 36;
-		if(sides12 == null) {
-			sides12 = 36;
+		var sides24 = 36;
+		if(sides24 == null) {
+			sides24 = 36;
 		}
-		var pi32 = Math.PI;
-		var theta81 = pi32 / 2;
-		var step44 = pi32 * 2 / sides12;
-		var bx44;
-		var by44;
-		var cx44;
-		var cy44;
-		var _g38 = 0;
-		var _g128 = sides12;
-		while(_g38 < _g128) {
-			var i28 = _g38++;
-			bx44 = ax28 + radius16 * Math.sin(theta81);
-			by44 = ay28 + radius16 * Math.cos(theta81);
-			theta81 += step44;
-			cx44 = ax28 + radius16 * Math.sin(theta81);
-			cy44 = ay28 + radius16 * Math.cos(theta81);
-			drawType16.triangle(ax28,ay28,0,bx44,by44,0,cx44,cy44,0);
-			var m52 = trilateral2_Shaper.transformMatrix;
-			if(m52 != null) {
-				drawType16.transform(m52);
+		var pi38 = Math.PI;
+		var theta87 = pi38 / 2;
+		var step50 = pi38 * 2 / sides24;
+		var bx50;
+		var by50;
+		var cx50;
+		var cy50;
+		var _g50 = 0;
+		var _g140 = sides24;
+		while(_g50 < _g140) {
+			var i34 = _g50++;
+			bx50 = ax22 + radius16 * Math.sin(theta87);
+			by50 = ay22 + radius16 * Math.cos(theta87);
+			theta87 += step50;
+			cx50 = ax22 + radius16 * Math.sin(theta87);
+			cy50 = ay22 + radius16 * Math.cos(theta87);
+			drawType16.triangle(ax22,ay22,0,bx50,by50,0,cx50,cy50,0);
+			var m64 = trilateral2_Shaper.transformMatrix;
+			if(m64 != null) {
+				drawType16.transform(m64);
 			}
 			drawType16.next();
 		}
-		var len16 = sides12;
-		var color16 = s116.color;
-		if(color16 == -1) {
-			color16 = this205.currentColor;
+		var len16 = sides24;
+		var color10 = s116.color;
+		if(color10 == -1) {
+			color10 = this205.currentColor;
 		}
-		this205.colorType.colorTriangles(color16,len16);
+		this205.colorType.colorTriangles(color10,len16);
 		var end16 = start16 + len16 - 1;
 		var startEnd12 = new trilateral2_IndexRange(start16,end16);
 		var c14 = startEnd12;
@@ -4324,42 +4958,42 @@ dice_view_Die.prototype = {
 		s210.y += 30;
 		var start17 = this205.drawType.get_size();
 		var drawType17 = this205.drawType;
-		var ax29 = s210.x;
-		var ay29 = s210.y;
+		var ax23 = s210.x;
+		var ay23 = s210.y;
 		var radius17 = s210.radius;
-		var sides13 = 36;
-		if(sides13 == null) {
-			sides13 = 36;
+		var sides25 = 36;
+		if(sides25 == null) {
+			sides25 = 36;
 		}
-		var pi33 = Math.PI;
-		var theta82 = pi33 / 2;
-		var step45 = pi33 * 2 / sides13;
-		var bx45;
-		var by45;
-		var cx45;
-		var cy45;
-		var _g39 = 0;
-		var _g129 = sides13;
-		while(_g39 < _g129) {
-			var i29 = _g39++;
-			bx45 = ax29 + radius17 * Math.sin(theta82);
-			by45 = ay29 + radius17 * Math.cos(theta82);
-			theta82 += step45;
-			cx45 = ax29 + radius17 * Math.sin(theta82);
-			cy45 = ay29 + radius17 * Math.cos(theta82);
-			drawType17.triangle(ax29,ay29,0,bx45,by45,0,cx45,cy45,0);
-			var m53 = trilateral2_Shaper.transformMatrix;
-			if(m53 != null) {
-				drawType17.transform(m53);
+		var pi39 = Math.PI;
+		var theta88 = pi39 / 2;
+		var step51 = pi39 * 2 / sides25;
+		var bx51;
+		var by51;
+		var cx51;
+		var cy51;
+		var _g51 = 0;
+		var _g141 = sides25;
+		while(_g51 < _g141) {
+			var i35 = _g51++;
+			bx51 = ax23 + radius17 * Math.sin(theta88);
+			by51 = ay23 + radius17 * Math.cos(theta88);
+			theta88 += step51;
+			cx51 = ax23 + radius17 * Math.sin(theta88);
+			cy51 = ay23 + radius17 * Math.cos(theta88);
+			drawType17.triangle(ax23,ay23,0,bx51,by51,0,cx51,cy51,0);
+			var m65 = trilateral2_Shaper.transformMatrix;
+			if(m65 != null) {
+				drawType17.transform(m65);
 			}
 			drawType17.next();
 		}
-		var len17 = sides13;
-		var color17 = s210.color;
-		if(color17 == -1) {
-			color17 = this205.currentColor;
+		var len17 = sides25;
+		var color11 = s210.color;
+		if(color11 == -1) {
+			color11 = this205.currentColor;
 		}
-		this205.colorType.colorTriangles(color17,len17);
+		this205.colorType.colorTriangles(color11,len17);
 		var end17 = start17 + len17 - 1;
 		var startEnd13 = new trilateral2_IndexRange(start17,end17);
 		var c23 = startEnd13;
@@ -4368,42 +5002,42 @@ dice_view_Die.prototype = {
 		s33.y += 30;
 		var start18 = this205.drawType.get_size();
 		var drawType18 = this205.drawType;
-		var ax30 = s33.x;
-		var ay30 = s33.y;
+		var ax24 = s33.x;
+		var ay24 = s33.y;
 		var radius18 = s33.radius;
-		var sides14 = 36;
-		if(sides14 == null) {
-			sides14 = 36;
+		var sides26 = 36;
+		if(sides26 == null) {
+			sides26 = 36;
 		}
-		var pi34 = Math.PI;
-		var theta83 = pi34 / 2;
-		var step46 = pi34 * 2 / sides14;
-		var bx46;
-		var by46;
-		var cx46;
-		var cy46;
-		var _g40 = 0;
-		var _g130 = sides14;
-		while(_g40 < _g130) {
-			var i30 = _g40++;
-			bx46 = ax30 + radius18 * Math.sin(theta83);
-			by46 = ay30 + radius18 * Math.cos(theta83);
-			theta83 += step46;
-			cx46 = ax30 + radius18 * Math.sin(theta83);
-			cy46 = ay30 + radius18 * Math.cos(theta83);
-			drawType18.triangle(ax30,ay30,0,bx46,by46,0,cx46,cy46,0);
-			var m54 = trilateral2_Shaper.transformMatrix;
-			if(m54 != null) {
-				drawType18.transform(m54);
+		var pi40 = Math.PI;
+		var theta89 = pi40 / 2;
+		var step52 = pi40 * 2 / sides26;
+		var bx52;
+		var by52;
+		var cx52;
+		var cy52;
+		var _g52 = 0;
+		var _g142 = sides26;
+		while(_g52 < _g142) {
+			var i36 = _g52++;
+			bx52 = ax24 + radius18 * Math.sin(theta89);
+			by52 = ay24 + radius18 * Math.cos(theta89);
+			theta89 += step52;
+			cx52 = ax24 + radius18 * Math.sin(theta89);
+			cy52 = ay24 + radius18 * Math.cos(theta89);
+			drawType18.triangle(ax24,ay24,0,bx52,by52,0,cx52,cy52,0);
+			var m66 = trilateral2_Shaper.transformMatrix;
+			if(m66 != null) {
+				drawType18.transform(m66);
 			}
 			drawType18.next();
 		}
-		var len18 = sides14;
-		var color18 = s33.color;
-		if(color18 == -1) {
-			color18 = this205.currentColor;
+		var len18 = sides26;
+		var color12 = s33.color;
+		if(color12 == -1) {
+			color12 = this205.currentColor;
 		}
-		this205.colorType.colorTriangles(color18,len18);
+		this205.colorType.colorTriangles(color12,len18);
 		var end18 = start18 + len18 - 1;
 		var startEnd14 = new trilateral2_IndexRange(start18,end18);
 		var c32 = startEnd14;
@@ -4416,90 +5050,90 @@ dice_view_Die.prototype = {
 		var rs8 = this.dieShape;
 		var start19 = this206.drawType.get_size();
 		var drawType19 = this206.drawType;
-		var x5 = rs8.x - rs8.radius;
-		var y5 = rs8.y - rs8.radius;
+		var x11 = rs8.x - rs8.radius;
+		var y11 = rs8.y - rs8.radius;
 		var width4 = rs8.radius * 2;
 		var height4 = rs8.radius * 2;
 		var radius19 = this206.rounded;
-		var pi35 = Math.PI;
+		var pi41 = Math.PI;
 		var pi_24 = Math.PI / 2;
-		var ax31 = x5 + radius19;
-		var ay31 = y5 + radius19;
-		var bx47 = x5 + width4 - radius19;
-		var by47 = y5 + radius19;
-		var cx47 = bx47;
-		var cy47 = y5 + height4 - radius19;
-		var dx16 = ax31;
-		var dy16 = cy47;
+		var ax25 = x11 + radius19;
+		var ay25 = y11 + radius19;
+		var bx53 = x11 + width4 - radius19;
+		var by53 = y11 + radius19;
+		var cx53 = bx53;
+		var cy53 = y11 + height4 - radius19;
+		var dx22 = ax25;
+		var dy22 = cy53;
 		var count4 = 0;
-		var ax32 = ax31;
-		var ay32 = y5;
-		var bx48 = ax31 + (width4 - radius19 * 2);
-		var by48 = ay32;
-		var cx48 = bx48;
-		var cy48 = ay32 + height4;
-		var dx17 = ax31;
-		var dy17 = cy48;
-		drawType19.triangle(ax32,ay32,0,bx48,by48,0,dx17,dy17,0);
-		var m55 = trilateral2_Shaper.transformMatrix;
-		if(m55 != null) {
-			drawType19.transform(m55);
+		var ax26 = ax25;
+		var ay26 = y11;
+		var bx54 = ax25 + (width4 - radius19 * 2);
+		var by54 = ay26;
+		var cx54 = bx54;
+		var cy54 = ay26 + height4;
+		var dx23 = ax25;
+		var dy23 = cy54;
+		drawType19.triangle(ax26,ay26,0,bx54,by54,0,dx23,dy23,0);
+		var m67 = trilateral2_Shaper.transformMatrix;
+		if(m67 != null) {
+			drawType19.transform(m67);
 		}
 		drawType19.next();
-		drawType19.triangle(bx48,by48,0,cx48,cy48,0,dx17,dy17,0);
-		var m56 = trilateral2_Shaper.transformMatrix;
-		if(m56 != null) {
-			drawType19.transform(m56);
+		drawType19.triangle(bx54,by54,0,cx54,cy54,0,dx23,dy23,0);
+		var m68 = trilateral2_Shaper.transformMatrix;
+		if(m68 != null) {
+			drawType19.transform(m68);
 		}
 		drawType19.next();
 		count4 += 2;
 		var dimY4 = height4 - 2 * radius19;
-		var ax33 = x5;
-		var ay33 = ay31;
-		var bx49 = x5 + radius19;
-		var by49 = ay33;
-		var cx49 = bx49;
-		var cy49 = ay33 + dimY4;
-		var dx18 = x5;
-		var dy18 = cy49;
-		drawType19.triangle(ax33,ay33,0,bx49,by49,0,dx18,dy18,0);
-		var m57 = trilateral2_Shaper.transformMatrix;
-		if(m57 != null) {
-			drawType19.transform(m57);
+		var ax27 = x11;
+		var ay27 = ay25;
+		var bx55 = x11 + radius19;
+		var by55 = ay27;
+		var cx55 = bx55;
+		var cy55 = ay27 + dimY4;
+		var dx24 = x11;
+		var dy24 = cy55;
+		drawType19.triangle(ax27,ay27,0,bx55,by55,0,dx24,dy24,0);
+		var m69 = trilateral2_Shaper.transformMatrix;
+		if(m69 != null) {
+			drawType19.transform(m69);
 		}
 		drawType19.next();
-		drawType19.triangle(bx49,by49,0,cx49,cy49,0,dx18,dy18,0);
-		var m58 = trilateral2_Shaper.transformMatrix;
-		if(m58 != null) {
-			drawType19.transform(m58);
-		}
-		drawType19.next();
-		count4 += 2;
-		var ax34 = bx47;
-		var ay34 = by47;
-		var bx50 = bx47 + radius19;
-		var by50 = ay34;
-		var cx50 = bx50;
-		var cy50 = ay34 + dimY4;
-		var dx19 = bx47;
-		var dy19 = cy50;
-		drawType19.triangle(ax34,ay34,0,bx50,by50,0,dx19,dy19,0);
-		var m59 = trilateral2_Shaper.transformMatrix;
-		if(m59 != null) {
-			drawType19.transform(m59);
-		}
-		drawType19.next();
-		drawType19.triangle(bx50,by50,0,cx50,cy50,0,dx19,dy19,0);
-		var m60 = trilateral2_Shaper.transformMatrix;
-		if(m60 != null) {
-			drawType19.transform(m60);
+		drawType19.triangle(bx55,by55,0,cx55,cy55,0,dx24,dy24,0);
+		var m70 = trilateral2_Shaper.transformMatrix;
+		if(m70 != null) {
+			drawType19.transform(m70);
 		}
 		drawType19.next();
 		count4 += 2;
-		var beta4 = -pi35;
+		var ax28 = bx53;
+		var ay28 = by53;
+		var bx56 = bx53 + radius19;
+		var by56 = ay28;
+		var cx56 = bx56;
+		var cy56 = ay28 + dimY4;
+		var dx25 = bx53;
+		var dy25 = cy56;
+		drawType19.triangle(ax28,ay28,0,bx56,by56,0,dx25,dy25,0);
+		var m71 = trilateral2_Shaper.transformMatrix;
+		if(m71 != null) {
+			drawType19.transform(m71);
+		}
+		drawType19.next();
+		drawType19.triangle(bx56,by56,0,cx56,cy56,0,dx25,dy25,0);
+		var m72 = trilateral2_Shaper.transformMatrix;
+		if(m72 != null) {
+			drawType19.transform(m72);
+		}
+		drawType19.next();
+		count4 += 2;
+		var beta4 = -pi41;
 		var gamma8 = -pi_24;
-		var pi36 = Math.PI;
-		var step47 = pi36 * 2 / 36;
+		var pi42 = Math.PI;
+		var step53 = pi42 * 2 / 36;
 		var dif80;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -4523,9 +5157,9 @@ dice_view_Die.prototype = {
 			var zb64 = this208;
 			var fa64 = za64;
 			var fb64 = zb64;
-			var theta84 = Math.abs(fa64 - fb64);
+			var theta90 = Math.abs(fa64 - fb64);
 			var clockwise64 = fa64 < fb64;
-			var dif81 = clockwise64 ? theta84 : -theta84;
+			var dif81 = clockwise64 ? theta90 : -theta90;
 			dif80 = dif81 > 0 ? dif81 : 2 * Math.PI + dif81;
 			break;
 		case 1:
@@ -4549,9 +5183,9 @@ dice_view_Die.prototype = {
 			var zb65 = this210;
 			var fa65 = za65;
 			var fb65 = zb65;
-			var theta85 = Math.abs(fa65 - fb65);
+			var theta91 = Math.abs(fa65 - fb65);
 			var clockwise65 = fa65 < fb65;
-			var dif82 = clockwise65 ? theta85 : -theta85;
+			var dif82 = clockwise65 ? theta91 : -theta91;
 			dif80 = dif82 < 0 ? dif82 : -2 * Math.PI + dif82;
 			break;
 		case 2:
@@ -4575,11 +5209,11 @@ dice_view_Die.prototype = {
 			var zb66 = this212;
 			var fa66 = za66;
 			var fb66 = zb66;
-			var theta86 = Math.abs(fa66 - fb66);
-			var smallest16 = theta86 <= Math.PI;
+			var theta92 = Math.abs(fa66 - fb66);
+			var smallest16 = theta92 <= Math.PI;
 			var clockwise66 = fa66 < fb66;
-			var dif83 = clockwise66 ? theta86 : -theta86;
-			dif80 = smallest16 ? dif83 : clockwise66 ? -(2 * Math.PI - theta86) : 2 * Math.PI - theta86;
+			var dif83 = clockwise66 ? theta92 : -theta92;
+			dif80 = smallest16 ? dif83 : clockwise66 ? -(2 * Math.PI - theta92) : 2 * Math.PI - theta92;
 			break;
 		case 3:
 			var f134;
@@ -4602,42 +5236,42 @@ dice_view_Die.prototype = {
 			var zb67 = this214;
 			var fa67 = za67;
 			var fb67 = zb67;
-			var theta87 = Math.abs(fa67 - fb67);
-			var largest16 = theta87 > Math.PI;
+			var theta93 = Math.abs(fa67 - fb67);
+			var largest16 = theta93 > Math.PI;
 			var clockwise67 = fa67 < fb67;
-			var dif84 = clockwise67 ? theta87 : -theta87;
-			dif80 = largest16 ? dif84 : clockwise67 ? -(2 * Math.PI - theta87) : 2 * Math.PI - theta87;
+			var dif84 = clockwise67 ? theta93 : -theta93;
+			dif80 = largest16 ? dif84 : clockwise67 ? -(2 * Math.PI - theta93) : 2 * Math.PI - theta93;
 			break;
 		}
 		var positive16 = dif80 >= 0;
-		var totalSteps16 = Math.ceil(Math.abs(dif80) / step47);
-		var step48 = dif80 / totalSteps16;
+		var totalSteps16 = Math.ceil(Math.abs(dif80) / step53);
+		var step54 = dif80 / totalSteps16;
 		var angle16 = beta4;
-		var cx51;
-		var cy51;
-		var bx51 = 0;
-		var by51 = 0;
-		var _g41 = 0;
-		var _g131 = totalSteps16 + 1;
-		while(_g41 < _g131) {
-			var i31 = _g41++;
-			cx51 = ax31 + radius19 * Math.sin(angle16);
-			cy51 = ay31 + radius19 * Math.cos(angle16);
-			if(i31 != 0) {
-				drawType19.triangle(ax31,ay31,0,bx51,by51,0,cx51,cy51,0);
-				var m61 = trilateral2_Shaper.transformMatrix;
-				if(m61 != null) {
-					drawType19.transform(m61);
+		var cx57;
+		var cy57;
+		var bx57 = 0;
+		var by57 = 0;
+		var _g53 = 0;
+		var _g143 = totalSteps16 + 1;
+		while(_g53 < _g143) {
+			var i37 = _g53++;
+			cx57 = ax25 + radius19 * Math.sin(angle16);
+			cy57 = ay25 + radius19 * Math.cos(angle16);
+			if(i37 != 0) {
+				drawType19.triangle(ax25,ay25,0,bx57,by57,0,cx57,cy57,0);
+				var m73 = trilateral2_Shaper.transformMatrix;
+				if(m73 != null) {
+					drawType19.transform(m73);
 				}
 				drawType19.next();
 			}
-			angle16 += step48;
-			bx51 = cx51;
-			by51 = cy51;
+			angle16 += step54;
+			bx57 = cx57;
+			by57 = cy57;
 		}
 		count4 += totalSteps16;
-		var pi37 = Math.PI;
-		var step49 = pi37 * 2 / 36;
+		var pi43 = Math.PI;
+		var step55 = pi43 * 2 / 36;
 		var dif85;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -4651,19 +5285,19 @@ dice_view_Die.prototype = {
 			var this215 = f136;
 			var za68 = this215;
 			var f137;
-			if(pi35 >= 0 && pi35 > Math.PI) {
-				f137 = pi35;
+			if(pi41 >= 0 && pi41 > Math.PI) {
+				f137 = pi41;
 			} else {
-				var a137 = pi35 % (2 * Math.PI);
+				var a137 = pi41 % (2 * Math.PI);
 				f137 = a137 >= 0 ? a137 : a137 + 2 * Math.PI;
 			}
 			var this216 = f137;
 			var zb68 = this216;
 			var fa68 = za68;
 			var fb68 = zb68;
-			var theta88 = Math.abs(fa68 - fb68);
+			var theta94 = Math.abs(fa68 - fb68);
 			var clockwise68 = fa68 < fb68;
-			var dif86 = clockwise68 ? theta88 : -theta88;
+			var dif86 = clockwise68 ? theta94 : -theta94;
 			dif85 = dif86 > 0 ? dif86 : 2 * Math.PI + dif86;
 			break;
 		case 1:
@@ -4677,19 +5311,19 @@ dice_view_Die.prototype = {
 			var this217 = f138;
 			var za69 = this217;
 			var f139;
-			if(pi35 >= 0 && pi35 > Math.PI) {
-				f139 = pi35;
+			if(pi41 >= 0 && pi41 > Math.PI) {
+				f139 = pi41;
 			} else {
-				var a139 = pi35 % (2 * Math.PI);
+				var a139 = pi41 % (2 * Math.PI);
 				f139 = a139 >= 0 ? a139 : a139 + 2 * Math.PI;
 			}
 			var this218 = f139;
 			var zb69 = this218;
 			var fa69 = za69;
 			var fb69 = zb69;
-			var theta89 = Math.abs(fa69 - fb69);
+			var theta95 = Math.abs(fa69 - fb69);
 			var clockwise69 = fa69 < fb69;
-			var dif87 = clockwise69 ? theta89 : -theta89;
+			var dif87 = clockwise69 ? theta95 : -theta95;
 			dif85 = dif87 < 0 ? dif87 : -2 * Math.PI + dif87;
 			break;
 		case 2:
@@ -4703,21 +5337,21 @@ dice_view_Die.prototype = {
 			var this219 = f140;
 			var za70 = this219;
 			var f141;
-			if(pi35 >= 0 && pi35 > Math.PI) {
-				f141 = pi35;
+			if(pi41 >= 0 && pi41 > Math.PI) {
+				f141 = pi41;
 			} else {
-				var a141 = pi35 % (2 * Math.PI);
+				var a141 = pi41 % (2 * Math.PI);
 				f141 = a141 >= 0 ? a141 : a141 + 2 * Math.PI;
 			}
 			var this220 = f141;
 			var zb70 = this220;
 			var fa70 = za70;
 			var fb70 = zb70;
-			var theta90 = Math.abs(fa70 - fb70);
-			var smallest17 = theta90 <= Math.PI;
+			var theta96 = Math.abs(fa70 - fb70);
+			var smallest17 = theta96 <= Math.PI;
 			var clockwise70 = fa70 < fb70;
-			var dif88 = clockwise70 ? theta90 : -theta90;
-			dif85 = smallest17 ? dif88 : clockwise70 ? -(2 * Math.PI - theta90) : 2 * Math.PI - theta90;
+			var dif88 = clockwise70 ? theta96 : -theta96;
+			dif85 = smallest17 ? dif88 : clockwise70 ? -(2 * Math.PI - theta96) : 2 * Math.PI - theta96;
 			break;
 		case 3:
 			var f142;
@@ -4730,52 +5364,52 @@ dice_view_Die.prototype = {
 			var this221 = f142;
 			var za71 = this221;
 			var f143;
-			if(pi35 >= 0 && pi35 > Math.PI) {
-				f143 = pi35;
+			if(pi41 >= 0 && pi41 > Math.PI) {
+				f143 = pi41;
 			} else {
-				var a143 = pi35 % (2 * Math.PI);
+				var a143 = pi41 % (2 * Math.PI);
 				f143 = a143 >= 0 ? a143 : a143 + 2 * Math.PI;
 			}
 			var this222 = f143;
 			var zb71 = this222;
 			var fa71 = za71;
 			var fb71 = zb71;
-			var theta91 = Math.abs(fa71 - fb71);
-			var largest17 = theta91 > Math.PI;
+			var theta97 = Math.abs(fa71 - fb71);
+			var largest17 = theta97 > Math.PI;
 			var clockwise71 = fa71 < fb71;
-			var dif89 = clockwise71 ? theta91 : -theta91;
-			dif85 = largest17 ? dif89 : clockwise71 ? -(2 * Math.PI - theta91) : 2 * Math.PI - theta91;
+			var dif89 = clockwise71 ? theta97 : -theta97;
+			dif85 = largest17 ? dif89 : clockwise71 ? -(2 * Math.PI - theta97) : 2 * Math.PI - theta97;
 			break;
 		}
 		var positive17 = dif85 >= 0;
-		var totalSteps17 = Math.ceil(Math.abs(dif85) / step49);
-		var step50 = dif85 / totalSteps17;
+		var totalSteps17 = Math.ceil(Math.abs(dif85) / step55);
+		var step56 = dif85 / totalSteps17;
 		var angle17 = pi_24;
-		var cx52;
-		var cy52;
-		var bx52 = 0;
-		var by52 = 0;
-		var _g42 = 0;
-		var _g132 = totalSteps17 + 1;
-		while(_g42 < _g132) {
-			var i32 = _g42++;
-			cx52 = bx47 + radius19 * Math.sin(angle17);
-			cy52 = by47 + radius19 * Math.cos(angle17);
-			if(i32 != 0) {
-				drawType19.triangle(bx47,by47,0,bx52,by52,0,cx52,cy52,0);
-				var m62 = trilateral2_Shaper.transformMatrix;
-				if(m62 != null) {
-					drawType19.transform(m62);
+		var cx58;
+		var cy58;
+		var bx58 = 0;
+		var by58 = 0;
+		var _g54 = 0;
+		var _g144 = totalSteps17 + 1;
+		while(_g54 < _g144) {
+			var i38 = _g54++;
+			cx58 = bx53 + radius19 * Math.sin(angle17);
+			cy58 = by53 + radius19 * Math.cos(angle17);
+			if(i38 != 0) {
+				drawType19.triangle(bx53,by53,0,bx58,by58,0,cx58,cy58,0);
+				var m74 = trilateral2_Shaper.transformMatrix;
+				if(m74 != null) {
+					drawType19.transform(m74);
 				}
 				drawType19.next();
 			}
-			angle17 += step50;
-			bx52 = cx52;
-			by52 = cy52;
+			angle17 += step56;
+			bx58 = cx58;
+			by58 = cy58;
 		}
 		count4 += totalSteps17;
-		var pi38 = Math.PI;
-		var step51 = pi38 * 2 / 36;
+		var pi44 = Math.PI;
+		var step57 = pi44 * 2 / 36;
 		var dif90;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -4799,9 +5433,9 @@ dice_view_Die.prototype = {
 			var zb72 = this224;
 			var fa72 = za72;
 			var fb72 = zb72;
-			var theta92 = Math.abs(fa72 - fb72);
+			var theta98 = Math.abs(fa72 - fb72);
 			var clockwise72 = fa72 < fb72;
-			var dif91 = clockwise72 ? theta92 : -theta92;
+			var dif91 = clockwise72 ? theta98 : -theta98;
 			dif90 = dif91 > 0 ? dif91 : 2 * Math.PI + dif91;
 			break;
 		case 1:
@@ -4825,9 +5459,9 @@ dice_view_Die.prototype = {
 			var zb73 = this226;
 			var fa73 = za73;
 			var fb73 = zb73;
-			var theta93 = Math.abs(fa73 - fb73);
+			var theta99 = Math.abs(fa73 - fb73);
 			var clockwise73 = fa73 < fb73;
-			var dif92 = clockwise73 ? theta93 : -theta93;
+			var dif92 = clockwise73 ? theta99 : -theta99;
 			dif90 = dif92 < 0 ? dif92 : -2 * Math.PI + dif92;
 			break;
 		case 2:
@@ -4851,11 +5485,11 @@ dice_view_Die.prototype = {
 			var zb74 = this228;
 			var fa74 = za74;
 			var fb74 = zb74;
-			var theta94 = Math.abs(fa74 - fb74);
-			var smallest18 = theta94 <= Math.PI;
+			var theta100 = Math.abs(fa74 - fb74);
+			var smallest18 = theta100 <= Math.PI;
 			var clockwise74 = fa74 < fb74;
-			var dif93 = clockwise74 ? theta94 : -theta94;
-			dif90 = smallest18 ? dif93 : clockwise74 ? -(2 * Math.PI - theta94) : 2 * Math.PI - theta94;
+			var dif93 = clockwise74 ? theta100 : -theta100;
+			dif90 = smallest18 ? dif93 : clockwise74 ? -(2 * Math.PI - theta100) : 2 * Math.PI - theta100;
 			break;
 		case 3:
 			var f150;
@@ -4878,43 +5512,43 @@ dice_view_Die.prototype = {
 			var zb75 = this230;
 			var fa75 = za75;
 			var fb75 = zb75;
-			var theta95 = Math.abs(fa75 - fb75);
-			var largest18 = theta95 > Math.PI;
+			var theta101 = Math.abs(fa75 - fb75);
+			var largest18 = theta101 > Math.PI;
 			var clockwise75 = fa75 < fb75;
-			var dif94 = clockwise75 ? theta95 : -theta95;
-			dif90 = largest18 ? dif94 : clockwise75 ? -(2 * Math.PI - theta95) : 2 * Math.PI - theta95;
+			var dif94 = clockwise75 ? theta101 : -theta101;
+			dif90 = largest18 ? dif94 : clockwise75 ? -(2 * Math.PI - theta101) : 2 * Math.PI - theta101;
 			break;
 		}
 		var positive18 = dif90 >= 0;
-		var totalSteps18 = Math.ceil(Math.abs(dif90) / step51);
-		var step52 = dif90 / totalSteps18;
+		var totalSteps18 = Math.ceil(Math.abs(dif90) / step57);
+		var step58 = dif90 / totalSteps18;
 		var angle18 = pi_24;
-		var cx53;
-		var cy53;
-		var bx53 = 0;
-		var by53 = 0;
-		var _g43 = 0;
-		var _g133 = totalSteps18 + 1;
-		while(_g43 < _g133) {
-			var i33 = _g43++;
-			cx53 = cx47 + radius19 * Math.sin(angle18);
-			cy53 = cy47 + radius19 * Math.cos(angle18);
-			if(i33 != 0) {
-				drawType19.triangle(cx47,cy47,0,bx53,by53,0,cx53,cy53,0);
-				var m63 = trilateral2_Shaper.transformMatrix;
-				if(m63 != null) {
-					drawType19.transform(m63);
+		var cx59;
+		var cy59;
+		var bx59 = 0;
+		var by59 = 0;
+		var _g55 = 0;
+		var _g145 = totalSteps18 + 1;
+		while(_g55 < _g145) {
+			var i39 = _g55++;
+			cx59 = cx53 + radius19 * Math.sin(angle18);
+			cy59 = cy53 + radius19 * Math.cos(angle18);
+			if(i39 != 0) {
+				drawType19.triangle(cx53,cy53,0,bx59,by59,0,cx59,cy59,0);
+				var m75 = trilateral2_Shaper.transformMatrix;
+				if(m75 != null) {
+					drawType19.transform(m75);
 				}
 				drawType19.next();
 			}
-			angle18 += step52;
-			bx53 = cx53;
-			by53 = cy53;
+			angle18 += step58;
+			bx59 = cx59;
+			by59 = cy59;
 		}
 		count4 += totalSteps18;
 		var gamma9 = -pi_24;
-		var pi39 = Math.PI;
-		var step53 = pi39 * 2 / 36;
+		var pi45 = Math.PI;
+		var step59 = pi45 * 2 / 36;
 		var dif95;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -4938,9 +5572,9 @@ dice_view_Die.prototype = {
 			var zb76 = this232;
 			var fa76 = za76;
 			var fb76 = zb76;
-			var theta96 = Math.abs(fa76 - fb76);
+			var theta102 = Math.abs(fa76 - fb76);
 			var clockwise76 = fa76 < fb76;
-			var dif96 = clockwise76 ? theta96 : -theta96;
+			var dif96 = clockwise76 ? theta102 : -theta102;
 			dif95 = dif96 > 0 ? dif96 : 2 * Math.PI + dif96;
 			break;
 		case 1:
@@ -4964,9 +5598,9 @@ dice_view_Die.prototype = {
 			var zb77 = this234;
 			var fa77 = za77;
 			var fb77 = zb77;
-			var theta97 = Math.abs(fa77 - fb77);
+			var theta103 = Math.abs(fa77 - fb77);
 			var clockwise77 = fa77 < fb77;
-			var dif97 = clockwise77 ? theta97 : -theta97;
+			var dif97 = clockwise77 ? theta103 : -theta103;
 			dif95 = dif97 < 0 ? dif97 : -2 * Math.PI + dif97;
 			break;
 		case 2:
@@ -4990,11 +5624,11 @@ dice_view_Die.prototype = {
 			var zb78 = this236;
 			var fa78 = za78;
 			var fb78 = zb78;
-			var theta98 = Math.abs(fa78 - fb78);
-			var smallest19 = theta98 <= Math.PI;
+			var theta104 = Math.abs(fa78 - fb78);
+			var smallest19 = theta104 <= Math.PI;
 			var clockwise78 = fa78 < fb78;
-			var dif98 = clockwise78 ? theta98 : -theta98;
-			dif95 = smallest19 ? dif98 : clockwise78 ? -(2 * Math.PI - theta98) : 2 * Math.PI - theta98;
+			var dif98 = clockwise78 ? theta104 : -theta104;
+			dif95 = smallest19 ? dif98 : clockwise78 ? -(2 * Math.PI - theta104) : 2 * Math.PI - theta104;
 			break;
 		case 3:
 			var f158;
@@ -5017,45 +5651,45 @@ dice_view_Die.prototype = {
 			var zb79 = this238;
 			var fa79 = za79;
 			var fb79 = zb79;
-			var theta99 = Math.abs(fa79 - fb79);
-			var largest19 = theta99 > Math.PI;
+			var theta105 = Math.abs(fa79 - fb79);
+			var largest19 = theta105 > Math.PI;
 			var clockwise79 = fa79 < fb79;
-			var dif99 = clockwise79 ? theta99 : -theta99;
-			dif95 = largest19 ? dif99 : clockwise79 ? -(2 * Math.PI - theta99) : 2 * Math.PI - theta99;
+			var dif99 = clockwise79 ? theta105 : -theta105;
+			dif95 = largest19 ? dif99 : clockwise79 ? -(2 * Math.PI - theta105) : 2 * Math.PI - theta105;
 			break;
 		}
 		var positive19 = dif95 >= 0;
-		var totalSteps19 = Math.ceil(Math.abs(dif95) / step53);
-		var step54 = dif95 / totalSteps19;
+		var totalSteps19 = Math.ceil(Math.abs(dif95) / step59);
+		var step60 = dif95 / totalSteps19;
 		var angle19 = 0;
-		var cx54;
-		var cy54;
-		var bx54 = 0;
-		var by54 = 0;
-		var _g44 = 0;
-		var _g134 = totalSteps19 + 1;
-		while(_g44 < _g134) {
-			var i34 = _g44++;
-			cx54 = dx16 + radius19 * Math.sin(angle19);
-			cy54 = dy16 + radius19 * Math.cos(angle19);
-			if(i34 != 0) {
-				drawType19.triangle(dx16,dy16,0,bx54,by54,0,cx54,cy54,0);
-				var m64 = trilateral2_Shaper.transformMatrix;
-				if(m64 != null) {
-					drawType19.transform(m64);
+		var cx60;
+		var cy60;
+		var bx60 = 0;
+		var by60 = 0;
+		var _g56 = 0;
+		var _g146 = totalSteps19 + 1;
+		while(_g56 < _g146) {
+			var i40 = _g56++;
+			cx60 = dx22 + radius19 * Math.sin(angle19);
+			cy60 = dy22 + radius19 * Math.cos(angle19);
+			if(i40 != 0) {
+				drawType19.triangle(dx22,dy22,0,bx60,by60,0,cx60,cy60,0);
+				var m76 = trilateral2_Shaper.transformMatrix;
+				if(m76 != null) {
+					drawType19.transform(m76);
 				}
 				drawType19.next();
 			}
-			angle19 += step54;
-			bx54 = cx54;
-			by54 = cy54;
+			angle19 += step60;
+			bx60 = cx60;
+			by60 = cy60;
 		}
 		var len19 = count4 += totalSteps19;
-		var color19 = rs8.color;
-		if(color19 == -1) {
-			color19 = this206.currentColor;
+		var color13 = rs8.color;
+		if(color13 == -1) {
+			color13 = this206.currentColor;
 		}
-		this206.colorType.colorTriangles(color19,len19);
+		this206.colorType.colorTriangles(color13,len19);
 		var end19 = start19 + len19 - 1;
 		var s08 = new trilateral2_IndexRange(start19,end19);
 		var this239 = this.spots;
@@ -5073,42 +5707,42 @@ dice_view_Die.prototype = {
 		s09.y -= 30;
 		var start20 = this244.drawType.get_size();
 		var drawType20 = this244.drawType;
-		var ax35 = s09.x;
-		var ay35 = s09.y;
+		var ax29 = s09.x;
+		var ay29 = s09.y;
 		var radius20 = s09.radius;
-		var sides15 = 36;
-		if(sides15 == null) {
-			sides15 = 36;
+		var sides27 = 36;
+		if(sides27 == null) {
+			sides27 = 36;
 		}
-		var pi40 = Math.PI;
-		var theta100 = pi40 / 2;
-		var step55 = pi40 * 2 / sides15;
-		var bx55;
-		var by55;
-		var cx55;
-		var cy55;
-		var _g45 = 0;
-		var _g135 = sides15;
-		while(_g45 < _g135) {
-			var i35 = _g45++;
-			bx55 = ax35 + radius20 * Math.sin(theta100);
-			by55 = ay35 + radius20 * Math.cos(theta100);
-			theta100 += step55;
-			cx55 = ax35 + radius20 * Math.sin(theta100);
-			cy55 = ay35 + radius20 * Math.cos(theta100);
-			drawType20.triangle(ax35,ay35,0,bx55,by55,0,cx55,cy55,0);
-			var m65 = trilateral2_Shaper.transformMatrix;
-			if(m65 != null) {
-				drawType20.transform(m65);
+		var pi46 = Math.PI;
+		var theta106 = pi46 / 2;
+		var step61 = pi46 * 2 / sides27;
+		var bx61;
+		var by61;
+		var cx61;
+		var cy61;
+		var _g57 = 0;
+		var _g147 = sides27;
+		while(_g57 < _g147) {
+			var i41 = _g57++;
+			bx61 = ax29 + radius20 * Math.sin(theta106);
+			by61 = ay29 + radius20 * Math.cos(theta106);
+			theta106 += step61;
+			cx61 = ax29 + radius20 * Math.sin(theta106);
+			cy61 = ay29 + radius20 * Math.cos(theta106);
+			drawType20.triangle(ax29,ay29,0,bx61,by61,0,cx61,cy61,0);
+			var m77 = trilateral2_Shaper.transformMatrix;
+			if(m77 != null) {
+				drawType20.transform(m77);
 			}
 			drawType20.next();
 		}
-		var len20 = sides15;
-		var color20 = s09.color;
-		if(color20 == -1) {
-			color20 = this244.currentColor;
+		var len20 = sides27;
+		var color14 = s09.color;
+		if(color14 == -1) {
+			color14 = this244.currentColor;
 		}
-		this244.colorType.colorTriangles(color20,len20);
+		this244.colorType.colorTriangles(color14,len20);
 		var end20 = start20 + len20 - 1;
 		var startEnd15 = new trilateral2_IndexRange(start20,end20);
 		var c04 = startEnd15;
@@ -5117,42 +5751,42 @@ dice_view_Die.prototype = {
 		s118.y -= 30;
 		var start21 = this244.drawType.get_size();
 		var drawType21 = this244.drawType;
-		var ax36 = s118.x;
-		var ay36 = s118.y;
+		var ax30 = s118.x;
+		var ay30 = s118.y;
 		var radius21 = s118.radius;
-		var sides16 = 36;
-		if(sides16 == null) {
-			sides16 = 36;
+		var sides28 = 36;
+		if(sides28 == null) {
+			sides28 = 36;
 		}
-		var pi41 = Math.PI;
-		var theta101 = pi41 / 2;
-		var step56 = pi41 * 2 / sides16;
-		var bx56;
-		var by56;
-		var cx56;
-		var cy56;
-		var _g46 = 0;
-		var _g136 = sides16;
-		while(_g46 < _g136) {
-			var i36 = _g46++;
-			bx56 = ax36 + radius21 * Math.sin(theta101);
-			by56 = ay36 + radius21 * Math.cos(theta101);
-			theta101 += step56;
-			cx56 = ax36 + radius21 * Math.sin(theta101);
-			cy56 = ay36 + radius21 * Math.cos(theta101);
-			drawType21.triangle(ax36,ay36,0,bx56,by56,0,cx56,cy56,0);
-			var m66 = trilateral2_Shaper.transformMatrix;
-			if(m66 != null) {
-				drawType21.transform(m66);
+		var pi47 = Math.PI;
+		var theta107 = pi47 / 2;
+		var step62 = pi47 * 2 / sides28;
+		var bx62;
+		var by62;
+		var cx62;
+		var cy62;
+		var _g58 = 0;
+		var _g148 = sides28;
+		while(_g58 < _g148) {
+			var i42 = _g58++;
+			bx62 = ax30 + radius21 * Math.sin(theta107);
+			by62 = ay30 + radius21 * Math.cos(theta107);
+			theta107 += step62;
+			cx62 = ax30 + radius21 * Math.sin(theta107);
+			cy62 = ay30 + radius21 * Math.cos(theta107);
+			drawType21.triangle(ax30,ay30,0,bx62,by62,0,cx62,cy62,0);
+			var m78 = trilateral2_Shaper.transformMatrix;
+			if(m78 != null) {
+				drawType21.transform(m78);
 			}
 			drawType21.next();
 		}
-		var len21 = sides16;
-		var color21 = s118.color;
-		if(color21 == -1) {
-			color21 = this244.currentColor;
+		var len21 = sides28;
+		var color15 = s118.color;
+		if(color15 == -1) {
+			color15 = this244.currentColor;
 		}
-		this244.colorType.colorTriangles(color21,len21);
+		this244.colorType.colorTriangles(color15,len21);
 		var end21 = start21 + len21 - 1;
 		var startEnd16 = new trilateral2_IndexRange(start21,end21);
 		var c15 = startEnd16;
@@ -5161,42 +5795,42 @@ dice_view_Die.prototype = {
 		s212.y += 30;
 		var start22 = this244.drawType.get_size();
 		var drawType22 = this244.drawType;
-		var ax37 = s212.x;
-		var ay37 = s212.y;
+		var ax31 = s212.x;
+		var ay31 = s212.y;
 		var radius22 = s212.radius;
-		var sides17 = 36;
-		if(sides17 == null) {
-			sides17 = 36;
+		var sides29 = 36;
+		if(sides29 == null) {
+			sides29 = 36;
 		}
-		var pi42 = Math.PI;
-		var theta102 = pi42 / 2;
-		var step57 = pi42 * 2 / sides17;
-		var bx57;
-		var by57;
-		var cx57;
-		var cy57;
-		var _g47 = 0;
-		var _g137 = sides17;
-		while(_g47 < _g137) {
-			var i37 = _g47++;
-			bx57 = ax37 + radius22 * Math.sin(theta102);
-			by57 = ay37 + radius22 * Math.cos(theta102);
-			theta102 += step57;
-			cx57 = ax37 + radius22 * Math.sin(theta102);
-			cy57 = ay37 + radius22 * Math.cos(theta102);
-			drawType22.triangle(ax37,ay37,0,bx57,by57,0,cx57,cy57,0);
-			var m67 = trilateral2_Shaper.transformMatrix;
-			if(m67 != null) {
-				drawType22.transform(m67);
+		var pi48 = Math.PI;
+		var theta108 = pi48 / 2;
+		var step63 = pi48 * 2 / sides29;
+		var bx63;
+		var by63;
+		var cx63;
+		var cy63;
+		var _g59 = 0;
+		var _g149 = sides29;
+		while(_g59 < _g149) {
+			var i43 = _g59++;
+			bx63 = ax31 + radius22 * Math.sin(theta108);
+			by63 = ay31 + radius22 * Math.cos(theta108);
+			theta108 += step63;
+			cx63 = ax31 + radius22 * Math.sin(theta108);
+			cy63 = ay31 + radius22 * Math.cos(theta108);
+			drawType22.triangle(ax31,ay31,0,bx63,by63,0,cx63,cy63,0);
+			var m79 = trilateral2_Shaper.transformMatrix;
+			if(m79 != null) {
+				drawType22.transform(m79);
 			}
 			drawType22.next();
 		}
-		var len22 = sides17;
-		var color22 = s212.color;
-		if(color22 == -1) {
-			color22 = this244.currentColor;
+		var len22 = sides29;
+		var color16 = s212.color;
+		if(color16 == -1) {
+			color16 = this244.currentColor;
 		}
-		this244.colorType.colorTriangles(color22,len22);
+		this244.colorType.colorTriangles(color16,len22);
 		var end22 = start22 + len22 - 1;
 		var startEnd17 = new trilateral2_IndexRange(start22,end22);
 		var c24 = startEnd17;
@@ -5205,84 +5839,84 @@ dice_view_Die.prototype = {
 		s35.y += 30;
 		var start23 = this244.drawType.get_size();
 		var drawType23 = this244.drawType;
-		var ax38 = s35.x;
-		var ay38 = s35.y;
+		var ax32 = s35.x;
+		var ay32 = s35.y;
 		var radius23 = s35.radius;
-		var sides18 = 36;
-		if(sides18 == null) {
-			sides18 = 36;
+		var sides30 = 36;
+		if(sides30 == null) {
+			sides30 = 36;
 		}
-		var pi43 = Math.PI;
-		var theta103 = pi43 / 2;
-		var step58 = pi43 * 2 / sides18;
-		var bx58;
-		var by58;
-		var cx58;
-		var cy58;
-		var _g48 = 0;
-		var _g138 = sides18;
-		while(_g48 < _g138) {
-			var i38 = _g48++;
-			bx58 = ax38 + radius23 * Math.sin(theta103);
-			by58 = ay38 + radius23 * Math.cos(theta103);
-			theta103 += step58;
-			cx58 = ax38 + radius23 * Math.sin(theta103);
-			cy58 = ay38 + radius23 * Math.cos(theta103);
-			drawType23.triangle(ax38,ay38,0,bx58,by58,0,cx58,cy58,0);
-			var m68 = trilateral2_Shaper.transformMatrix;
-			if(m68 != null) {
-				drawType23.transform(m68);
+		var pi49 = Math.PI;
+		var theta109 = pi49 / 2;
+		var step64 = pi49 * 2 / sides30;
+		var bx64;
+		var by64;
+		var cx64;
+		var cy64;
+		var _g60 = 0;
+		var _g150 = sides30;
+		while(_g60 < _g150) {
+			var i44 = _g60++;
+			bx64 = ax32 + radius23 * Math.sin(theta109);
+			by64 = ay32 + radius23 * Math.cos(theta109);
+			theta109 += step64;
+			cx64 = ax32 + radius23 * Math.sin(theta109);
+			cy64 = ay32 + radius23 * Math.cos(theta109);
+			drawType23.triangle(ax32,ay32,0,bx64,by64,0,cx64,cy64,0);
+			var m80 = trilateral2_Shaper.transformMatrix;
+			if(m80 != null) {
+				drawType23.transform(m80);
 			}
 			drawType23.next();
 		}
-		var len23 = sides18;
-		var color23 = s35.color;
-		if(color23 == -1) {
-			color23 = this244.currentColor;
+		var len23 = sides30;
+		var color17 = s35.color;
+		if(color17 == -1) {
+			color17 = this244.currentColor;
 		}
-		this244.colorType.colorTriangles(color23,len23);
+		this244.colorType.colorTriangles(color17,len23);
 		var end23 = start23 + len23 - 1;
 		var startEnd18 = new trilateral2_IndexRange(start23,end23);
 		var c33 = startEnd18;
 		var s43 = rs9.clone();
 		var start24 = this244.drawType.get_size();
 		var drawType24 = this244.drawType;
-		var ax39 = s43.x;
-		var ay39 = s43.y;
+		var ax33 = s43.x;
+		var ay33 = s43.y;
 		var radius24 = s43.radius;
-		var sides19 = 36;
-		if(sides19 == null) {
-			sides19 = 36;
+		var sides31 = 36;
+		if(sides31 == null) {
+			sides31 = 36;
 		}
-		var pi44 = Math.PI;
-		var theta104 = pi44 / 2;
-		var step59 = pi44 * 2 / sides19;
-		var bx59;
-		var by59;
-		var cx59;
-		var cy59;
-		var _g49 = 0;
-		var _g139 = sides19;
-		while(_g49 < _g139) {
-			var i39 = _g49++;
-			bx59 = ax39 + radius24 * Math.sin(theta104);
-			by59 = ay39 + radius24 * Math.cos(theta104);
-			theta104 += step59;
-			cx59 = ax39 + radius24 * Math.sin(theta104);
-			cy59 = ay39 + radius24 * Math.cos(theta104);
-			drawType24.triangle(ax39,ay39,0,bx59,by59,0,cx59,cy59,0);
-			var m69 = trilateral2_Shaper.transformMatrix;
-			if(m69 != null) {
-				drawType24.transform(m69);
+		var pi50 = Math.PI;
+		var theta110 = pi50 / 2;
+		var step65 = pi50 * 2 / sides31;
+		var bx65;
+		var by65;
+		var cx65;
+		var cy65;
+		var _g61 = 0;
+		var _g151 = sides31;
+		while(_g61 < _g151) {
+			var i45 = _g61++;
+			bx65 = ax33 + radius24 * Math.sin(theta110);
+			by65 = ay33 + radius24 * Math.cos(theta110);
+			theta110 += step65;
+			cx65 = ax33 + radius24 * Math.sin(theta110);
+			cy65 = ay33 + radius24 * Math.cos(theta110);
+			drawType24.triangle(ax33,ay33,0,bx65,by65,0,cx65,cy65,0);
+			var m81 = trilateral2_Shaper.transformMatrix;
+			if(m81 != null) {
+				drawType24.transform(m81);
 			}
 			drawType24.next();
 		}
-		var len24 = sides19;
-		var color24 = s43.color;
-		if(color24 == -1) {
-			color24 = this244.currentColor;
+		var len24 = sides31;
+		var color18 = s43.color;
+		if(color18 == -1) {
+			color18 = this244.currentColor;
 		}
-		this244.colorType.colorTriangles(color24,len24);
+		this244.colorType.colorTriangles(color18,len24);
 		var end24 = start24 + len24 - 1;
 		var startEnd19 = new trilateral2_IndexRange(start24,end24);
 		var c42 = startEnd19;
@@ -5294,90 +5928,90 @@ dice_view_Die.prototype = {
 		var rs10 = this.dieShape;
 		var start25 = this245.drawType.get_size();
 		var drawType25 = this245.drawType;
-		var x6 = rs10.x - rs10.radius;
-		var y6 = rs10.y - rs10.radius;
+		var x12 = rs10.x - rs10.radius;
+		var y12 = rs10.y - rs10.radius;
 		var width5 = rs10.radius * 2;
 		var height5 = rs10.radius * 2;
 		var radius25 = this245.rounded;
-		var pi45 = Math.PI;
+		var pi51 = Math.PI;
 		var pi_25 = Math.PI / 2;
-		var ax40 = x6 + radius25;
-		var ay40 = y6 + radius25;
-		var bx60 = x6 + width5 - radius25;
-		var by60 = y6 + radius25;
-		var cx60 = bx60;
-		var cy60 = y6 + height5 - radius25;
-		var dx20 = ax40;
-		var dy20 = cy60;
+		var ax34 = x12 + radius25;
+		var ay34 = y12 + radius25;
+		var bx66 = x12 + width5 - radius25;
+		var by66 = y12 + radius25;
+		var cx66 = bx66;
+		var cy66 = y12 + height5 - radius25;
+		var dx26 = ax34;
+		var dy26 = cy66;
 		var count5 = 0;
-		var ax41 = ax40;
-		var ay41 = y6;
-		var bx61 = ax40 + (width5 - radius25 * 2);
-		var by61 = ay41;
-		var cx61 = bx61;
-		var cy61 = ay41 + height5;
-		var dx21 = ax40;
-		var dy21 = cy61;
-		drawType25.triangle(ax41,ay41,0,bx61,by61,0,dx21,dy21,0);
-		var m70 = trilateral2_Shaper.transformMatrix;
-		if(m70 != null) {
-			drawType25.transform(m70);
+		var ax35 = ax34;
+		var ay35 = y12;
+		var bx67 = ax34 + (width5 - radius25 * 2);
+		var by67 = ay35;
+		var cx67 = bx67;
+		var cy67 = ay35 + height5;
+		var dx27 = ax34;
+		var dy27 = cy67;
+		drawType25.triangle(ax35,ay35,0,bx67,by67,0,dx27,dy27,0);
+		var m82 = trilateral2_Shaper.transformMatrix;
+		if(m82 != null) {
+			drawType25.transform(m82);
 		}
 		drawType25.next();
-		drawType25.triangle(bx61,by61,0,cx61,cy61,0,dx21,dy21,0);
-		var m71 = trilateral2_Shaper.transformMatrix;
-		if(m71 != null) {
-			drawType25.transform(m71);
+		drawType25.triangle(bx67,by67,0,cx67,cy67,0,dx27,dy27,0);
+		var m83 = trilateral2_Shaper.transformMatrix;
+		if(m83 != null) {
+			drawType25.transform(m83);
 		}
 		drawType25.next();
 		count5 += 2;
 		var dimY5 = height5 - 2 * radius25;
-		var ax42 = x6;
-		var ay42 = ay40;
-		var bx62 = x6 + radius25;
-		var by62 = ay42;
-		var cx62 = bx62;
-		var cy62 = ay42 + dimY5;
-		var dx22 = x6;
-		var dy22 = cy62;
-		drawType25.triangle(ax42,ay42,0,bx62,by62,0,dx22,dy22,0);
-		var m72 = trilateral2_Shaper.transformMatrix;
-		if(m72 != null) {
-			drawType25.transform(m72);
+		var ax36 = x12;
+		var ay36 = ay34;
+		var bx68 = x12 + radius25;
+		var by68 = ay36;
+		var cx68 = bx68;
+		var cy68 = ay36 + dimY5;
+		var dx28 = x12;
+		var dy28 = cy68;
+		drawType25.triangle(ax36,ay36,0,bx68,by68,0,dx28,dy28,0);
+		var m84 = trilateral2_Shaper.transformMatrix;
+		if(m84 != null) {
+			drawType25.transform(m84);
 		}
 		drawType25.next();
-		drawType25.triangle(bx62,by62,0,cx62,cy62,0,dx22,dy22,0);
-		var m73 = trilateral2_Shaper.transformMatrix;
-		if(m73 != null) {
-			drawType25.transform(m73);
-		}
-		drawType25.next();
-		count5 += 2;
-		var ax43 = bx60;
-		var ay43 = by60;
-		var bx63 = bx60 + radius25;
-		var by63 = ay43;
-		var cx63 = bx63;
-		var cy63 = ay43 + dimY5;
-		var dx23 = bx60;
-		var dy23 = cy63;
-		drawType25.triangle(ax43,ay43,0,bx63,by63,0,dx23,dy23,0);
-		var m74 = trilateral2_Shaper.transformMatrix;
-		if(m74 != null) {
-			drawType25.transform(m74);
-		}
-		drawType25.next();
-		drawType25.triangle(bx63,by63,0,cx63,cy63,0,dx23,dy23,0);
-		var m75 = trilateral2_Shaper.transformMatrix;
-		if(m75 != null) {
-			drawType25.transform(m75);
+		drawType25.triangle(bx68,by68,0,cx68,cy68,0,dx28,dy28,0);
+		var m85 = trilateral2_Shaper.transformMatrix;
+		if(m85 != null) {
+			drawType25.transform(m85);
 		}
 		drawType25.next();
 		count5 += 2;
-		var beta5 = -pi45;
+		var ax37 = bx66;
+		var ay37 = by66;
+		var bx69 = bx66 + radius25;
+		var by69 = ay37;
+		var cx69 = bx69;
+		var cy69 = ay37 + dimY5;
+		var dx29 = bx66;
+		var dy29 = cy69;
+		drawType25.triangle(ax37,ay37,0,bx69,by69,0,dx29,dy29,0);
+		var m86 = trilateral2_Shaper.transformMatrix;
+		if(m86 != null) {
+			drawType25.transform(m86);
+		}
+		drawType25.next();
+		drawType25.triangle(bx69,by69,0,cx69,cy69,0,dx29,dy29,0);
+		var m87 = trilateral2_Shaper.transformMatrix;
+		if(m87 != null) {
+			drawType25.transform(m87);
+		}
+		drawType25.next();
+		count5 += 2;
+		var beta5 = -pi51;
 		var gamma10 = -pi_25;
-		var pi46 = Math.PI;
-		var step60 = pi46 * 2 / 36;
+		var pi52 = Math.PI;
+		var step66 = pi52 * 2 / 36;
 		var dif100;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -5401,9 +6035,9 @@ dice_view_Die.prototype = {
 			var zb80 = this247;
 			var fa80 = za80;
 			var fb80 = zb80;
-			var theta105 = Math.abs(fa80 - fb80);
+			var theta111 = Math.abs(fa80 - fb80);
 			var clockwise80 = fa80 < fb80;
-			var dif101 = clockwise80 ? theta105 : -theta105;
+			var dif101 = clockwise80 ? theta111 : -theta111;
 			dif100 = dif101 > 0 ? dif101 : 2 * Math.PI + dif101;
 			break;
 		case 1:
@@ -5427,9 +6061,9 @@ dice_view_Die.prototype = {
 			var zb81 = this249;
 			var fa81 = za81;
 			var fb81 = zb81;
-			var theta106 = Math.abs(fa81 - fb81);
+			var theta112 = Math.abs(fa81 - fb81);
 			var clockwise81 = fa81 < fb81;
-			var dif102 = clockwise81 ? theta106 : -theta106;
+			var dif102 = clockwise81 ? theta112 : -theta112;
 			dif100 = dif102 < 0 ? dif102 : -2 * Math.PI + dif102;
 			break;
 		case 2:
@@ -5453,11 +6087,11 @@ dice_view_Die.prototype = {
 			var zb82 = this251;
 			var fa82 = za82;
 			var fb82 = zb82;
-			var theta107 = Math.abs(fa82 - fb82);
-			var smallest20 = theta107 <= Math.PI;
+			var theta113 = Math.abs(fa82 - fb82);
+			var smallest20 = theta113 <= Math.PI;
 			var clockwise82 = fa82 < fb82;
-			var dif103 = clockwise82 ? theta107 : -theta107;
-			dif100 = smallest20 ? dif103 : clockwise82 ? -(2 * Math.PI - theta107) : 2 * Math.PI - theta107;
+			var dif103 = clockwise82 ? theta113 : -theta113;
+			dif100 = smallest20 ? dif103 : clockwise82 ? -(2 * Math.PI - theta113) : 2 * Math.PI - theta113;
 			break;
 		case 3:
 			var f166;
@@ -5480,42 +6114,42 @@ dice_view_Die.prototype = {
 			var zb83 = this253;
 			var fa83 = za83;
 			var fb83 = zb83;
-			var theta108 = Math.abs(fa83 - fb83);
-			var largest20 = theta108 > Math.PI;
+			var theta114 = Math.abs(fa83 - fb83);
+			var largest20 = theta114 > Math.PI;
 			var clockwise83 = fa83 < fb83;
-			var dif104 = clockwise83 ? theta108 : -theta108;
-			dif100 = largest20 ? dif104 : clockwise83 ? -(2 * Math.PI - theta108) : 2 * Math.PI - theta108;
+			var dif104 = clockwise83 ? theta114 : -theta114;
+			dif100 = largest20 ? dif104 : clockwise83 ? -(2 * Math.PI - theta114) : 2 * Math.PI - theta114;
 			break;
 		}
 		var positive20 = dif100 >= 0;
-		var totalSteps20 = Math.ceil(Math.abs(dif100) / step60);
-		var step61 = dif100 / totalSteps20;
+		var totalSteps20 = Math.ceil(Math.abs(dif100) / step66);
+		var step67 = dif100 / totalSteps20;
 		var angle20 = beta5;
-		var cx64;
-		var cy64;
-		var bx64 = 0;
-		var by64 = 0;
-		var _g50 = 0;
-		var _g140 = totalSteps20 + 1;
-		while(_g50 < _g140) {
-			var i40 = _g50++;
-			cx64 = ax40 + radius25 * Math.sin(angle20);
-			cy64 = ay40 + radius25 * Math.cos(angle20);
-			if(i40 != 0) {
-				drawType25.triangle(ax40,ay40,0,bx64,by64,0,cx64,cy64,0);
-				var m76 = trilateral2_Shaper.transformMatrix;
-				if(m76 != null) {
-					drawType25.transform(m76);
+		var cx70;
+		var cy70;
+		var bx70 = 0;
+		var by70 = 0;
+		var _g62 = 0;
+		var _g152 = totalSteps20 + 1;
+		while(_g62 < _g152) {
+			var i46 = _g62++;
+			cx70 = ax34 + radius25 * Math.sin(angle20);
+			cy70 = ay34 + radius25 * Math.cos(angle20);
+			if(i46 != 0) {
+				drawType25.triangle(ax34,ay34,0,bx70,by70,0,cx70,cy70,0);
+				var m88 = trilateral2_Shaper.transformMatrix;
+				if(m88 != null) {
+					drawType25.transform(m88);
 				}
 				drawType25.next();
 			}
-			angle20 += step61;
-			bx64 = cx64;
-			by64 = cy64;
+			angle20 += step67;
+			bx70 = cx70;
+			by70 = cy70;
 		}
 		count5 += totalSteps20;
-		var pi47 = Math.PI;
-		var step62 = pi47 * 2 / 36;
+		var pi53 = Math.PI;
+		var step68 = pi53 * 2 / 36;
 		var dif105;
 		switch(fracs_DifferencePreference.CLOCKWISE._hx_index) {
 		case 0:
@@ -5529,19 +6163,19 @@ dice_view_Die.prototype = {
 			var this254 = f168;
 			var za84 = this254;
 			var f169;
-			if(pi45 >= 0 && pi45 > Math.PI) {
-				f169 = pi45;
+			if(pi51 >= 0 && pi51 > Math.PI) {
+				f169 = pi51;
 			} else {
-				var a169 = pi45 % (2 * Math.PI);
+				var a169 = pi51 % (2 * Math.PI);
 				f169 = a169 >= 0 ? a169 : a169 + 2 * Math.PI;
 			}
 			var this255 = f169;
 			var zb84 = this255;
 			var fa84 = za84;
 			var fb84 = zb84;
-			var theta109 = Math.abs(fa84 - fb84);
+			var theta115 = Math.abs(fa84 - fb84);
 			var clockwise84 = fa84 < fb84;
-			var dif106 = clockwise84 ? theta109 : -theta109;
+			var dif106 = clockwise84 ? theta115 : -theta115;
 			dif105 = dif106 > 0 ? dif106 : 2 * Math.PI + dif106;
 			break;
 		case 1:
@@ -5555,19 +6189,19 @@ dice_view_Die.prototype = {
 			var this256 = f170;
 			var za85 = this256;
 			var f171;
-			if(pi45 >= 0 && pi45 > Math.PI) {
-				f171 = pi45;
+			if(pi51 >= 0 && pi51 > Math.PI) {
+				f171 = pi51;
 			} else {
-				var a171 = pi45 % (2 * Math.PI);
+				var a171 = pi51 % (2 * Math.PI);
 				f171 = a171 >= 0 ? a171 : a171 + 2 * Math.PI;
 			}
 			var this257 = f171;
 			var zb85 = this257;
 			var fa85 = za85;
 			var fb85 = zb85;
-			var theta110 = Math.abs(fa85 - fb85);
+			var theta116 = Math.abs(fa85 - fb85);
 			var clockwise85 = fa85 < fb85;
-			var dif107 = clockwise85 ? theta110 : -theta110;
+			var dif107 = clockwise85 ? theta116 : -theta116;
 			dif105 = dif107 < 0 ? dif107 : -2 * Math.PI + dif107;
 			break;
 		case 2:
@@ -5581,21 +6215,21 @@ dice_view_Die.prototype = {
 			var this258 = f172;
 			var za86 = this258;
 			var f173;
-			if(pi45 >= 0 && pi45 > Math.PI) {
-				f173 = pi45;
+			if(pi51 >= 0 && pi51 > Math.PI) {
+				f173 = pi51;
 			} else {
-				var a173 = pi45 % (2 * Math.PI);
+				var a173 = pi51 % (2 * Math.PI);
 				f173 = a173 >= 0 ? a173 : a173 + 2 * Math.PI;
 			}
 			var this259 = f173;
 			var zb86 = this259;
 			var fa86 = za86;
 			var fb86 = zb86;
-			var theta111 = Math.abs(fa86 - fb86);
-			var smallest21 = theta111 <= Math.PI;
+			var theta117 = Math.abs(fa86 - fb86);
+			var smallest21 = theta117 <= Math.PI;
 			var clockwise86 = fa86 < fb86;
-			var dif108 = clockwise86 ? theta111 : -theta111;
-			dif105 = smallest21 ? dif108 : clockwise86 ? -(2 * Math.PI - theta111) : 2 * Math.PI - theta111;
+			var dif108 = clockwise86 ? theta117 : -theta117;
+			dif105 = smallest21 ? dif108 : clockwise86 ? -(2 * Math.PI - theta117) : 2 * Math.PI - theta117;
 			break;
 		case 3:
 			var f174;
@@ -5608,52 +6242,52 @@ dice_view_Die.prototype = {
 			var this260 = f174;
 			var za87 = this260;
 			var f175;
-			if(pi45 >= 0 && pi45 > Math.PI) {
-				f175 = pi45;
+			if(pi51 >= 0 && pi51 > Math.PI) {
+				f175 = pi51;
 			} else {
-				var a175 = pi45 % (2 * Math.PI);
+				var a175 = pi51 % (2 * Math.PI);
 				f175 = a175 >= 0 ? a175 : a175 + 2 * Math.PI;
 			}
 			var this261 = f175;
 			var zb87 = this261;
 			var fa87 = za87;
 			var fb87 = zb87;
-			var theta112 = Math.abs(fa87 - fb87);
-			var largest21 = theta112 > Math.PI;
+			var theta118 = Math.abs(fa87 - fb87);
+			var largest21 = theta118 > Math.PI;
 			var clockwise87 = fa87 < fb87;
-			var dif109 = clockwise87 ? theta112 : -theta112;
-			dif105 = largest21 ? dif109 : clockwise87 ? -(2 * Math.PI - theta112) : 2 * Math.PI - theta112;
+			var dif109 = clockwise87 ? theta118 : -theta118;
+			dif105 = largest21 ? dif109 : clockwise87 ? -(2 * Math.PI - theta118) : 2 * Math.PI - theta118;
 			break;
 		}
 		var positive21 = dif105 >= 0;
-		var totalSteps21 = Math.ceil(Math.abs(dif105) / step62);
-		var step63 = dif105 / totalSteps21;
+		var totalSteps21 = Math.ceil(Math.abs(dif105) / step68);
+		var step69 = dif105 / totalSteps21;
 		var angle21 = pi_25;
-		var cx65;
-		var cy65;
-		var bx65 = 0;
-		var by65 = 0;
-		var _g51 = 0;
-		var _g141 = totalSteps21 + 1;
-		while(_g51 < _g141) {
-			var i41 = _g51++;
-			cx65 = bx60 + radius25 * Math.sin(angle21);
-			cy65 = by60 + radius25 * Math.cos(angle21);
-			if(i41 != 0) {
-				drawType25.triangle(bx60,by60,0,bx65,by65,0,cx65,cy65,0);
-				var m77 = trilateral2_Shaper.transformMatrix;
-				if(m77 != null) {
-					drawType25.transform(m77);
+		var cx71;
+		var cy71;
+		var bx71 = 0;
+		var by71 = 0;
+		var _g63 = 0;
+		var _g153 = totalSteps21 + 1;
+		while(_g63 < _g153) {
+			var i47 = _g63++;
+			cx71 = bx66 + radius25 * Math.sin(angle21);
+			cy71 = by66 + radius25 * Math.cos(angle21);
+			if(i47 != 0) {
+				drawType25.triangle(bx66,by66,0,bx71,by71,0,cx71,cy71,0);
+				var m89 = trilateral2_Shaper.transformMatrix;
+				if(m89 != null) {
+					drawType25.transform(m89);
 				}
 				drawType25.next();
 			}
-			angle21 += step63;
-			bx65 = cx65;
-			by65 = cy65;
+			angle21 += step69;
+			bx71 = cx71;
+			by71 = cy71;
 		}
 		count5 += totalSteps21;
-		var pi48 = Math.PI;
-		var step64 = pi48 * 2 / 36;
+		var pi54 = Math.PI;
+		var step70 = pi54 * 2 / 36;
 		var dif110;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -5677,9 +6311,9 @@ dice_view_Die.prototype = {
 			var zb88 = this263;
 			var fa88 = za88;
 			var fb88 = zb88;
-			var theta113 = Math.abs(fa88 - fb88);
+			var theta119 = Math.abs(fa88 - fb88);
 			var clockwise88 = fa88 < fb88;
-			var dif111 = clockwise88 ? theta113 : -theta113;
+			var dif111 = clockwise88 ? theta119 : -theta119;
 			dif110 = dif111 > 0 ? dif111 : 2 * Math.PI + dif111;
 			break;
 		case 1:
@@ -5703,9 +6337,9 @@ dice_view_Die.prototype = {
 			var zb89 = this265;
 			var fa89 = za89;
 			var fb89 = zb89;
-			var theta114 = Math.abs(fa89 - fb89);
+			var theta120 = Math.abs(fa89 - fb89);
 			var clockwise89 = fa89 < fb89;
-			var dif112 = clockwise89 ? theta114 : -theta114;
+			var dif112 = clockwise89 ? theta120 : -theta120;
 			dif110 = dif112 < 0 ? dif112 : -2 * Math.PI + dif112;
 			break;
 		case 2:
@@ -5729,11 +6363,11 @@ dice_view_Die.prototype = {
 			var zb90 = this267;
 			var fa90 = za90;
 			var fb90 = zb90;
-			var theta115 = Math.abs(fa90 - fb90);
-			var smallest22 = theta115 <= Math.PI;
+			var theta121 = Math.abs(fa90 - fb90);
+			var smallest22 = theta121 <= Math.PI;
 			var clockwise90 = fa90 < fb90;
-			var dif113 = clockwise90 ? theta115 : -theta115;
-			dif110 = smallest22 ? dif113 : clockwise90 ? -(2 * Math.PI - theta115) : 2 * Math.PI - theta115;
+			var dif113 = clockwise90 ? theta121 : -theta121;
+			dif110 = smallest22 ? dif113 : clockwise90 ? -(2 * Math.PI - theta121) : 2 * Math.PI - theta121;
 			break;
 		case 3:
 			var f182;
@@ -5756,43 +6390,43 @@ dice_view_Die.prototype = {
 			var zb91 = this269;
 			var fa91 = za91;
 			var fb91 = zb91;
-			var theta116 = Math.abs(fa91 - fb91);
-			var largest22 = theta116 > Math.PI;
+			var theta122 = Math.abs(fa91 - fb91);
+			var largest22 = theta122 > Math.PI;
 			var clockwise91 = fa91 < fb91;
-			var dif114 = clockwise91 ? theta116 : -theta116;
-			dif110 = largest22 ? dif114 : clockwise91 ? -(2 * Math.PI - theta116) : 2 * Math.PI - theta116;
+			var dif114 = clockwise91 ? theta122 : -theta122;
+			dif110 = largest22 ? dif114 : clockwise91 ? -(2 * Math.PI - theta122) : 2 * Math.PI - theta122;
 			break;
 		}
 		var positive22 = dif110 >= 0;
-		var totalSteps22 = Math.ceil(Math.abs(dif110) / step64);
-		var step65 = dif110 / totalSteps22;
+		var totalSteps22 = Math.ceil(Math.abs(dif110) / step70);
+		var step71 = dif110 / totalSteps22;
 		var angle22 = pi_25;
-		var cx66;
-		var cy66;
-		var bx66 = 0;
-		var by66 = 0;
-		var _g52 = 0;
-		var _g142 = totalSteps22 + 1;
-		while(_g52 < _g142) {
-			var i42 = _g52++;
-			cx66 = cx60 + radius25 * Math.sin(angle22);
-			cy66 = cy60 + radius25 * Math.cos(angle22);
-			if(i42 != 0) {
-				drawType25.triangle(cx60,cy60,0,bx66,by66,0,cx66,cy66,0);
-				var m78 = trilateral2_Shaper.transformMatrix;
-				if(m78 != null) {
-					drawType25.transform(m78);
+		var cx72;
+		var cy72;
+		var bx72 = 0;
+		var by72 = 0;
+		var _g64 = 0;
+		var _g154 = totalSteps22 + 1;
+		while(_g64 < _g154) {
+			var i48 = _g64++;
+			cx72 = cx66 + radius25 * Math.sin(angle22);
+			cy72 = cy66 + radius25 * Math.cos(angle22);
+			if(i48 != 0) {
+				drawType25.triangle(cx66,cy66,0,bx72,by72,0,cx72,cy72,0);
+				var m90 = trilateral2_Shaper.transformMatrix;
+				if(m90 != null) {
+					drawType25.transform(m90);
 				}
 				drawType25.next();
 			}
-			angle22 += step65;
-			bx66 = cx66;
-			by66 = cy66;
+			angle22 += step71;
+			bx72 = cx72;
+			by72 = cy72;
 		}
 		count5 += totalSteps22;
 		var gamma11 = -pi_25;
-		var pi49 = Math.PI;
-		var step66 = pi49 * 2 / 36;
+		var pi55 = Math.PI;
+		var step72 = pi55 * 2 / 36;
 		var dif115;
 		switch(fracs_DifferencePreference.ANTICLOCKWISE._hx_index) {
 		case 0:
@@ -5816,9 +6450,9 @@ dice_view_Die.prototype = {
 			var zb92 = this271;
 			var fa92 = za92;
 			var fb92 = zb92;
-			var theta117 = Math.abs(fa92 - fb92);
+			var theta123 = Math.abs(fa92 - fb92);
 			var clockwise92 = fa92 < fb92;
-			var dif116 = clockwise92 ? theta117 : -theta117;
+			var dif116 = clockwise92 ? theta123 : -theta123;
 			dif115 = dif116 > 0 ? dif116 : 2 * Math.PI + dif116;
 			break;
 		case 1:
@@ -5842,9 +6476,9 @@ dice_view_Die.prototype = {
 			var zb93 = this273;
 			var fa93 = za93;
 			var fb93 = zb93;
-			var theta118 = Math.abs(fa93 - fb93);
+			var theta124 = Math.abs(fa93 - fb93);
 			var clockwise93 = fa93 < fb93;
-			var dif117 = clockwise93 ? theta118 : -theta118;
+			var dif117 = clockwise93 ? theta124 : -theta124;
 			dif115 = dif117 < 0 ? dif117 : -2 * Math.PI + dif117;
 			break;
 		case 2:
@@ -5868,11 +6502,11 @@ dice_view_Die.prototype = {
 			var zb94 = this275;
 			var fa94 = za94;
 			var fb94 = zb94;
-			var theta119 = Math.abs(fa94 - fb94);
-			var smallest23 = theta119 <= Math.PI;
+			var theta125 = Math.abs(fa94 - fb94);
+			var smallest23 = theta125 <= Math.PI;
 			var clockwise94 = fa94 < fb94;
-			var dif118 = clockwise94 ? theta119 : -theta119;
-			dif115 = smallest23 ? dif118 : clockwise94 ? -(2 * Math.PI - theta119) : 2 * Math.PI - theta119;
+			var dif118 = clockwise94 ? theta125 : -theta125;
+			dif115 = smallest23 ? dif118 : clockwise94 ? -(2 * Math.PI - theta125) : 2 * Math.PI - theta125;
 			break;
 		case 3:
 			var f190;
@@ -5895,45 +6529,45 @@ dice_view_Die.prototype = {
 			var zb95 = this277;
 			var fa95 = za95;
 			var fb95 = zb95;
-			var theta120 = Math.abs(fa95 - fb95);
-			var largest23 = theta120 > Math.PI;
+			var theta126 = Math.abs(fa95 - fb95);
+			var largest23 = theta126 > Math.PI;
 			var clockwise95 = fa95 < fb95;
-			var dif119 = clockwise95 ? theta120 : -theta120;
-			dif115 = largest23 ? dif119 : clockwise95 ? -(2 * Math.PI - theta120) : 2 * Math.PI - theta120;
+			var dif119 = clockwise95 ? theta126 : -theta126;
+			dif115 = largest23 ? dif119 : clockwise95 ? -(2 * Math.PI - theta126) : 2 * Math.PI - theta126;
 			break;
 		}
 		var positive23 = dif115 >= 0;
-		var totalSteps23 = Math.ceil(Math.abs(dif115) / step66);
-		var step67 = dif115 / totalSteps23;
+		var totalSteps23 = Math.ceil(Math.abs(dif115) / step72);
+		var step73 = dif115 / totalSteps23;
 		var angle23 = 0;
-		var cx67;
-		var cy67;
-		var bx67 = 0;
-		var by67 = 0;
-		var _g53 = 0;
-		var _g143 = totalSteps23 + 1;
-		while(_g53 < _g143) {
-			var i43 = _g53++;
-			cx67 = dx20 + radius25 * Math.sin(angle23);
-			cy67 = dy20 + radius25 * Math.cos(angle23);
-			if(i43 != 0) {
-				drawType25.triangle(dx20,dy20,0,bx67,by67,0,cx67,cy67,0);
-				var m79 = trilateral2_Shaper.transformMatrix;
-				if(m79 != null) {
-					drawType25.transform(m79);
+		var cx73;
+		var cy73;
+		var bx73 = 0;
+		var by73 = 0;
+		var _g65 = 0;
+		var _g155 = totalSteps23 + 1;
+		while(_g65 < _g155) {
+			var i49 = _g65++;
+			cx73 = dx26 + radius25 * Math.sin(angle23);
+			cy73 = dy26 + radius25 * Math.cos(angle23);
+			if(i49 != 0) {
+				drawType25.triangle(dx26,dy26,0,bx73,by73,0,cx73,cy73,0);
+				var m91 = trilateral2_Shaper.transformMatrix;
+				if(m91 != null) {
+					drawType25.transform(m91);
 				}
 				drawType25.next();
 			}
-			angle23 += step67;
-			bx67 = cx67;
-			by67 = cy67;
+			angle23 += step73;
+			bx73 = cx73;
+			by73 = cy73;
 		}
 		var len25 = count5 += totalSteps23;
-		var color25 = rs10.color;
-		if(color25 == -1) {
-			color25 = this245.currentColor;
+		var color19 = rs10.color;
+		if(color19 == -1) {
+			color19 = this245.currentColor;
 		}
-		this245.colorType.colorTriangles(color25,len25);
+		this245.colorType.colorTriangles(color19,len25);
 		var end25 = start25 + len25 - 1;
 		var s010 = new trilateral2_IndexRange(start25,end25);
 		var this278 = this.spots;
@@ -5946,45 +6580,152 @@ dice_view_Die.prototype = {
 		this278.drawType.transformRange(trans9,s010.start,s010.end);
 		var this283 = this.spots;
 		var s011 = this.spotShape.clone();
+		var arr6 = [-6062548,-2774968,-1788035,-2838729,-8448,-212480,-14809,-13312,-162539,-3763446,-12032,-935891,-1655158,-13261,-2453248,-2448096,-3820712,-3432139,-6724331];
+		var rx18 = 0.5;
+		var ry18 = 0.5;
+		var sides32 = 47;
+		if(sides32 == null) {
+			sides32 = 36;
+		}
+		if(ry18 == null) {
+			ry18 = 0;
+		}
+		if(rx18 == null) {
+			rx18 = 0;
+		}
 		var start26 = this283.drawType.get_size();
 		var drawType26 = this283.drawType;
-		var ax44 = s011.x;
-		var ay44 = s011.y;
+		var x13 = s011.x;
+		var y13 = s011.y;
 		var radius26 = s011.radius;
-		var sides20 = 36;
-		if(sides20 == null) {
-			sides20 = 36;
-		}
-		var pi50 = Math.PI;
-		var theta121 = pi50 / 2;
-		var step68 = pi50 * 2 / sides20;
-		var bx68;
-		var by68;
-		var cx68;
-		var cy68;
-		var _g54 = 0;
-		var _g144 = sides20;
-		while(_g54 < _g144) {
-			var i44 = _g54++;
-			bx68 = ax44 + radius26 * Math.sin(theta121);
-			by68 = ay44 + radius26 * Math.cos(theta121);
-			theta121 += step68;
-			cx68 = ax44 + radius26 * Math.sin(theta121);
-			cy68 = ay44 + radius26 * Math.cos(theta121);
-			drawType26.triangle(ax44,ay44,0,bx68,by68,0,cx68,cy68,0);
-			var m80 = trilateral2_Shaper.transformMatrix;
-			if(m80 != null) {
-				drawType26.transform(m80);
+		var len26;
+		if((sides32 & 1) == 0) {
+			haxe_Log.trace("even",{ fileName : "trilateral2/Shaper.hx", lineNumber : 684, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx19 = rx18;
+			var ry19 = ry18;
+			var sides33 = sides32;
+			var omega12 = 0.;
+			if(omega12 == null) {
+				omega12 = 0.;
+			}
+			if(sides33 == null) {
+				sides33 = 36;
+			}
+			var pi56 = Math.PI;
+			var theta127 = pi56 / 2 + omega12;
+			var step74 = pi56 * 2 / sides33;
+			var bx74;
+			var by74;
+			var cx74;
+			var cy74;
+			if(rx19 > 1.) {
+				rx19 = 1;
+			}
+			if(rx19 < -1.) {
+				rx19 = -1;
+			}
+			if(ry19 > 1.) {
+				ry19 = 1;
+			}
+			if(ry19 < -1.) {
+				ry19 = -1;
+			}
+			var mx12 = x13 + rx19 * radius26;
+			var my12 = y13 - ry19 * radius26;
+			var _g66 = 0;
+			var _g156 = sides33;
+			while(_g66 < _g156) {
+				var i50 = _g66++;
+				bx74 = x13 + radius26 * Math.sin(theta127);
+				by74 = y13 + radius26 * Math.cos(theta127);
+				theta127 += step74;
+				cx74 = x13 + radius26 * Math.sin(theta127);
+				cy74 = y13 + radius26 * Math.cos(theta127);
+				drawType26.triangle(mx12,my12,0,bx74,by74,0,cx74,cy74,0);
+				var m92 = trilateral2_Shaper.transformMatrix;
+				if(m92 != null) {
+					drawType26.transform(m92);
+				}
+				drawType26.next();
+			}
+			len26 = sides33;
+		} else {
+			haxe_Log.trace("odd",{ fileName : "trilateral2/Shaper.hx", lineNumber : 687, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			haxe_Log.trace(sides32 & 1,{ fileName : "trilateral2/Shaper.hx", lineNumber : 688, className : "trilateral2.Shaper", methodName : "shapeRadial"});
+			var rx20 = rx18;
+			var ry20 = ry18;
+			var sides34 = sides32;
+			var omega13 = 0.;
+			if(omega13 == null) {
+				omega13 = 0.;
+			}
+			if(sides34 == null) {
+				sides34 = 36;
+			}
+			var pi57 = Math.PI;
+			var theta128 = pi57 / 2;
+			var step75 = pi57 * 2 / sides34;
+			theta128 -= step75 / 2 + omega13;
+			var bx75 = 0;
+			var by75 = 0;
+			var cx75 = 0;
+			var cy75 = 0;
+			if(rx20 > 1.) {
+				rx20 = 1;
+			}
+			if(rx20 < -1.) {
+				rx20 = -1;
+			}
+			if(ry20 > 1.) {
+				ry20 = 1;
+			}
+			if(ry20 < -1.) {
+				ry20 = -1;
+			}
+			var mx13 = x13 + rx20 * radius26;
+			var my13 = y13 - ry20 * radius26;
+			var dx30 = x13 + radius26 * Math.sin(theta128);
+			var dy30 = y13 + radius26 * Math.cos(theta128);
+			var _g67 = 0;
+			var _g157 = sides34 - 1;
+			while(_g67 < _g157) {
+				var i51 = _g67++;
+				bx75 = x13 + radius26 * Math.sin(theta128);
+				by75 = y13 + radius26 * Math.cos(theta128);
+				theta128 += step75;
+				cx75 = x13 + radius26 * Math.sin(theta128);
+				cy75 = y13 + radius26 * Math.cos(theta128);
+				drawType26.triangle(mx13,my13,0,bx75,by75,0,cx75,cy75,0);
+				var m93 = trilateral2_Shaper.transformMatrix;
+				if(m93 != null) {
+					drawType26.transform(m93);
+				}
+				drawType26.next();
+			}
+			drawType26.triangle(mx13,my13,0,cx75,cy75,0,dx30,dy30,0);
+			var m94 = trilateral2_Shaper.transformMatrix;
+			if(m94 != null) {
+				drawType26.transform(m94);
 			}
 			drawType26.next();
+			len26 = sides34;
 		}
-		var len26 = sides20;
-		var color26 = s011.color;
-		if(color26 == -1) {
-			color26 = this283.currentColor;
-		}
-		this283.colorType.colorTriangles(color26,len26);
+		var k6 = 1;
+		var arrEnd6 = arr6.length - 1;
 		var end26 = start26 + len26 - 1;
+		var arr_6 = arr6.slice();
+		var _g68 = 0;
+		var _g158 = len26 - 1;
+		while(_g68 < _g158) {
+			var j6 = _g68++;
+			this283.colorType.cornerColors(s011.color,arr_6[k6 - 1],arr_6[k6]);
+			++k6;
+			if(k6 > arrEnd6) {
+				k6 = 1;
+				arr_6.reverse();
+			}
+		}
+		this283.colorType.cornerColors(s011.color,arr_6[k6 - 1],arr6[0]);
 		var startEnd20 = new trilateral2_IndexRange(start26,end26);
 		var c05 = startEnd20;
 		var s120 = new trilateral2_IndexRange(c05.start,c05.end);
@@ -5992,15 +6733,6 @@ dice_view_Die.prototype = {
 		this.spots.drawType.transformRange(t1,s214.start,s214.end);
 		var s121 = s214;
 		var startEnd21 = new trilateral2_IndexRange(s61.start,s121.end);
-		var this284 = this.spots;
-		var this285 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
-		var this286 = this285;
-		var this287 = new geom_structure_Mat4x3(.5,0.,0.,0.,0.,.5,0.,0.,0.,0.,.5,0.);
-		var s37 = this287;
-		var this288 = new geom_structure_Mat4x3(this286.a * s37.a + this286.b * s37.e + this286.c * s37.i,this286.a * s37.b + this286.b * s37.f + this286.c * s37.j,this286.a * s37.c + this286.b * s37.g + this286.c * s37.k,this286.a * s37.d + this286.b * s37.h + this286.c * s37.l + this286.d,this286.e * s37.a + this286.f * s37.e + this286.g * s37.i,this286.e * s37.b + this286.f * s37.f + this286.g * s37.j,this286.e * s37.c + this286.f * s37.g + this286.g * s37.k,this286.e * s37.d + this286.f * s37.h + this286.g * s37.l + this286.h,this286.i * s37.a + this286.j * s37.e + this286.k * s37.i,this286.i * s37.b + this286.j * s37.f + this286.k * s37.j,this286.i * s37.c + this286.j * s37.g + this286.k * s37.k,this286.i * s37.d + this286.j * s37.h + this286.k * s37.l + this286.l);
-		var s38 = this288;
-		var this289 = new geom_structure_Mat4x3(this286.a * s38.a + this286.b * s38.e + this286.c * s38.i,this286.a * s38.b + this286.b * s38.f + this286.c * s38.j,this286.a * s38.c + this286.b * s38.g + this286.c * s38.k,this286.a * s38.d + this286.b * s38.h + this286.c * s38.l + this286.d,this286.e * s38.a + this286.f * s38.e + this286.g * s38.i,this286.e * s38.b + this286.f * s38.f + this286.g * s38.j,this286.e * s38.c + this286.f * s38.g + this286.g * s38.k,this286.e * s38.d + this286.f * s38.h + this286.g * s38.l + this286.h,this286.i * s38.a + this286.j * s38.e + this286.k * s38.i,this286.i * s38.b + this286.j * s38.f + this286.k * s38.j,this286.i * s38.c + this286.j * s38.g + this286.k * s38.k,this286.i * s38.d + this286.j * s38.h + this286.k * s38.l + this286.l);
-		this284.drawType.transformRange(this289,startEnd21.start,startEnd21.end);
 		return startEnd21;
 	}
 };
@@ -6018,7 +6750,7 @@ geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size = function(this1) {
 geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size = function(this1,id) {
 	var pos_ = id;
 	this1[0] = pos_;
-	if(this1[0] > this1[1]) {
+	if(this1[0] > this1[1] - 1) {
 		this1[1] = this1[0];
 	}
 	return id;
@@ -6119,7 +6851,7 @@ geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform = func
 };
 geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformAll = function(this1,m) {
 	this1[0] = 0;
-	if(this1[0] > this1[1]) {
+	if(this1[0] > this1[1] - 1) {
 		this1[1] = this1[0];
 	}
 	var _g = 0;
@@ -6129,14 +6861,14 @@ geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformAll = f
 		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(this1,m);
 		var pos_ = this1[0] + 1.;
 		this1[0] = pos_;
-		if(this1[0] > this1[1]) {
+		if(this1[0] > this1[1] - 1) {
 			this1[1] = this1[0];
 		}
 	}
 };
 geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange = function(this1,m,start,end) {
 	this1[0] = start;
-	if(this1[0] > this1[1]) {
+	if(this1[0] > this1[1] - 1) {
 		this1[1] = this1[0];
 	}
 	if(end > geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(this1) - 1) {
@@ -6149,7 +6881,7 @@ geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange =
 		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(this1,m);
 		var pos_ = this1[0] + 1.;
 		this1[0] = pos_;
-		if(this1[0] > this1[1]) {
+		if(this1[0] > this1[1] - 1) {
 			this1[1] = this1[0];
 		}
 	}

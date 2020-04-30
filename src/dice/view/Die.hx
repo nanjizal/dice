@@ -8,6 +8,7 @@ import geom.flat.f32.Float32FlatTriangle;
 import trilateral2.Regular;
 import trilateral2.RegularShape;
 import dice.helpers.ViewGL;
+import geom.obj.CubeTransforms;
 /**
 left
 5
@@ -20,7 +21,7 @@ right
 */
 @:structInit
 class Die{
-    var right = false;
+    var left: LeftisRight = RIGHT;
     var spots: DieSpots;
     var spotShape: RegularShape = { x: 0., y: 0., radius: 15., color: 0xfff0ffff };
     var dieShape:  RegularShape = { x: 0., y: 0., radius: 60., color: 0xc0ff0000 };
@@ -88,18 +89,13 @@ class Die{
         dieShape.x  = x;
         dieShape.y  = y;
         var diceRadius = dieShape.radius * 1/ViewGL.stageRadius;
-        var t1 = Matrix4x3.unit.translateZ( diceRadius );
-        var t2 = Matrix4x3.unit.rotateY( Math.PI/2 )*Matrix4x3.unit.translateZ( diceRadius );
-        var t3 = Matrix4x3.unit.rotateX( Math.PI/2 )*Matrix4x3.unit.translateZ( diceRadius );
-        var t4 = Matrix4x3.unit.rotateX( -Math.PI/2 )*Matrix4x3.unit.translateZ( diceRadius );
-        var t5 = Matrix4x3.unit.rotateY( -Math.PI/2 )*Matrix4x3.unit.translateZ( diceRadius );
-        var t6 = Matrix4x3.unit.rotateY( Math.PI )*Matrix4x3.unit.translateZ( diceRadius );
-        var s6 = six(   t6 );
-        var s2 = two(   ( right )? t2: t3 );
-        var s3 = three( ( right )? t3: t2 );
-        var s4 = four(  ( right )? t4: t5 );
-        var s5 = five(  ( right )? t5: t4 );
-        var s1 = one(   t1 );
+        var trans = CubeTransforms.getDieLayout({radius: diceRadius, isLeft: left } );
+        var s6 = six(   trans[5] );
+        var s2 = two(   trans[1] );
+        var s3 = three( trans[2] );
+        var s4 = four(  trans[3] );
+        var s5 = five(  trans[4] );
+        var s1 = one(   trans[0] );
         var startEnd: IndexRange = { start: s6.start, end: s1.end };
         //spots.transformRange( Matrix4x3.unit.scale( .5 ), startEnd );
         return startEnd;

@@ -11,10 +11,14 @@ import dice.helpers.GridLines;
 import htmlHelper.tools.DivertTrace;
 import htmlHelper.canvas.CanvasWrapper;
 import htmlHelper.canvas.Surface;
+import js.html.Event;
+import js.html.KeyboardEvent;
+import js.html.MouseEvent;
 
 // Maths mostly matrix trasforms
 import geom.matrix.Matrix4x3;
 import geom.matrix.Matrix4x4;
+import geom.matrix.Matrix1x4;
 import geom.matrix.Quaternion;
 import geom.matrix.DualQuaternion;
 import geom.matrix.Matrix1x4;
@@ -55,11 +59,12 @@ class ViewGL extends WebGLSetup {
     static final largeEnough    = 2000000;
     public var verts            = new Float32FlatTriangle( largeEnough );
     var textPos                 = new Float32FlatTriangleXY( largeEnough );
-    var cols                    = new Float32FlatRGBA(largeEnough);
+    public var cols             = new Float32FlatRGBA(largeEnough);
+    public var vertsModel       = new Float32FlatTriangle( largeEnough ); // just used for storing reference models on
+    public var colsModel        = new Float32FlatRGBA(largeEnough);       // just used for storing reference models on
     var ind                     = new Int32Flat3(largeEnough);
     var scale:                  Float;
     var model                   = DualQuaternion.zero;
-    public var pen:             Pen;
     var theta:                  Float = 0;
     var toDimensionsGL:         Matrix4x3;
     public var update: Void->Void;
@@ -73,10 +78,33 @@ class ViewGL extends WebGLSetup {
         BACK       = false;
         darkBackground();
         setupProgram( Shaders.vertexColor, Shaders.fragmentColor );
-        pen = Pen.create( verts, cols );
-        pen.transformMatrix = scaleToGL();
-        Shaper.transformMatrix = scaleToGL();
+        mousePos = new Matrix1x4( { x: 0., y:0., z:0., w: 1. } );
+        var doc = Browser.document;
+        doc.onmousemove      = mouseMove;
+        doc.onmousedown      = mouseDown;
+        doc.onmouseup        = mouseUp;
     }
+    public var mouseIsDown: Bool = false;
+    public var mousePos: Matrix1x4;
+    inline
+    function mouseDown( e: MouseEvent ){
+        mouseIsDown = true;
+        mouseCoord( e );
+    }
+    inline
+    function mouseMove( e: MouseEvent ){
+        if( mouseIsDown ) mouseCoord( e );
+    }
+    inline
+    function mouseCoord( e: MouseEvent ){
+        mousePos = new Matrix1x4( { x: cast e.clientX, y: cast e.clientY, z:0., w:1. });
+    }
+    inline
+    function mouseUp( e: MouseEvent ){
+        mouseCoord( e );
+        mouseIsDown = false;
+    }
+    
     public inline
     function upload(){
         //transformVerticesToGL();
@@ -95,7 +123,7 @@ class ViewGL extends WebGLSetup {
         verts.transformRange( m, start, end );
     }
     function transformVerticesToGL() verts.transformAll( scaleToGL() );
-    function scaleToGL(){
+    public function scaleToGL(){
         scale = 1/(stageRadius);
         var v = new Matrix1x4( { x: scale, y: -scale, z: scale, w: 1. } );
         return ( Matrix4x3.unit.translateXYZ( -1., 1., 0. ) ).scaleByVector( v );
@@ -136,6 +164,7 @@ class ViewGL extends WebGLSetup {
         var arr = ind.getArray();
         return cast arr;
     }
+    function setupSideTrace() new DivertTrace();
     inline
     function clearTriangles(){
         verts = new Float32FlatTriangle(1000000);

@@ -22,20 +22,378 @@ var dice_Dice = function() {
 	new htmlHelper_tools_DivertTrace();
 	this.instructions();
 	this.layoutPos = new dice_helpers_LayoutPos(600);
-	this.pen = this.viewGL.pen;
+	var verts = this.viewGL.verts;
+	var cols = this.viewGL.cols;
+	var _e = verts;
+	var _e1 = verts;
+	var _e2 = verts;
+	var _e3 = verts;
+	var _e4 = verts;
+	var _e5 = verts;
+	var _e6 = verts;
+	var _e7 = verts;
+	var _e8 = verts;
+	var _e9 = verts;
+	var _e10 = cols;
+	var tmp = function(colorA,colorB,colorC) {
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(colorA >> 16 & 255) / 255);
+		var v = (colorA & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 2 + 2] = v;
+		var v1 = (colorA >> 8 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 1 + 2] = v1;
+		var v2 = (colorA >> 24 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 3 + 2] = v2;
+		var pos_ = _e10[0] + 1.;
+		_e10[0] = pos_;
+		if(_e10[0] > _e10[1] - 1) {
+			_e10[1] = _e10[0];
+		}
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(colorB >> 16 & 255) / 255);
+		var v3 = (colorB & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 2 + 2] = v3;
+		var v4 = (colorB >> 8 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 1 + 2] = v4;
+		var v5 = (colorB >> 24 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 3 + 2] = v5;
+		var pos_1 = _e10[0] + 1.;
+		_e10[0] = pos_1;
+		if(_e10[0] > _e10[1] - 1) {
+			_e10[1] = _e10[0];
+		}
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(colorC >> 16 & 255) / 255);
+		var v6 = (colorC & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 2 + 2] = v6;
+		var v7 = (colorC >> 8 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 1 + 2] = v7;
+		var v8 = (colorC >> 24 & 255) / 255;
+		_e10[(_e10[0] | 0) * 4 + 3 + 2] = v8;
+		var pos_2 = _e10[0] + 1.;
+		_e10[0] = pos_2;
+		if(_e10[0] > _e10[1] - 1) {
+			_e10[1] = _e10[0];
+		}
+	};
+	var _e11 = cols;
+	var tmp1 = function(color,times) {
+		var _g = 0;
+		var _g1 = times;
+		while(_g < _g1) {
+			var i = _g++;
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e11,(color >> 16 & 255) / 255);
+			var v9 = (color & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 2 + 2] = v9;
+			var v10 = (color >> 8 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 1 + 2] = v10;
+			var v11 = (color >> 24 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 3 + 2] = v11;
+			var pos_3 = _e11[0] + 1.;
+			_e11[0] = pos_3;
+			if(_e11[0] > _e11[1] - 1) {
+				_e11[1] = _e11[0];
+			}
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e11,(color >> 16 & 255) / 255);
+			var v12 = (color & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 2 + 2] = v12;
+			var v13 = (color >> 8 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 1 + 2] = v13;
+			var v14 = (color >> 24 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 3 + 2] = v14;
+			var pos_4 = _e11[0] + 1.;
+			_e11[0] = pos_4;
+			if(_e11[0] > _e11[1] - 1) {
+				_e11[1] = _e11[0];
+			}
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e11,(color >> 16 & 255) / 255);
+			var v15 = (color & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 2 + 2] = v15;
+			var v16 = (color >> 8 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 1 + 2] = v16;
+			var v17 = (color >> 24 & 255) / 255;
+			_e11[(_e11[0] | 0) * 4 + 3 + 2] = v17;
+			var pos_5 = _e11[0] + 1.;
+			_e11[0] = pos_5;
+			if(_e11[0] > _e11[1] - 1) {
+				_e11[1] = _e11[0];
+			}
+		}
+	};
+	var _e12 = cols;
+	var tmp2 = function() {
+		var a = Math.round(_e12[(_e12[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e12) * 255) << 16 | Math.round(_e12[(_e12[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e12[(_e12[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_6 = _e12[0] + 1.;
+		_e12[0] = pos_6;
+		if(_e12[0] > _e12[1] - 1) {
+			_e12[1] = _e12[0];
+		}
+		var b = Math.round(_e12[(_e12[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e12) * 255) << 16 | Math.round(_e12[(_e12[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e12[(_e12[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_7 = _e12[0] + 1.;
+		_e12[0] = pos_7;
+		if(_e12[0] > _e12[1] - 1) {
+			_e12[1] = _e12[0];
+		}
+		var c = Math.round(_e12[(_e12[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e12) * 255) << 16 | Math.round(_e12[(_e12[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e12[(_e12[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_8 = _e12[0] + 1.;
+		_e12[0] = pos_8;
+		if(_e12[0] > _e12[1] - 1) {
+			_e12[1] = _e12[0];
+		}
+		return geom_obj__$TriColors_TriColors_$Impl_$._new(new geom_structure_TriInt(a,b,c));
+	};
+	var _e13 = verts;
+	var _e14 = verts;
+	var tmp3 = function(pos_9) {
+		_e14[0] = pos_9;
+		if(_e14[0] > _e14[1] - 1) {
+			_e14[1] = _e14[0];
+		}
+		return pos_9;
+	};
+	var _e15 = verts;
+	var tmp4 = function() {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e15);
+	};
+	var _e16 = verts;
+	var tmp5 = function(id) {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e16,id);
+	};
+	this.pen = new trilateral2_Pen({ triangle : function(ax_,ay_,az_,bx_,by_,bz_,cx_,cy_,cz_) {
+		return geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.triangle(_e,ax_,ay_,az_,bx_,by_,bz_,cx_,cy_,cz_);
+	}, transform : function(m) {
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(_e1,m);
+	}, transformRange : function(m1,start,end) {
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(_e2,m1,start,end);
+	}, getTri3D : function() {
+		var this1 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_ax(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_ay(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_az(_e3),1.);
+		var pa = this1;
+		var this2 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_bx(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_by(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_bz(_e3),1.);
+		var pb = this2;
+		var this3 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cx(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cy(_e3),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cz(_e3),1.);
+		var pc = this3;
+		return new geom_structure_TriVec(pa,pb,pc);
+	}, next : function() {
+		var pos_10 = _e4[0] + 1.;
+		_e4[0] = pos_10;
+		if(_e4[0] > _e4[1] - 1) {
+			_e4[1] = _e4[0];
+		}
+		return _e4[0];
+	}, hasNext : function() {
+		return _e5[0] < geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e5);
+	}, get_pos : function() {
+		return _e6[0];
+	}, set_pos : function(pos_11) {
+		_e7[0] = pos_11;
+		if(_e7[0] > _e7[1] - 1) {
+			_e7[1] = _e7[0];
+		}
+		return pos_11;
+	}, get_size : function() {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e8);
+	}, set_size : function(id1) {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e9,id1);
+	}},{ cornerColors : tmp, colorTriangles : tmp1, getTriColors : tmp2, get_pos : function() {
+		return _e13[0];
+	}, set_pos : tmp3, get_size : tmp4, set_size : tmp5});
+	var verts1 = this.viewGL.vertsModel;
+	var cols1 = this.viewGL.colsModel;
+	var _e17 = verts1;
+	var _e18 = verts1;
+	var _e19 = verts1;
+	var _e20 = verts1;
+	var _e21 = verts1;
+	var _e22 = verts1;
+	var _e23 = verts1;
+	var _e24 = verts1;
+	var _e25 = verts1;
+	var _e26 = verts1;
+	var _e27 = cols1;
+	var tmp6 = function(colorA1,colorB1,colorC1) {
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e27,(colorA1 >> 16 & 255) / 255);
+		var v18 = (colorA1 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 2 + 2] = v18;
+		var v19 = (colorA1 >> 8 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 1 + 2] = v19;
+		var v20 = (colorA1 >> 24 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 3 + 2] = v20;
+		var pos_12 = _e27[0] + 1.;
+		_e27[0] = pos_12;
+		if(_e27[0] > _e27[1] - 1) {
+			_e27[1] = _e27[0];
+		}
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e27,(colorB1 >> 16 & 255) / 255);
+		var v21 = (colorB1 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 2 + 2] = v21;
+		var v22 = (colorB1 >> 8 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 1 + 2] = v22;
+		var v23 = (colorB1 >> 24 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 3 + 2] = v23;
+		var pos_13 = _e27[0] + 1.;
+		_e27[0] = pos_13;
+		if(_e27[0] > _e27[1] - 1) {
+			_e27[1] = _e27[0];
+		}
+		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e27,(colorC1 >> 16 & 255) / 255);
+		var v24 = (colorC1 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 2 + 2] = v24;
+		var v25 = (colorC1 >> 8 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 1 + 2] = v25;
+		var v26 = (colorC1 >> 24 & 255) / 255;
+		_e27[(_e27[0] | 0) * 4 + 3 + 2] = v26;
+		var pos_14 = _e27[0] + 1.;
+		_e27[0] = pos_14;
+		if(_e27[0] > _e27[1] - 1) {
+			_e27[1] = _e27[0];
+		}
+	};
+	var _e28 = cols1;
+	var tmp7 = function(color1,times1) {
+		var _g2 = 0;
+		var _g11 = times1;
+		while(_g2 < _g11) {
+			var i1 = _g2++;
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e28,(color1 >> 16 & 255) / 255);
+			var v27 = (color1 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 2 + 2] = v27;
+			var v28 = (color1 >> 8 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 1 + 2] = v28;
+			var v29 = (color1 >> 24 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 3 + 2] = v29;
+			var pos_15 = _e28[0] + 1.;
+			_e28[0] = pos_15;
+			if(_e28[0] > _e28[1] - 1) {
+				_e28[1] = _e28[0];
+			}
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e28,(color1 >> 16 & 255) / 255);
+			var v30 = (color1 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 2 + 2] = v30;
+			var v31 = (color1 >> 8 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 1 + 2] = v31;
+			var v32 = (color1 >> 24 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 3 + 2] = v32;
+			var pos_16 = _e28[0] + 1.;
+			_e28[0] = pos_16;
+			if(_e28[0] > _e28[1] - 1) {
+				_e28[1] = _e28[0];
+			}
+			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e28,(color1 >> 16 & 255) / 255);
+			var v33 = (color1 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 2 + 2] = v33;
+			var v34 = (color1 >> 8 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 1 + 2] = v34;
+			var v35 = (color1 >> 24 & 255) / 255;
+			_e28[(_e28[0] | 0) * 4 + 3 + 2] = v35;
+			var pos_17 = _e28[0] + 1.;
+			_e28[0] = pos_17;
+			if(_e28[0] > _e28[1] - 1) {
+				_e28[1] = _e28[0];
+			}
+		}
+	};
+	var _e29 = cols1;
+	var tmp8 = function() {
+		var a1 = Math.round(_e29[(_e29[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e29) * 255) << 16 | Math.round(_e29[(_e29[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e29[(_e29[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_18 = _e29[0] + 1.;
+		_e29[0] = pos_18;
+		if(_e29[0] > _e29[1] - 1) {
+			_e29[1] = _e29[0];
+		}
+		var b1 = Math.round(_e29[(_e29[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e29) * 255) << 16 | Math.round(_e29[(_e29[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e29[(_e29[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_19 = _e29[0] + 1.;
+		_e29[0] = pos_19;
+		if(_e29[0] > _e29[1] - 1) {
+			_e29[1] = _e29[0];
+		}
+		var c1 = Math.round(_e29[(_e29[0] | 0) * 4 + 3 + 2] * 255) << 24 | Math.round(geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red(_e29) * 255) << 16 | Math.round(_e29[(_e29[0] | 0) * 4 + 1 + 2] * 255) << 8 | Math.round(_e29[(_e29[0] | 0) * 4 + 2 + 2] * 255);
+		var pos_20 = _e29[0] + 1.;
+		_e29[0] = pos_20;
+		if(_e29[0] > _e29[1] - 1) {
+			_e29[1] = _e29[0];
+		}
+		return geom_obj__$TriColors_TriColors_$Impl_$._new(new geom_structure_TriInt(a1,b1,c1));
+	};
+	var _e30 = verts1;
+	var _e31 = verts1;
+	var tmp9 = function(pos_21) {
+		_e31[0] = pos_21;
+		if(_e31[0] > _e31[1] - 1) {
+			_e31[1] = _e31[0];
+		}
+		return pos_21;
+	};
+	var _e32 = verts1;
+	var tmp10 = function() {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e32);
+	};
+	var _e33 = verts1;
+	var tmp11 = function(id2) {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e33,id2);
+	};
+	this.modelPen = new trilateral2_Pen({ triangle : function(ax_1,ay_1,az_1,bx_1,by_1,bz_1,cx_1,cy_1,cz_1) {
+		return geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.triangle(_e17,ax_1,ay_1,az_1,bx_1,by_1,bz_1,cx_1,cy_1,cz_1);
+	}, transform : function(m2) {
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(_e18,m2);
+	}, transformRange : function(m3,start1,end1) {
+		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(_e19,m3,start1,end1);
+	}, getTri3D : function() {
+		var this4 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_ax(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_ay(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_az(_e20),1.);
+		var pa1 = this4;
+		var this5 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_bx(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_by(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_bz(_e20),1.);
+		var pb1 = this5;
+		var this6 = new geom_structure_Mat1x4(geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cx(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cy(_e20),geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.get_cz(_e20),1.);
+		var pc1 = this6;
+		return new geom_structure_TriVec(pa1,pb1,pc1);
+	}, next : function() {
+		var pos_22 = _e21[0] + 1.;
+		_e21[0] = pos_22;
+		if(_e21[0] > _e21[1] - 1) {
+			_e21[1] = _e21[0];
+		}
+		return _e21[0];
+	}, hasNext : function() {
+		return _e22[0] < geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e22);
+	}, get_pos : function() {
+		return _e23[0];
+	}, set_pos : function(pos_23) {
+		_e24[0] = pos_23;
+		if(_e24[0] > _e24[1] - 1) {
+			_e24[1] = _e24[0];
+		}
+		return pos_23;
+	}, get_size : function() {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e25);
+	}, set_size : function(id3) {
+		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e26,id3);
+	}},{ cornerColors : tmp6, colorTriangles : tmp7, getTriColors : tmp8, get_pos : function() {
+		return _e30[0];
+	}, set_pos : tmp9, get_size : tmp10, set_size : tmp11});
+	this.pen.transformMatrix = this.viewGL.scaleToGL();
+	trilateral2_Shaper.transformMatrix = this.viewGL.scaleToGL();
 	var gridLines = new dice_helpers_GridLines(this.pen,600);
 	gridLines.draw(10,60226304,-258540557);
-	var tmp = this.viewGL;
-	var this1 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
-	var this2 = this1;
-	var this3 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-0.2);
-	var s = this3;
-	var this4 = new geom_structure_Mat4x3(this2.a * s.a + this2.b * s.e + this2.c * s.i,this2.a * s.b + this2.b * s.f + this2.c * s.j,this2.a * s.c + this2.b * s.g + this2.c * s.k,this2.a * s.d + this2.b * s.h + this2.c * s.l + this2.d,this2.e * s.a + this2.f * s.e + this2.g * s.i,this2.e * s.b + this2.f * s.f + this2.g * s.j,this2.e * s.c + this2.f * s.g + this2.g * s.k,this2.e * s.d + this2.f * s.h + this2.g * s.l + this2.h,this2.i * s.a + this2.j * s.e + this2.k * s.i,this2.i * s.b + this2.j * s.f + this2.k * s.j,this2.i * s.c + this2.j * s.g + this2.k * s.k,this2.i * s.d + this2.j * s.h + this2.k * s.l + this2.l);
-	tmp.transform(this4);
-	var die = new dice_view_Die(this.viewGL.pen);
+	var tmp12 = this.viewGL;
+	var this7 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+	var this8 = this7;
+	var this9 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,-0.2);
+	var s = this9;
+	var this10 = new geom_structure_Mat4x3(this8.a * s.a + this8.b * s.e + this8.c * s.i,this8.a * s.b + this8.b * s.f + this8.c * s.j,this8.a * s.c + this8.b * s.g + this8.c * s.k,this8.a * s.d + this8.b * s.h + this8.c * s.l + this8.d,this8.e * s.a + this8.f * s.e + this8.g * s.i,this8.e * s.b + this8.f * s.f + this8.g * s.j,this8.e * s.c + this8.f * s.g + this8.g * s.k,this8.e * s.d + this8.f * s.h + this8.g * s.l + this8.h,this8.i * s.a + this8.j * s.e + this8.k * s.i,this8.i * s.b + this8.j * s.f + this8.k * s.j,this8.i * s.c + this8.j * s.g + this8.k * s.k,this8.i * s.d + this8.j * s.h + this8.k * s.l + this8.l);
+	tmp12.transform(this10);
+	var die = new dice_view_Die(this.pen);
+	this.mouseSpot = new dice_view_MouseSpot(this.pen);
 	var startEnd = die.create(this.layoutPos.centre.x,this.layoutPos.centre.y);
+	var this11 = new geom_structure_Mat1x4(this.layoutPos.centre.x,this.layoutPos.centre.y,0,1);
+	var mousePos = this11;
+	this.mouseStartEnd = this.mouseSpot.create(this.layoutPos.centre.x,this.layoutPos.centre.y);
+	var tmp13 = this.viewGL;
+	var this12 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.);
+	var this13 = this12;
+	var this14 = new geom_structure_Mat4x3(1.,0.,0.,0.,0.,1.,0.,0.,0.,0.,1.,0.2);
+	var s1 = this14;
+	var this15 = new geom_structure_Mat4x3(this13.a * s1.a + this13.b * s1.e + this13.c * s1.i,this13.a * s1.b + this13.b * s1.f + this13.c * s1.j,this13.a * s1.c + this13.b * s1.g + this13.c * s1.k,this13.a * s1.d + this13.b * s1.h + this13.c * s1.l + this13.d,this13.e * s1.a + this13.f * s1.e + this13.g * s1.i,this13.e * s1.b + this13.f * s1.f + this13.g * s1.j,this13.e * s1.c + this13.f * s1.g + this13.g * s1.k,this13.e * s1.d + this13.f * s1.h + this13.g * s1.l + this13.h,this13.i * s1.a + this13.j * s1.e + this13.k * s1.i,this13.i * s1.b + this13.j * s1.f + this13.k * s1.j,this13.i * s1.c + this13.j * s1.g + this13.k * s1.k,this13.i * s1.d + this13.j * s1.h + this13.k * s1.l + this13.l);
+	tmp13.transformRange(this15,this.mouseStartEnd.start,this.mouseStartEnd.end);
+	this.mouseStartPos = this.mouseStartEnd.start;
+	var mouseZero = new geom_structure_Mat1x4(0.,0.,0.,1.);
 	this.start = startEnd.start;
-	this.end = startEnd.end;
+	this.end = this.mouseStartEnd.end;
 	this.viewGL.update = $bind(this,this.update);
 	this.viewGL.uploadVectors();
 	var _this = this.viewGL;
@@ -55,7 +413,7 @@ dice_Dice.main = function() {
 dice_Dice.prototype = {
 	update: function() {
 		var this1 = new geom_structure_Mat1x4(0.,0.,0.,1.);
-		var this2 = new geom_structure_Mat1x4(0.,0.,0.,0.);
+		var this2 = new geom_structure_Mat1x4(0.,0.,0.,1.);
 		var this3 = new geom_structure_DualQ(this1,this2);
 		var model = this3;
 		model = this.viewGL.itemModel.updateCalculate(model);
@@ -107,14 +465,14 @@ dice_Dice.prototype = {
 		this.viewGL.uploadVectors();
 	}
 	,instructions: function() {
-		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 91, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 92, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 93, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 94, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 95, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 96, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 97, className : "dice.Dice", methodName : "instructions"});
-		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 98, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("use keys to transform",{ fileName : "src/dice/Dice.hx", lineNumber : 141, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("to swap between disc and scene: a",{ fileName : "src/dice/Dice.hx", lineNumber : 142, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("rotate: arrow keys",{ fileName : "src/dice/Dice.hx", lineNumber : 143, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("zoom: delete/return",{ fileName : "src/dice/Dice.hx", lineNumber : 144, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate up/down: tab/shift",{ fileName : "src/dice/Dice.hx", lineNumber : 145, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("translate left/right: ctrl/space",{ fileName : "src/dice/Dice.hx", lineNumber : 146, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("spin: alt/cmd",{ fileName : "src/dice/Dice.hx", lineNumber : 147, className : "dice.Dice", methodName : "instructions"});
+		haxe_Log.trace("reset scene position: r",{ fileName : "src/dice/Dice.hx", lineNumber : 148, className : "dice.Dice", methodName : "instructions"});
 	}
 };
 var dice_helpers_AxisKeys = function(axisModel_,itemModel_) {
@@ -606,7 +964,8 @@ var dice_helpers_ViewGL = function() {
 	var q = new geom_structure_Mat1x4(qDual.x,qDual.y,qDual.z,0.);
 	q = new geom_structure_Mat1x4(q.x * 0.5,q.y * 0.5,q.z * 0.5,q.w * 0.5);
 	this.offset = new geom_structure_DualQ(real,new geom_structure_Mat1x4(q.x * real.w + q.y * real.z - q.z * real.y + q.w * real.x,-q.x * real.z + q.y * real.w + q.z * real.x + q.w * real.y,q.x * real.y - q.y * real.x + q.z * real.w + q.w * real.z,-q.x * real.x - q.y * real.y - q.z * real.z + q.w * real.w));
-	this.model = new geom_structure_DualQ(new geom_structure_Mat1x4(0.,0.,0.,1.),new geom_structure_Mat1x4(0.,0.,0.,0.));
+	this.mouseIsDown = false;
+	this.model = new geom_structure_DualQ(new geom_structure_Mat1x4(0.,0.,0.,1.),new geom_structure_Mat1x4(0.,0.,0.,1.));
 	var this1 = new Int32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this1[0] = 0;
 	this1[1] = 0;
@@ -614,15 +973,23 @@ var dice_helpers_ViewGL = function() {
 	var this11 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this11[0] = 0.;
 	this11[1] = 0.;
-	this.cols = this11;
+	this.colsModel = this11;
 	var this12 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this12[0] = 0.;
 	this12[1] = 0.;
-	this.textPos = this12;
+	this.vertsModel = this12;
 	var this13 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
 	this13[0] = 0.;
 	this13[1] = 0.;
-	this.verts = this13;
+	this.cols = this13;
+	var this14 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
+	this14[0] = 0.;
+	this14[1] = 0.;
+	this.textPos = this14;
+	var this15 = new Float32Array(dice_helpers_ViewGL.largeEnough + 2);
+	this15[0] = 0.;
+	this15[1] = 0.;
+	this.verts = this15;
 	this.itemModel = new geom_move_Axis3();
 	this.axisModel = new geom_move_Axis3();
 	htmlHelper_webgl_WebGLSetup.call(this,600,600);
@@ -634,154 +1001,33 @@ var dice_helpers_ViewGL = function() {
 	this.BACK = false;
 	this.darkBackground();
 	this.setupProgram("attribute vec3 pos;" + "attribute vec4 color;" + "varying vec4 vcol;" + "uniform mat4 modelViewProjection;" + "void main(void) {" + " gl_Position = modelViewProjection * vec4(pos, 1.);" + " vcol = color;" + "}","precision mediump float;" + "varying vec4 vcol;" + "void main(void) {" + " gl_FragColor = vcol;" + "}");
-	var verts = this.verts;
-	var cols = this.cols;
-	var _e = verts;
-	var _e1 = verts;
-	var _e2 = verts;
-	var _e3 = verts;
-	var _e4 = verts;
-	var _e5 = verts;
-	var _e6 = verts;
-	var _e7 = verts;
-	var _e8 = verts;
-	var _e9 = cols;
-	var tmp = function(colorA,colorB,colorC) {
-		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e9,(colorA >> 16 & 255) / 255);
-		var v = (colorA & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 2 + 2] = v;
-		var v1 = (colorA >> 8 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 1 + 2] = v1;
-		var v2 = (colorA >> 24 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v2;
-		var pos_ = _e9[0] + 1.;
-		_e9[0] = pos_;
-		if(_e9[0] > _e9[1] - 1) {
-			_e9[1] = _e9[0];
-		}
-		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e9,(colorB >> 16 & 255) / 255);
-		var v3 = (colorB & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 2 + 2] = v3;
-		var v4 = (colorB >> 8 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 1 + 2] = v4;
-		var v5 = (colorB >> 24 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v5;
-		var pos_1 = _e9[0] + 1.;
-		_e9[0] = pos_1;
-		if(_e9[0] > _e9[1] - 1) {
-			_e9[1] = _e9[0];
-		}
-		geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e9,(colorC >> 16 & 255) / 255);
-		var v6 = (colorC & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 2 + 2] = v6;
-		var v7 = (colorC >> 8 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 1 + 2] = v7;
-		var v8 = (colorC >> 24 & 255) / 255;
-		_e9[(_e9[0] | 0) * 4 + 3 + 2] = v8;
-		var pos_2 = _e9[0] + 1.;
-		_e9[0] = pos_2;
-		if(_e9[0] > _e9[1] - 1) {
-			_e9[1] = _e9[0];
-		}
-	};
-	var _e10 = cols;
-	var tmp1 = function(color,times) {
-		var _g = 0;
-		var _g1 = times;
-		while(_g < _g1) {
-			var i = _g++;
-			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(color >> 16 & 255) / 255);
-			var v9 = (color & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 2 + 2] = v9;
-			var v10 = (color >> 8 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 1 + 2] = v10;
-			var v11 = (color >> 24 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v11;
-			var pos_3 = _e10[0] + 1.;
-			_e10[0] = pos_3;
-			if(_e10[0] > _e10[1] - 1) {
-				_e10[1] = _e10[0];
-			}
-			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(color >> 16 & 255) / 255);
-			var v12 = (color & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 2 + 2] = v12;
-			var v13 = (color >> 8 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 1 + 2] = v13;
-			var v14 = (color >> 24 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v14;
-			var pos_4 = _e10[0] + 1.;
-			_e10[0] = pos_4;
-			if(_e10[0] > _e10[1] - 1) {
-				_e10[1] = _e10[0];
-			}
-			geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red(_e10,(color >> 16 & 255) / 255);
-			var v15 = (color & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 2 + 2] = v15;
-			var v16 = (color >> 8 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 1 + 2] = v16;
-			var v17 = (color >> 24 & 255) / 255;
-			_e10[(_e10[0] | 0) * 4 + 3 + 2] = v17;
-			var pos_5 = _e10[0] + 1.;
-			_e10[0] = pos_5;
-			if(_e10[0] > _e10[1] - 1) {
-				_e10[1] = _e10[0];
-			}
-		}
-	};
-	var _e11 = verts;
-	var _e12 = verts;
-	var tmp2 = function(pos_6) {
-		_e12[0] = pos_6;
-		if(_e12[0] > _e12[1] - 1) {
-			_e12[1] = _e12[0];
-		}
-		return pos_6;
-	};
-	var _e13 = verts;
-	var tmp3 = function() {
-		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e13);
-	};
-	var _e14 = verts;
-	var tmp4 = function(id) {
-		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e14,id);
-	};
-	this.pen = new trilateral2_Pen({ triangle : function(ax_,ay_,az_,bx_,by_,bz_,cx_,cy_,cz_) {
-		return geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.triangle(_e,ax_,ay_,az_,bx_,by_,bz_,cx_,cy_,cz_);
-	}, transform : function(m) {
-		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transform(_e1,m);
-	}, transformRange : function(m1,start,end) {
-		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformRange(_e2,m1,start,end);
-	}, next : function() {
-		var pos_7 = _e3[0] + 1.;
-		_e3[0] = pos_7;
-		if(_e3[0] > _e3[1] - 1) {
-			_e3[1] = _e3[0];
-		}
-		return _e3[0];
-	}, hasNext : function() {
-		return _e4[0] < geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e4);
-	}, get_pos : function() {
-		return _e5[0];
-	}, set_pos : function(pos_8) {
-		_e6[0] = pos_8;
-		if(_e6[0] > _e6[1] - 1) {
-			_e6[1] = _e6[0];
-		}
-		return pos_8;
-	}, get_size : function() {
-		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.get_size(_e7);
-	}, set_size : function(id1) {
-		return geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size(_e8,id1);
-	}},{ cornerColors : tmp, colorTriangles : tmp1, get_pos : function() {
-		return _e11[0];
-	}, set_pos : tmp2, get_size : tmp3, set_size : tmp4});
-	this.pen.transformMatrix = this.scaleToGL();
-	trilateral2_Shaper.transformMatrix = this.scaleToGL();
+	var this16 = new geom_structure_Mat1x4(0.,0.,0.,1.);
+	this.mousePos = this16;
+	var doc = window.document;
+	doc.onmousemove = $bind(this,this.mouseMove);
+	doc.onmousedown = $bind(this,this.mouseDown);
+	doc.onmouseup = $bind(this,this.mouseUp);
 };
 dice_helpers_ViewGL.__name__ = true;
 dice_helpers_ViewGL.__super__ = htmlHelper_webgl_WebGLSetup;
 dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
-	transform: function(m) {
+	mouseDown: function(e) {
+		this.mouseIsDown = true;
+		var this1 = new geom_structure_Mat1x4(e.clientX,e.clientY,0.,1.);
+		this.mousePos = this1;
+	}
+	,mouseMove: function(e) {
+		if(this.mouseIsDown) {
+			var this1 = new geom_structure_Mat1x4(e.clientX,e.clientY,0.,1.);
+			this.mousePos = this1;
+		}
+	}
+	,mouseUp: function(e) {
+		var this1 = new geom_structure_Mat1x4(e.clientX,e.clientY,0.,1.);
+		this.mousePos = this1;
+		this.mouseIsDown = false;
+	}
+	,transform: function(m) {
 		geom_flat_f32__$Float32FlatTriangle_Float32FlatTriangle_$Impl_$.transformAll(this.verts,m);
 	}
 	,transformRange: function(m,start,end) {
@@ -851,7 +1097,7 @@ dice_helpers_ViewGL.prototype = $extend(htmlHelper_webgl_WebGLSetup.prototype,{
 	}
 	,resetPosition: function() {
 		var this1 = new geom_structure_Mat1x4(0.,0.,0.,1.);
-		var this2 = new geom_structure_Mat1x4(0.,0.,0.,0.);
+		var this2 = new geom_structure_Mat1x4(0.,0.,0.,1.);
 		var this3 = new geom_structure_DualQ(this1,this2);
 		this.model = this3;
 	}
@@ -6749,6 +6995,62 @@ dice_view_Die.prototype = {
 		return startEnd21;
 	}
 };
+var dice_view_MouseSpot = function(pen) {
+	this.spotShape = new trilateral2_RegularShape(0.,0.,15.,-16711936);
+	this.spots = pen;
+};
+dice_view_MouseSpot.__name__ = true;
+dice_view_MouseSpot.prototype = {
+	create: function(x,y) {
+		this.spotShape.x = x;
+		this.spotShape.y = y;
+		var this1 = this.spots;
+		var s0 = this.spotShape.clone();
+		var start = this1.drawType.get_size();
+		var drawType = this1.drawType;
+		var ax = s0.x;
+		var ay = s0.y;
+		var radius = s0.radius;
+		var sides = 36;
+		if(sides == null) {
+			sides = 36;
+		}
+		var pi = Math.PI;
+		var theta = pi / 2;
+		var step = pi * 2 / sides;
+		var bx;
+		var by;
+		var cx;
+		var cy;
+		var _g = 0;
+		var _g1 = sides;
+		while(_g < _g1) {
+			var i = _g++;
+			bx = ax + radius * Math.sin(theta);
+			by = ay + radius * Math.cos(theta);
+			theta += step;
+			cx = ax + radius * Math.sin(theta);
+			cy = ay + radius * Math.cos(theta);
+			drawType.triangle(ax,ay,0,bx,by,0,cx,cy,0);
+			var m = trilateral2_Shaper.transformMatrix;
+			if(m != null) {
+				drawType.transform(m);
+			}
+			drawType.next();
+		}
+		var len = sides;
+		var color = s0.color;
+		if(color == -1) {
+			color = this1.currentColor;
+		}
+		this1.colorType.colorTriangles(color,len);
+		var end = start + len - 1;
+		var startEnd = new trilateral2_IndexRange(start,end);
+		var c0 = startEnd;
+		var s01 = new trilateral2_IndexRange(c0.start,c0.end);
+		return s01;
+	}
+};
 var fracs_DifferencePreference = $hxEnums["fracs.DifferencePreference"] = { __ename__ : "fracs.DifferencePreference", __constructs__ : ["CLOCKWISE","ANTICLOCKWISE","SMALL","LARGE"]
 	,CLOCKWISE: {_hx_index:0,__enum__:"fracs.DifferencePreference",toString:$estr}
 	,ANTICLOCKWISE: {_hx_index:1,__enum__:"fracs.DifferencePreference",toString:$estr}
@@ -6770,6 +7072,9 @@ geom_flat_f32__$Float32Flat_Float32Flat_$Impl_$.set_size = function(this1,id) {
 };
 var geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$ = {};
 geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.__name__ = true;
+geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.get_red = function(this1) {
+	return this1[(this1[0] | 0) * 4 + 2];
+};
 geom_flat_f32__$Float32FlatRGBA_Float32FlatRGBA_$Impl_$.set_red = function(this1,v) {
 	this1[(this1[0] | 0) * 4 + 2] = v;
 	return v;
@@ -7097,6 +7402,12 @@ var geom_obj_DieLayout = function(radius,isLeft) {
 	this.isLeft = isLeft;
 };
 geom_obj_DieLayout.__name__ = true;
+var geom_obj__$TriColors_TriColors_$Impl_$ = {};
+geom_obj__$TriColors_TriColors_$Impl_$.__name__ = true;
+geom_obj__$TriColors_TriColors_$Impl_$._new = function(ti) {
+	var this1 = ti;
+	return this1;
+};
 var geom_structure_DualQ = function(real,dual) {
 	this.real = real;
 	this.dual = dual;
@@ -7191,6 +7502,18 @@ var geom_structure_Mat4x4 = function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p) {
 	this.p = p;
 };
 geom_structure_Mat4x4.__name__ = true;
+var geom_structure_TriInt = function(a,b,c) {
+	this.a = a;
+	this.b = b;
+	this.c = c;
+};
+geom_structure_TriInt.__name__ = true;
+var geom_structure_TriVec = function(a,b,c) {
+	this.a = a;
+	this.b = b;
+	this.c = c;
+};
+geom_structure_TriVec.__name__ = true;
 var haxe_Log = function() { };
 haxe_Log.__name__ = true;
 haxe_Log.formatOutput = function(v,infos) {

@@ -25,6 +25,7 @@ import geom.move.Axis3;
 import geom.move.Trinary;
 import geom.matrix.Projection;
 import geom.matrix.Matrix1x2;
+import geom.matrix.Matrix1x4;
 import geom.flat.f32.Float32FlatRGBA;
 import geom.flat.f32.Float32FlatTriangle;
 import geom.flat.f32.Float32FlatTriangleXY;
@@ -43,6 +44,7 @@ import trilateral2.Sketch;
 import trilateral2.SketchForm;
 import trilateral2.Fill;
 import trilateral2.ArrayTriple;
+import trilateral2.IndexRange;
 
 // WebGL / Canvas setup, basic browser util
 import htmlHelper.webgl.WebGLSetup;
@@ -51,8 +53,10 @@ import htmlHelper.tools.AnimateTimer;
 import htmlHelper.tools.DivertTrace;
 import pallette.QuickARGB;
 import dice.view.Die;
-
-
+import geom.obj.CubeTransforms;
+import trilateral2.DieSpots;
+import trilateral2.VertexObject;
+import dice.view.MouseSpot;
 using htmlHelper.webgl.WebGLSetup;
 class Dice {
     var viewGL = new ViewGL();
@@ -62,25 +66,71 @@ class Dice {
     var angle = 0.;//(Math.PI/4);
     var layoutPos: LayoutPos;
     var pen: Pen;
+    var mouseSpot: MouseSpot;
+    var mouseStartEnd: IndexRange;
+    var vertexObject: VertexObject;
+    var mouseStartPos: Int;
+    var mouseStored: IndexRange;
+    var modelPen:        Pen;
     public static function main() new Dice();
     public function new(){
         new DivertTrace();
         instructions();
         layoutPos     = new LayoutPos( ViewGL.stageRadius );
-        pen = viewGL.pen;
+        pen = Pen.create( viewGL.verts, viewGL.cols );
+        
+        modelPen = Pen.create( viewGL.vertsModel, viewGL.colsModel );
+        
+        pen.transformMatrix = viewGL.scaleToGL();
+        //modelPen.transformMatrix = viewGL.scaleToGL();
+        Shaper.transformMatrix = viewGL.scaleToGL();
+        //pen = viewGL.pen;
         var gridLines = new GridLines( pen, ViewGL.stageRadius );
         gridLines.draw( 10, 0x0396FB00, 0xF096FBF3 );
         viewGL.transform( Matrix4x3.unit.translateXYZ( 0., 0., -0.2 ) );
-        var die     = new Die( viewGL.pen );
-        var startEnd  = die.create(layoutPos.centre.x, layoutPos.centre.y );
+        var die     = new Die( pen );
+        mouseSpot   = new MouseSpot( pen );
+
+        
+        //
+        //var die2    = new Die( viewGL.pen );
+        var startEnd  = die.create( layoutPos.centre.x, layoutPos.centre.y );
+        var mousePos = new Matrix1x4( { x:layoutPos.centre.x, y: layoutPos.centre.y, z: 0, w: 1 } );
+        mouseStartEnd = mouseSpot.create( layoutPos.centre.x, layoutPos.centre.y );
+        viewGL.transformRange( Matrix4x3.unit.translateXYZ( 0., 0., 0.2 ), mouseStartEnd.start, mouseStartEnd.end );
+        mouseStartPos = mouseStartEnd.start;
+        
+        var mouseZero: Matrix1x4 = { x: 0., y: 0., z: 0., w: 1. };
+        
+        /*
+        var posCurr = pen.pos;
+        mouseStored   = modelPen.copyRange( pen, mouseStartEnd, mouseZero );  // clone the mouse 
+        pen.pos = posCurr;
+        var matrixObject: MatrixObject = { name:'mousey', m: mousePos, startEnd: mouseStartEnd };
+        vertexObject = matrixObject;
+        */
+        
+        
+        //var startEnd2 = die.create(layoutPos.centre.x - 200, layoutPos.centre.y );
+        //var trans = CubeTransforms.getDieLayout({radius: 0, isLeft: LEFT } ); // rotate around to side 6.
+        //var spots: DieSpots = pen;
+        //spots.transformRange( trans[5], startEnd2 );
+        //start         = mouseStartEnd.start;
         start         = startEnd.start;
-        end           = startEnd.end;
+        end           = mouseStartEnd.end;
+        //end           = startEnd2.end;
         viewGL.update = update;
         viewGL.upload();
         viewGL.start();
     }
     function update():Void{
-        //angle = -Math.PI/100;
+        //pen.pos = mouseStartPos;
+        //var newPos = viewGL.mousePos;
+        //var offPos: Matrix1x4 = { x: newPos.x - layoutPos.centre.x, y: newPos.y - layoutPos.centre.y, z: 0, w: 1 };
+        //newPos.x -= layoutPos.centre.x;
+        //newPos.y -= layoutPos.centre.y;
+        //trace( newPos.x + ' ' + newPos.y );
+        //pen.copyRange2( modelPen, mouseStored, viewGL.mousePos );
         var model = DualQuaternion.zero;
         model  = viewGL.itemModel.updateCalculate( model );
         var trans: Matrix4x3 = model;
